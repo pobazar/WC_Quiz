@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "761831373699",
+    "firebase_url": "https://wc-quiz.firebaseio.com",
+    "project_id": "wc-quiz",
+    "storage_bucket": "wc-quiz.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:761831373699:android:5fdfc272f7065b23",
+        "android_client_info": {
+          "package_name": "msk.pobazar.wcquiz"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "761831373699-k9btmau53k733ngbvfs212sp43u6u641.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "msk.pobazar.wcquiz",
+            "certificate_hash": "f8c1d5525b87a098daae63139574db707f1f3ea2"
+          }
+        },
+        {
+          "client_id": "761831373699-aj3adch17j25tq9prnuv5g2s51e3mf7v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB3FWcUrKkO9U78uZinCW6JlyG6iR9opRs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "761831373699-aj3adch17j25tq9prnuv5g2s51e3mf7v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
