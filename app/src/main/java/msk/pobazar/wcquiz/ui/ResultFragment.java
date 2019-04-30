@@ -166,7 +166,7 @@ public class ResultFragment extends MvpAppCompatFragment implements ResultView {
     }
 
     public static void loadRewardAdMob() {
-        mRewardedVideoAd.loadAd("ca-app-pub-3940256099942544/5224354917", new AdRequest.Builder().build());
+        mRewardedVideoAd.loadAd("ca-app-pub-1267411731078735/6318243295", new AdRequest.Builder().build());
     }
 
     private void setListenerAdMob()

@@ -58,8 +58,8 @@ public class MainActivity extends AppCompatActivity implements MainFragmentListe
             dbLoad();
         });
         setVisibleElements("download");
-       // MobileAds.initialize(this, "ca-app-pub-1267411731078735~9368198027");
-       // initializeAdMob();
+        MobileAds.initialize(this, "ca-app-pub-1267411731078735~7822896652");
+        initializeAdMob();
     }
 
     @Override
@@ -236,7 +236,7 @@ public class MainActivity extends AppCompatActivity implements MainFragmentListe
         ResultFragment.loadRewardAdMob();
 
         ResultFragment.mInterstitialAd = new InterstitialAd(this);
-        ResultFragment.mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
+        ResultFragment.mInterstitialAd.setAdUnitId("ca-app-pub-1267411731078735/8944406635");
         ResultFragment.mInterstitialAd.loadAd(new AdRequest.Builder().build());
     }
 
