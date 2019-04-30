@@ -16,6 +16,7 @@ import com.arellomobile.mvp.presenter.InjectPresenter;
 import com.google.android.gms.ads.AdListener;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
+import com.google.android.gms.ads.MobileAds;
 import com.google.android.gms.ads.reward.RewardItem;
 import com.google.android.gms.ads.reward.RewardedVideoAd;
 import com.google.android.gms.ads.reward.RewardedVideoAdListener;
@@ -46,8 +47,6 @@ public class ResultFragment extends MvpAppCompatFragment implements ResultView {
     private static final String ARGS_1 = "right";
     private static final String ARGS_2 = "all";
     private static final String ARGS_3 = "time";
-    public static RewardedVideoAd mRewardedVideoAd;
-    public static InterstitialAd mInterstitialAd;
     Button buttonGame, buttonMarketing;
 
 
@@ -145,9 +144,9 @@ public class ResultFragment extends MvpAppCompatFragment implements ResultView {
     }
 
     private void showRewardAdMob() {
-        if (mRewardedVideoAd.isLoaded()) {
+        if (MainActivity.mRewardedVideoAd.isLoaded()) {
             Log.d(MainActivity.LOG, "ревард реклама показ");
-            mRewardedVideoAd.show();
+            MainActivity.mRewardedVideoAd.show();
         } else {
             Log.d(MainActivity.LOG, "ревард реклама еще не загрузилась");
             buttonMarketing.setEnabled(false);
@@ -155,26 +154,24 @@ public class ResultFragment extends MvpAppCompatFragment implements ResultView {
         }
     }
 
-    public void showAdMob() {
-        if (mInterstitialAd.isLoaded()) {
+    private void showAdMob() {
+        if (MainActivity.mInterstitialAd.isLoaded()) {
             Log.d(MainActivity.LOG, "Межстраничная реклама показ");
-            mInterstitialAd.show();
+            MainActivity.mInterstitialAd.show();
         } else {
             Log.d(MainActivity.LOG, "Межстраничная реклама еще не загрузилась");
             listener.startRegame();
         }
     }
 
-    public static void loadRewardAdMob() {
-        mRewardedVideoAd.loadAd("ca-app-pub-1267411731078735/6318243295", new AdRequest.Builder().build());
-    }
+
 
     private void setListenerAdMob() {
-        mInterstitialAd.setAdListener(new AdListener() {
+        MainActivity.mInterstitialAd.setAdListener(new AdListener() {
             @Override
             public void onAdClosed() {
                 // Load the next interstitial.
-                mInterstitialAd.loadAd(new AdRequest.Builder().build());
+                MainActivity.mInterstitialAd.loadAd(new AdRequest.Builder().build());
                 listener.startRegame();
             }
 
@@ -182,7 +179,7 @@ public class ResultFragment extends MvpAppCompatFragment implements ResultView {
             public void onAdFailedToLoad(int errorCode) {
                 Log.d(MainActivity.LOG, "реклама межстраничная не загружена errorCode=" + errorCode);
                 super.onAdFailedToLoad(errorCode);
-                mInterstitialAd.loadAd(new AdRequest.Builder().build());
+                MainActivity.mInterstitialAd.loadAd(new AdRequest.Builder().build());
                 listener.startRegame();
             }
 
@@ -194,7 +191,7 @@ public class ResultFragment extends MvpAppCompatFragment implements ResultView {
         });
 
 
-        mRewardedVideoAd.setRewardedVideoAdListener(new RewardedVideoAdListener() {
+        MainActivity.mRewardedVideoAd.setRewardedVideoAdListener(new RewardedVideoAdListener() {
             @Override
             public void onRewardedVideoAdLoaded() {
                 Log.d(MainActivity.LOG, "Реклама ревард загрузилась");
@@ -213,13 +210,13 @@ public class ResultFragment extends MvpAppCompatFragment implements ResultView {
             @Override
             public void onRewardedVideoAdClosed() {
                 buttonMarketing.setEnabled(false);
-                loadRewardAdMob();
+                MainActivity.loadRewardAdMob();
             }
 
             @Override
             public void onRewarded(RewardItem rewardItem) {
                 buttonMarketing.setEnabled(false);
-                loadRewardAdMob();
+                MainActivity.loadRewardAdMob();
                 showAnswers(MainActivity.questionsGame, true);
             }
 
@@ -230,7 +227,7 @@ public class ResultFragment extends MvpAppCompatFragment implements ResultView {
 
             @Override
             public void onRewardedVideoAdFailedToLoad(int i) {
-                loadRewardAdMob();
+                MainActivity.loadRewardAdMob();
             }
 
             @Override

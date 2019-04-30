@@ -18,6 +18,7 @@ import android.widget.TextView;
 import com.google.android.gms.ads.AdRequest;
 import com.google.android.gms.ads.InterstitialAd;
 import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.reward.RewardedVideoAd;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
@@ -44,6 +45,8 @@ public class MainActivity extends AppCompatActivity implements MainFragmentListe
     private TextView textView;
     private Button button;
     RecordFragment recordFragment;
+    public static RewardedVideoAd mRewardedVideoAd;
+    public static InterstitialAd mInterstitialAd;
 
 
     @Override
@@ -231,13 +234,18 @@ public class MainActivity extends AppCompatActivity implements MainFragmentListe
         }
     }
 
-    public void initializeAdMob() {
-        ResultFragment.mRewardedVideoAd = MobileAds.getRewardedVideoAdInstance(this);
-        ResultFragment.loadRewardAdMob();
-
-        ResultFragment.mInterstitialAd = new InterstitialAd(this);
-        ResultFragment.mInterstitialAd.setAdUnitId("ca-app-pub-1267411731078735/8944406635");
-        ResultFragment.mInterstitialAd.loadAd(new AdRequest.Builder().build());
+    public static void loadRewardAdMob() {
+        mRewardedVideoAd.loadAd("ca-app-pub-1267411731078735/6318243295", new AdRequest.Builder().build());
+        Log.d(MainActivity.LOG, "Реклама ревард загрузка");
     }
 
+    public void initializeAdMob() {
+        mRewardedVideoAd = MobileAds.getRewardedVideoAdInstance(this);
+        loadRewardAdMob();
+
+        mInterstitialAd = new InterstitialAd(this);
+        mInterstitialAd.setAdUnitId("ca-app-pub-1267411731078735/8944406635");
+        mInterstitialAd.loadAd(new AdRequest.Builder().build());
+        Log.d(MainActivity.LOG, "Реклама межстраничная загрузка");
+    }
 }
