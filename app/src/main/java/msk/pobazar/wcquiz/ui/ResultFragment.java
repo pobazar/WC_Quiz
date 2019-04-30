@@ -90,7 +90,7 @@ public class ResultFragment extends MvpAppCompatFragment implements ResultView {
 
         initView();
         Log.d(MainActivity.LOG, "Start result fragment");
-       // setListenerAdMob();
+        setListenerAdMob();
         return view;
     }
 
@@ -145,32 +145,31 @@ public class ResultFragment extends MvpAppCompatFragment implements ResultView {
     }
 
     private void showRewardAdMob() {
-//        if (mRewardedVideoAd.isLoaded()) {
-//            Log.d(MainActivity.LOG, "ревард реклама показ");
-//            mRewardedVideoAd.show();
-//        } else {
-//            Log.d(MainActivity.LOG, "ревард реклама еще не загрузилась");
+        if (mRewardedVideoAd.isLoaded()) {
+            Log.d(MainActivity.LOG, "ревард реклама показ");
+            mRewardedVideoAd.show();
+        } else {
+            Log.d(MainActivity.LOG, "ревард реклама еще не загрузилась");
             buttonMarketing.setEnabled(false);
             showAnswers(MainActivity.questionsGame, true);
-        //}
+        }
     }
 
     public void showAdMob() {
-//        if (mInterstitialAd.isLoaded()) {
-//            Log.d(MainActivity.LOG, "Межстраничная реклама показ");
-//            mInterstitialAd.show();
-//        } else {
-//            Log.d(MainActivity.LOG, "Межстраничная реклама еще не загрузилась");
+        if (mInterstitialAd.isLoaded()) {
+            Log.d(MainActivity.LOG, "Межстраничная реклама показ");
+            mInterstitialAd.show();
+        } else {
+            Log.d(MainActivity.LOG, "Межстраничная реклама еще не загрузилась");
             listener.startRegame();
-      //  }
+        }
     }
 
     public static void loadRewardAdMob() {
         mRewardedVideoAd.loadAd("ca-app-pub-1267411731078735/6318243295", new AdRequest.Builder().build());
     }
 
-    private void setListenerAdMob()
-    {
+    private void setListenerAdMob() {
         mInterstitialAd.setAdListener(new AdListener() {
             @Override
             public void onAdClosed() {
@@ -213,12 +212,14 @@ public class ResultFragment extends MvpAppCompatFragment implements ResultView {
 
             @Override
             public void onRewardedVideoAdClosed() {
+                buttonMarketing.setEnabled(false);
                 loadRewardAdMob();
             }
 
             @Override
             public void onRewarded(RewardItem rewardItem) {
                 buttonMarketing.setEnabled(false);
+                loadRewardAdMob();
                 showAnswers(MainActivity.questionsGame, true);
             }
 
