@@ -1,3 +1,5 @@
 include ':app'
 
 include ':domain'
+
+include ':core'
