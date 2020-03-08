@@ -1,0 +1,30 @@
+apply from: "$rootDir/deps.gradle"
+apply from: "$rootDir/config.gradle"
+
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    defaultConfig {
+        versionCode config.versionCode
+        versionName config.versionName
+        minSdkVersion config.minSDK
+        targetSdkVersion config.compileSdkVersion
+        compileSdkVersion config.compileSdkVersion
+    }
+}
+
+dependencies {
+    api deps.kotlin
+
+    api deps.rx.java
+    api deps.rx.android
+    api deps.rx.kotlin
+
+    api deps.timber
+
+    api deps.toothpick.runtime
+    kapt deps.toothpick.compiler
+}

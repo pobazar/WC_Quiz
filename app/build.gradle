@@ -1,5 +1,4 @@
 apply plugin: 'com.android.application'
-apply plugin: 'com.google.gms.google-services'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
@@ -21,7 +20,7 @@ android {
     }
 
     buildTypes {
-        debug
+        debug{}
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
@@ -35,6 +34,8 @@ android {
 }
 
 dependencies {
+    implementation project(':domain')
+
     api deps.androidx.appCompat
     api deps.androidx.fragments
     api deps.androidx.viewpager2
@@ -69,3 +70,5 @@ dependencies {
     api deps.toothpick.runtime
     kapt deps.toothpick.compiler
 }
+
+apply plugin: 'com.google.gms.google-services'
