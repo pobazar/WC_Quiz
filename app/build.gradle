@@ -1,21 +1,33 @@
 apply plugin: 'com.android.application'
+apply plugin: 'com.google.gms.google-services'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+apply from: "$rootDir/config.gradle"
+apply from: "$rootDir/deps.gradle"
+
 
 android {
-    compileSdkVersion 28
     defaultConfig {
         applicationId "msk.pobazar.wcquiz"
-        minSdkVersion 21
-        targetSdkVersion 28
-        versionCode 8
-        versionName "1.4"
-        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        versionCode config.versionCode
+        versionName config.versionName
+        minSdkVersion config.minSDK
+        targetSdkVersion config.compileSdkVersion
+        compileSdkVersion config.compileSdkVersion
+
+        setProperty("archivesBaseName", "Stoloto_$versionName($versionCode)")
     }
+
     buildTypes {
+        debug
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
     compileOptions {
         sourceCompatibility = '1.8'
         targetCompatibility = '1.8'
@@ -23,61 +35,50 @@ android {
 }
 
 dependencies {
-    implementation fileTree(include: ['*.jar'], dir: 'libs')
-    implementation "com.android.support:appcompat-v7:$support_libs_version"
-    implementation "com.android.support:recyclerview-v7:$support_libs_version"
-    implementation "com.android.support:cardview-v7:$support_libs_version"
-    implementation "com.android.support.constraint:constraint-layout:$constraint_version"
+    api deps.androidx.appCompat
+    api deps.androidx.fragments
+    api deps.androidx.viewpager2
+    api(deps.androidx.design)
+    api deps.androidx.browser
+    api deps.androidx.cardView
+    api(deps.androidx.constraintLayout) {
+        force = true
+    }
 
-    //dagger2
+    api deps.google.gsm
 
-    //implementation  "com.google.dagger:dagger:$dagger2_version"
+    api deps.moxyX.android
+    api deps.moxyX.core
+    api deps.moxyX.material
+    kapt deps.moxyX.compiler
 
-    //annotationProcessor "com.google.dagger:$dagger2_version"
+    api(deps.glide.core) {
+        exclude group: "com.android.support"
+    }
 
-    //rxjava2
-    implementation "io.reactivex.rxjava2:rxandroid:$rxandroid_version"
-    implementation "io.reactivex.rxjava2:rxjava:$rxjava2_version"
+    api deps.kotlin
 
-    //retrofit, okhttp
-    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
-    implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version"
-    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
-    implementation "com.squareup.okhttp3:okhttp:$okhttp_version"
-    implementation "com.squareup.okhttp3:logging-interceptor:$okhttp_version"
+    api deps.google.gson
 
-    //Room
-    implementation "android.arch.persistence.room:runtime:$room_version"
-    annotationProcessor "android.arch.persistence.room:compiler:$room_version"
-    implementation "android.arch.persistence.room:rxjava2:$room_version"
+    api deps.rx.java
+    api deps.rx.android
+    api deps.rx.kotlin
 
-    //LiveData + ViewModel
-    implementation "android.arch.lifecycle:extensions:$jetpack_version"
+    api deps.timber
 
-    //Glide
-    implementation "com.github.bumptech.glide:glide:$glide_version"
-    annotationProcessor "com.github.bumptech.glide:compiler:$glide_version"
-
-    //Gson
-    implementation "com.google.code.gson:gson:$gson_version"
-
-    //moxy
-    implementation 'com.arello-mobile:moxy:1.5.5'
-    annotationProcessor 'com.arello-mobile:moxy-compiler:1.5.5'
-
-    //For app-compat users
-    implementation 'com.arello-mobile:moxy-app-compat:1.5.5'
-    implementation 'com.android.support:appcompat-v7:28.0.0'
-
-    //Firebase
-
-    //implementation "com.google.firebase:firebase-core:$firebase_core_version"
-    implementation 'com.google.firebase:firebase-core:16.0.8'
-    implementation 'com.google.firebase:firebase-database:16.1.0'
-    implementation 'com.google.firebase:firebase-auth:16.2.1'
-    implementation 'com.google.firebase:firebase-messaging:17.6.0'
-    implementation 'com.google.firebase:firebase-storage:16.1.0'
-    implementation 'com.google.android.gms:play-services-ads:17.2.0'
+    api deps.toothpick.runtime
+    kapt deps.toothpick.compiler
 }
-//Uncomment to use firebase
-apply plugin: 'com.google.gms.google-services'
+
+ext.support_libs_version = '28.0.0'
+ext.constraint_version = '1.1.3'
+ext.dagger2_version = '2.19'
+ext.rxjava2_version = '2.1.12'
+ext.rxandroid_version = '2.1.0'
+ext.retrofit_version = '2.5.0'
+ext.okhttp_version = '3.12.0'
+ext.room_version = '1.1.1'
+ext.jetpack_version = '1.1.1'
+ext.firebase_core_version = '16.0.6'
+ext.glide_version = '4.8.0'
+ext.gson_version = '2.8.5'

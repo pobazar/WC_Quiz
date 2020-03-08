@@ -1,0 +1,9 @@
+ext {
+    config = [
+            'applicationId': "msk.pobazar.wcquiz",
+            'versionCode': 8,
+            'versionName': "1.4",
+            'minSdkVersion': 21,
+            'compileSdkVersion': 28
+    ]
+}
