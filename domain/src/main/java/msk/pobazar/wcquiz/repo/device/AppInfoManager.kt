@@ -1,4 +1,4 @@
-package repo.device
+package msk.pobazar.wcquiz.repo.device
 
 import msk.pobazar.wcquiz.model.AppVersion
 

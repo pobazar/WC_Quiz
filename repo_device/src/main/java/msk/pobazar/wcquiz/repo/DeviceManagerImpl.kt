@@ -5,7 +5,7 @@ import android.content.res.Configuration
 import android.content.res.Resources
 import android.os.Build
 import android.util.TypedValue
-import repo.device.DeviceManager
+import msk.pobazar.wcquiz.repo.device.DeviceManager
 import javax.inject.Inject
 
 class DeviceManagerImpl @Inject constructor(

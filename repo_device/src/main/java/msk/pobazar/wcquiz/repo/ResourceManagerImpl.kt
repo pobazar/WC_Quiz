@@ -2,7 +2,7 @@ package msk.pobazar.wcquiz.repo
 
 import android.content.Context
 import android.util.TypedValue
-import repo.device.ResourceManager
+import msk.pobazar.wcquiz.repo.device.ResourceManager
 import javax.inject.Inject
 import androidx.core.content.ContextCompat
 

@@ -1,4 +1,4 @@
-package repo.remote
+package msk.pobazar.wcquiz.repo.remote
 
 import msk.pobazar.wcquiz.model.Score
 import msk.pobazar.wcquiz.model.User

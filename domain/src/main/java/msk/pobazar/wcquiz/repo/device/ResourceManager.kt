@@ -1,4 +1,4 @@
-package repo.device
+package msk.pobazar.wcquiz.repo.device
 
 interface ResourceManager {
     fun getString(resId: Int, vararg params: Any?): String
