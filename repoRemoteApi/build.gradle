@@ -17,8 +17,7 @@ android {
 }
 
 dependencies {
-    api project(':repoRemoteApi')
-    api project(':repoLocalApi')
+    implementation project(':core')
 
     api deps.kotlin
 

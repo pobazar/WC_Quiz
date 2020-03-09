@@ -1,6 +1,5 @@
-package msk.pobazar.wcquiz.base
+package msk.pobazar.wcquiz.baseInteractor
 
-import io.reactivex.Single
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 

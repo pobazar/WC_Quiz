@@ -3,3 +3,11 @@ include ':app'
 include ':domain'
 
 include ':core'
+
+include ':repoRemoteApi'
+
+include ':repoRemoteImpl'
+
+include ':repoLocalApi'
+
+include ':repoLocalImpl'

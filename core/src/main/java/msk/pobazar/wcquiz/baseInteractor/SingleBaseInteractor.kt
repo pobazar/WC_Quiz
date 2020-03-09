@@ -1,4 +1,4 @@
-package msk.pobazar.wcquiz.base
+package msk.pobazar.wcquiz.baseInteractor
 
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
