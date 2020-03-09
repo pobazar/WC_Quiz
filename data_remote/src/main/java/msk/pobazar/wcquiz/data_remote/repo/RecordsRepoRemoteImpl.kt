@@ -5,10 +5,10 @@ import io.reactivex.Single
 import msk.pobazar.wcquiz.domain.model.Record
 import msk.pobazar.wcquiz.domain.model.Score
 import msk.pobazar.wcquiz.domain.model.User
-import msk.pobazar.wcquiz.domain.repo.remote.RecordRepoRemote
+import msk.pobazar.wcquiz.domain.repo.remote.RecordsRepoRemote
 import java.util.Date
 
-class RecordRepoRemoteImpl : RecordRepoRemote {
+class RecordsRepoRemoteImpl : RecordsRepoRemote {
     override fun getAllRecords(): Single<List<Record>> {
         return Single.just(
             listOf(
