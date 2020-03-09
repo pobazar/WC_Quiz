@@ -1,4 +1,4 @@
-package com.example.domain.model
+package msk.pobazar.wcquiz.model
 
 data class Question(
         val question: String,

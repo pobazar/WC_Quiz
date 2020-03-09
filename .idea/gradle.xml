@@ -13,10 +13,9 @@
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/core" />
             <option value="$PROJECT_DIR$/domain" />
-            <option value="$PROJECT_DIR$/repoLocalApi" />
-            <option value="$PROJECT_DIR$/repoLocalImpl" />
-            <option value="$PROJECT_DIR$/repoRemoteApi" />
-            <option value="$PROJECT_DIR$/repoRemoteImpl" />
+            <option value="$PROJECT_DIR$/repo_device" />
+            <option value="$PROJECT_DIR$/repo_local" />
+            <option value="$PROJECT_DIR$/repo_remote" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

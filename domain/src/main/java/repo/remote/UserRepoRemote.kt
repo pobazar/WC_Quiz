@@ -1,7 +1,7 @@
-package com.example.domain.RepoRemote
+package repo.remote
 
-import com.example.domain.model.Score
-import com.example.domain.model.User
+import msk.pobazar.wcquiz.model.Score
+import msk.pobazar.wcquiz.model.User
 import io.reactivex.Completable
 import io.reactivex.Single
 

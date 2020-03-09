@@ -12,7 +12,7 @@ android {
         applicationId "msk.pobazar.wcquiz"
         versionCode config.versionCode
         versionName config.versionName
-        minSdkVersion config.minSDK
+        minSdkVersion config.minSdkVersion
         targetSdkVersion config.compileSdkVersion
         compileSdkVersion config.compileSdkVersion
 
@@ -34,7 +34,11 @@ android {
 }
 
 dependencies {
+    implementation project(':core')
     implementation project(':domain')
+    implementation project(':repo_remote')
+    implementation project(':repo_local')
+    implementation project(':repo_device')
 
     api deps.androidx.appCompat
     api deps.androidx.fragments

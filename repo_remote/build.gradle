@@ -10,7 +10,7 @@ android {
     defaultConfig {
         versionCode config.versionCode
         versionName config.versionName
-        minSdkVersion config.minSDK
+        minSdkVersion config.minSdkVersion
         targetSdkVersion config.compileSdkVersion
         compileSdkVersion config.compileSdkVersion
     }
@@ -18,14 +18,17 @@ android {
 
 dependencies {
     implementation project(':core')
+    implementation project(':domain')
 
     api deps.kotlin
 
-    api deps.rx.java
-    api deps.rx.android
-    api deps.rx.kotlin
+    api deps.okhttp.client
+    api deps.okhttp.logging
 
-    api deps.timber
+    api deps.retrofit.client
+    api deps.retrofit.gsonConverter
+    api deps.retrofit.gsonConverter
+    api deps.retrofit.adapterRxJava
 
     api deps.toothpick.runtime
     kapt deps.toothpick.compiler

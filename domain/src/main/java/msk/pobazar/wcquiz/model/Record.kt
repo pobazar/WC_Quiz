@@ -1,4 +1,4 @@
-package com.example.domain.model
+package msk.pobazar.wcquiz.model
 
 import java.util.Date
 

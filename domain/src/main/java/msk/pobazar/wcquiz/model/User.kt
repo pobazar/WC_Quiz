@@ -1,4 +1,6 @@
-package com.example.domain.model
+package msk.pobazar.wcquiz.model
+
+import msk.pobazar.wcquiz.model.Score
 
 data class User(
         val name: String,

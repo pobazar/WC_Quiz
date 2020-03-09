@@ -10,15 +10,14 @@ android {
     defaultConfig {
         versionCode config.versionCode
         versionName config.versionName
-        minSdkVersion config.minSDK
+        minSdkVersion config.minSdkVersion
         targetSdkVersion config.compileSdkVersion
         compileSdkVersion config.compileSdkVersion
     }
 }
 
 dependencies {
-    api project(':repoRemoteApi')
-    api project(':repoLocalApi')
+    implementation project(':core')
 
     api deps.kotlin
 
