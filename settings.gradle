@@ -4,8 +4,8 @@ include ':domain'
 
 include ':core'
 
-include ':repo_remote'
+include ':data_remote'
 
-include ':repo_local'
+include ':data_local'
 
-include ':repo_device'
+include ':data_device'

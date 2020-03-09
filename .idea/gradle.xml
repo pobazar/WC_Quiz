@@ -12,10 +12,10 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/core" />
+            <option value="$PROJECT_DIR$/data_device" />
+            <option value="$PROJECT_DIR$/data_local" />
+            <option value="$PROJECT_DIR$/data_remote" />
             <option value="$PROJECT_DIR$/domain" />
-            <option value="$PROJECT_DIR$/repo_device" />
-            <option value="$PROJECT_DIR$/repo_local" />
-            <option value="$PROJECT_DIR$/repo_remote" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
