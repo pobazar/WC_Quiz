@@ -1,0 +1,5 @@
+<resources>
+    <string name="game">Быстрая игра</string>
+    <string name="mods">Режимы</string>
+    <string name="rating">Рейтинг</string>
+</resources>

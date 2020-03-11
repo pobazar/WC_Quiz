@@ -17,14 +17,9 @@ android {
 }
 
 dependencies {
-    api deps.kotlin
+    implementation project(':core')
+    implementation project(':domain')
 
-    api deps.rx.java
-    api deps.rx.android
-    api deps.rx.kotlin
-
-    api deps.timber
-
-    api deps.toothpick.runtime
     kapt deps.toothpick.compiler
+    kapt deps.moxyX.compiler
 }

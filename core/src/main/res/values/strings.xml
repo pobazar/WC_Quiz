@@ -1,7 +1,5 @@
 <resources>
     <string name="app_name">WC Quiz</string>
-    <string name="game">Играть</string>
-    <string name="record">Рекорды</string>
     <string name="exit">Выход</string>
     <string name="Wow_quiz">WoW Quiz</string>
     <string name="image_quest">image quest</string>
@@ -14,7 +12,6 @@
     <string name="Date">Дата</string>
     <string name="download_failed">Ошибка загрузки</string>
     <string name="try_again">Повторить загрузку</string>
-    <string name="Keys">Ключи\n(Скоро)</string>
     <string name="show_answers">Посмотреть ответы</string>
     <string name="set_value_app">Оценить приложение</string>
 </resources>

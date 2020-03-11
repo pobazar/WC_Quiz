@@ -9,3 +9,5 @@ include ':data_remote'
 include ':data_local'
 
 include ':data_device'
+
+include ':feature_menu'

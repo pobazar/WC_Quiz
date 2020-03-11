@@ -2,22 +2,22 @@ package msk.pobazar.wcquiz.data_remote.repo
 
 import io.reactivex.Completable
 import io.reactivex.Single
-import msk.pobazar.wcquiz.domain.model.Record
+import msk.pobazar.wcquiz.domain.model.Rating
 import msk.pobazar.wcquiz.domain.model.Score
 import msk.pobazar.wcquiz.domain.model.User
-import msk.pobazar.wcquiz.domain.repo.remote.RecordsRepoRemote
+import msk.pobazar.wcquiz.domain.repo.remote.RatingRepoRemote
 import java.util.Date
 
-class RecordsRepoRemoteImpl : RecordsRepoRemote {
-    override fun getAllRecords(): Single<List<Record>> {
+class RatingRepoRemoteImpl : RatingRepoRemote {
+    override fun getAllRating(): Single<List<Rating>> {
         return Single.just(
             listOf(
-                Record(
+                Rating(
                     User("name1", "email1", Score(100)),
                     Score(100),
                     Date()
                 ),
-                Record(
+                Rating(
                     User("name2", "email2", Score(200)),
                     Score(200),
                     Date()
@@ -26,7 +26,7 @@ class RecordsRepoRemoteImpl : RecordsRepoRemote {
         )
     }
     
-    override fun setNewRecord(user: User, score: Score): Completable {
+    override fun setNewRating(user: User, score: Score): Completable {
         return Completable.complete()
     }
 }

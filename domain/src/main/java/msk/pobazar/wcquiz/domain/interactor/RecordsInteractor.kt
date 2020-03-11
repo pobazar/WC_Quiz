@@ -3,24 +3,24 @@ package msk.pobazar.wcquiz.domain.interactor
 import io.reactivex.Completable
 import io.reactivex.Single
 import io.reactivex.schedulers.Schedulers
-import msk.pobazar.wcquiz.domain.model.Record
+import msk.pobazar.wcquiz.domain.model.Rating
 import msk.pobazar.wcquiz.domain.model.Score
 import msk.pobazar.wcquiz.domain.model.User
-import msk.pobazar.wcquiz.domain.repo.remote.RecordsRepoRemote
+import msk.pobazar.wcquiz.domain.repo.remote.RatingRepoRemote
 import javax.inject.Inject
 
 class RecordsInteractor @Inject constructor(
-    private val recordsRepoRemote: RecordsRepoRemote
+    private val ratingRepoRemote: RatingRepoRemote
 ) {
-    fun getAll(): Single<List<Record>> {
-        return recordsRepoRemote
-            .getAllRecords()
+    fun getAll(): Single<List<Rating>> {
+        return ratingRepoRemote
+            .getAllRating()
             .observeOn(Schedulers.io())
     }
     
     fun setNew(user: User, score: Score): Completable {
-        return recordsRepoRemote
-            .setNewRecord(
+        return ratingRepoRemote
+            .setNewRating(
                 user = user,
                 score = score
             )
