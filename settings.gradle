@@ -11,3 +11,5 @@ include ':data_local'
 include ':data_device'
 
 include ':feature_menu'
+
+include ':feature_game'
