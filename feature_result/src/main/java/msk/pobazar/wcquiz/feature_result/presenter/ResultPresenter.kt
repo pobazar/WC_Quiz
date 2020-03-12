@@ -1,34 +1,33 @@
 package msk.pobazar.wcquiz.feature_result.presenter
 
 import msk.pobazar.wcquiz.core.base.BasePresenter
-import msk.pobazar.wcquiz.core.navigation.transitionsParams.ResultParams
+import msk.pobazar.wcquiz.domain.interactor.ResultInteractor
 import msk.pobazar.wcquiz.feature_result.mapper.ResultMapper
 import msk.pobazar.wcquiz.feature_result.viewData.ResultViewData
-import msk.pobazar.wcquiz.feature_result.viewData.ResultViewItem
 import javax.inject.Inject
 
 class ResultPresenter @Inject constructor(
-    private val resultMapper: ResultMapper,
-    private val params: ResultParams
+    private val resultInteractor: ResultInteractor,
+    private val resultMapper: ResultMapper
 ) : BasePresenter<ResultView>() {
-
+    
+    private lateinit var resultViewData: ResultViewData
     override fun attachView(view: ResultView?) {
         super.attachView(view)
-        setResults(
-            params.results
-                .map(resultMapper::mapToResultViewData)
+        
+        resultViewData = resultMapper.mapToResultViewData(
+            resultInteractor.getResult()
         )
+        
+        viewState.setResults(resultViewData.items)
+        viewState.setCountRight(resultViewData.title)
     }
-
+    
     fun onAgainPlayClick() {
-
+    
     }
-
+    
     fun onShowAnswers() {
-
-    }
-
-    private fun setResults(results: List<ResultViewItem>) {
-        viewState.setResults(results)
+    
     }
 }
