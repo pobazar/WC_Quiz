@@ -12,8 +12,7 @@ class GameMapper @Inject constructor(
         GameViewData(
             question = question.question,
             answers = question.answers,
-            answerRight = question.answerRight,
-            image = null
+            image = question.image
         )
 
 }

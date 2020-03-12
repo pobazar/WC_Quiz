@@ -5,8 +5,12 @@ import javax.inject.Inject
 
 class ResultInteractor @Inject constructor(
 
-){
-    fun getResult(): List<GameResult>{
+) {
+    fun getResult(): List<GameResult> {
+    
+    }
+    
+    fun setResult(results: List<GameResult>) {
     
     }
 }
