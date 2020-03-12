@@ -7,6 +7,7 @@ import msk.pobazar.wcquiz.domain.model.Score
 import msk.pobazar.wcquiz.domain.model.User
 
 interface RatingRepoRemote {
+
     fun getAllRating(): Single<List<Rating>>
     
     fun setNewRating(user: User, score: Score): Completable

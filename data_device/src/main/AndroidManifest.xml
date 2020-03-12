@@ -1,1 +1,5 @@
-<manifest package="msk.pobazar.wcquiz.data_device" />
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="msk.pobazar.wcquiz.data_device">
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+</manifest>

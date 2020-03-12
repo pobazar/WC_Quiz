@@ -6,8 +6,10 @@ import msk.pobazar.wcquiz.domain.model.Rating
 import msk.pobazar.wcquiz.domain.model.Score
 import msk.pobazar.wcquiz.domain.model.User
 import msk.pobazar.wcquiz.domain.repo.remote.RatingRepoRemote
+import toothpick.InjectConstructor
 import java.util.Date
 
+@InjectConstructor
 class RatingRepoRemoteImpl : RatingRepoRemote {
     override fun getAllRating(): Single<List<Rating>> {
         return Single.just(

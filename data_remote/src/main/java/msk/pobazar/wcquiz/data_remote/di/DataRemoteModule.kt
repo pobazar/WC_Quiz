@@ -9,11 +9,11 @@ import toothpick.config.Module
 class DataRemoteModule : Module() {
     init {
         bind(RatingRepoRemote::class.java)
-                .to(RatingRepoRemoteImpl::class.java)
-                .singleton()
-        
+            .to(RatingRepoRemoteImpl::class.java)
+            .singleton()
+
         bind(QuestionsRepoRemote::class.java)
-                .to(QuestionsRepoRemoteImpl::class.java)
-                .singleton()
+            .to(QuestionsRepoRemoteImpl::class.java)
+            .singleton()
     }
 }

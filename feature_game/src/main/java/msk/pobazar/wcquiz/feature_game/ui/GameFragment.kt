@@ -1,14 +1,12 @@
 package msk.pobazar.wcquiz.feature_game.ui
 
 import android.graphics.Bitmap
-import android.os.Bundle
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.fragment_game.*
 import moxy.presenter.InjectPresenter
 import moxy.presenter.ProvidePresenter
 import msk.pobazar.wcquiz.core.base.BaseFragment
 import msk.pobazar.wcquiz.core.extensions.setOnClick
-import msk.pobazar.wcquiz.core.navigation.transitionsParams.GameParams
 import msk.pobazar.wcquiz.feature_game.R
 import msk.pobazar.wcquiz.feature_game.presenter.GamePresenter
 import msk.pobazar.wcquiz.feature_game.presenter.GameView
@@ -52,8 +50,8 @@ class GameFragment : BaseFragment(), GameView {
 
     override fun setImage(image: Bitmap) {
         Glide.with(this)
-                .load(image)
-                .into(ivGameImageQuestion)
+            .load(image)
+            .into(ivGameImageQuestion)
     }
 
     override fun setTimerValue(progress: Int) {
@@ -61,12 +59,6 @@ class GameFragment : BaseFragment(), GameView {
     }
 
     companion object {
-        private const val ARGS_GAME = "game_fragment_params"
-
-        fun newInstance(params: GameParams) = GameFragment().apply {
-            arguments = Bundle().apply {
-                this.putParcelable(ARGS_GAME, params)
-            }
-        }
+        fun newInstance() = GameFragment()
     }
 }
