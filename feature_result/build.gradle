@@ -1,0 +1,25 @@
+apply from: "$rootDir/deps.gradle"
+apply from: "$rootDir/config.gradle"
+
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    defaultConfig {
+        versionCode config.versionCode
+        versionName config.versionName
+        minSdkVersion config.minSdkVersion
+        targetSdkVersion config.compileSdkVersion
+        compileSdkVersion config.compileSdkVersion
+    }
+}
+
+dependencies {
+    implementation project(':core')
+    implementation project(':domain')
+
+    kapt deps.toothpick.compiler
+    kapt deps.moxyX.compiler
+}

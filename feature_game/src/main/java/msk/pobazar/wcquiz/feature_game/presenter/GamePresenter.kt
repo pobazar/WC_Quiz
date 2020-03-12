@@ -3,7 +3,7 @@ package msk.pobazar.wcquiz.feature_game.presenter
 import moxy.InjectViewState
 import msk.pobazar.wcquiz.core.base.BasePresenter
 import msk.pobazar.wcquiz.domain.interactor.QuestionsInteractor
-import msk.pobazar.wcquiz.domain.model.GameResult
+import msk.pobazar.wcquiz.core.navigation.transitionsParams.ResultParams
 import msk.pobazar.wcquiz.domain.repo.device.ResourceManager
 import msk.pobazar.wcquiz.feature_game.R
 import msk.pobazar.wcquiz.feature_game.mapper.GameMapper
@@ -20,7 +20,7 @@ class GamePresenter @Inject constructor(
     private val countQuestions = resourceManager.getInteger(R.integer.count_questions)
     private val maxTime = resourceManager.getInteger(R.integer.time_to_answer)
     private var currentNumber = 0
-    private val results: MutableList<GameResult> = mutableListOf()
+    private val resultParams: MutableList<ResultParams> = mutableListOf()
     private lateinit var games: List<GameViewData>
 
     override fun attachView(view: GameView?) {
@@ -61,8 +61,8 @@ class GamePresenter @Inject constructor(
 
     private fun addAnswer(answer: String) {
         val game = games[currentNumber]
-        results.add(
-            GameResult(
+        resultParams.add(
+            ResultParams(
                 question = game.question,
                 answer = answer,
                 answerRight = game.answerRight,

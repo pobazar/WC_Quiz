@@ -42,7 +42,7 @@ public class QuestionRecyclerAdapter extends RecyclerView.Adapter<QuestionRecycl
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         if (fl)
-            return new ViewHolder(inflater.inflate(R.layout.question_item2, parent, false));
+            return new ViewHolder(inflater.inflate(R.layout.question_item, parent, false));
         else
             return new ViewHolder(inflater.inflate(R.layout.question_item, parent, false));
     }

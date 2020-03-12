@@ -1,15 +1,15 @@
 <resources>
+<!--    to modules-->
     <string name="app_name">WC Quiz</string>
-    <string name="exit">Выход</string>
-    <string name="Wow_quiz">WoW Quiz</string>
-    <string name="image_quest">image quest</string>
-    <string name="result">Результаты</string>
-    <string name="replay">Играть еще раз</string>
     <string name="menu">Меню</string>
     <string name="score">Очки</string>
     <string name="Date">Дата</string>
     <string name="download_failed">Ошибка загрузки</string>
     <string name="try_again">Повторить загрузку</string>
-    <string name="show_answers">Посмотреть ответы</string>
     <string name="set_value_app">Оценить приложение</string>
+
+<!--    core-->
+    <string name="answer">Ответ</string>
+    <string name="question">Вопрос</string>
+    <string name="image_quest">image quest</string>
 </resources>
