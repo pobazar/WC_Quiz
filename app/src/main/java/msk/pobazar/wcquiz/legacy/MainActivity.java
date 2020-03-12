@@ -1,4 +1,4 @@
-package msk.pobazar.wcquiz;
+package msk.pobazar.wcquiz.legacy;
 
 import android.content.Intent;
 import android.database.SQLException;
@@ -26,12 +26,13 @@ import java.io.File;
 import java.io.IOException;
 import java.util.List;
 
+import msk.pobazar.wcquiz.R;
 import msk.pobazar.wcquiz.database.DBHelper;
-import msk.pobazar.wcquiz.item.QuestionItemGame;
-import msk.pobazar.wcquiz.ui.GameFragment;
-import msk.pobazar.wcquiz.ui.MenuFragment;
-import msk.pobazar.wcquiz.ui.RecordFragment;
-import msk.pobazar.wcquiz.ui.ResultFragment;
+import msk.pobazar.wcquiz.legacy.item.QuestionItemGame;
+import msk.pobazar.wcquiz.legacy.ui.GameFragment;
+import msk.pobazar.wcquiz.legacy.ui.MenuFragment;
+import msk.pobazar.wcquiz.legacy.ui.RecordFragment;
+import msk.pobazar.wcquiz.legacy.ui.ResultFragment;
 
 public class MainActivity extends AppCompatActivity implements MainFragmentListener {
     public static final String LOG = "Logs";

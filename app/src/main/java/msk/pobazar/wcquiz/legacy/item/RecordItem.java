@@ -1,4 +1,4 @@
-package msk.pobazar.wcquiz.item;
+package msk.pobazar.wcquiz.legacy.item;
 
 import java.util.Date;
 

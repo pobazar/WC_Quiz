@@ -1,10 +1,10 @@
-package msk.pobazar.wcquiz.view;
+package msk.pobazar.wcquiz.legacy.view;
 
 import com.arellomobile.mvp.MvpView;
 
 import java.util.List;
 
-import msk.pobazar.wcquiz.item.RecordItem;
+import msk.pobazar.wcquiz.legacy.item.RecordItem;
 
 public interface RecordView extends MvpView {
     void menuClick();

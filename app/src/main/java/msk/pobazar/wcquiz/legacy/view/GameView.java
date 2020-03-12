@@ -1,4 +1,4 @@
-package msk.pobazar.wcquiz.view;
+package msk.pobazar.wcquiz.legacy.view;
 
 import android.net.Uri;
 

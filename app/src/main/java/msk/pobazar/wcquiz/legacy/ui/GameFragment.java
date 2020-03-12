@@ -1,4 +1,4 @@
-package msk.pobazar.wcquiz.ui;
+package msk.pobazar.wcquiz.legacy.ui;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;
@@ -22,11 +22,11 @@ import com.bumptech.glide.load.engine.GlideException;
 import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
 
-import msk.pobazar.wcquiz.MainActivity;
-import msk.pobazar.wcquiz.MainFragmentListener;
+import msk.pobazar.wcquiz.legacy.MainActivity;
+import msk.pobazar.wcquiz.legacy.MainFragmentListener;
 import msk.pobazar.wcquiz.R;
-import msk.pobazar.wcquiz.presenter.GamePresenter;
-import msk.pobazar.wcquiz.view.GameView;
+import msk.pobazar.wcquiz.legacy.presenter.GamePresenter;
+import msk.pobazar.wcquiz.legacy.view.GameView;
 
 public class GameFragment extends MvpAppCompatFragment implements GameView {
     @InjectPresenter

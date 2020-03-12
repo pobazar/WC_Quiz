@@ -1,4 +1,4 @@
-package msk.pobazar.wcquiz.presenter;
+package msk.pobazar.wcquiz.legacy.presenter;
 
 import android.database.Cursor;
 import android.net.Uri;
@@ -21,13 +21,13 @@ import java.util.List;
 
 import io.reactivex.annotations.NonNull;
 import io.reactivex.disposables.CompositeDisposable;
-import msk.pobazar.wcquiz.MainActivity;
+import msk.pobazar.wcquiz.legacy.MainActivity;
 import msk.pobazar.wcquiz.database.DBHelper;
-import msk.pobazar.wcquiz.item.QuestionItem;
-import msk.pobazar.wcquiz.item.QuestionItemGame;
-import msk.pobazar.wcquiz.view.GameView;
+import msk.pobazar.wcquiz.legacy.item.QuestionItem;
+import msk.pobazar.wcquiz.legacy.item.QuestionItemGame;
+import msk.pobazar.wcquiz.legacy.view.GameView;
 
-import static msk.pobazar.wcquiz.MainActivity.LOG;
+import static msk.pobazar.wcquiz.legacy.MainActivity.LOG;
 
 @InjectViewState
 public class GamePresenter extends MvpPresenter<GameView> {

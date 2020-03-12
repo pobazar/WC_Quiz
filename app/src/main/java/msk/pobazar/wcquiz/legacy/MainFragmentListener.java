@@ -1,4 +1,4 @@
-package msk.pobazar.wcquiz;
+package msk.pobazar.wcquiz.legacy;
 
 public interface MainFragmentListener {
     void startGame();

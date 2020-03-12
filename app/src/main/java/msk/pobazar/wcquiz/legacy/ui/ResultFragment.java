@@ -1,4 +1,4 @@
-package msk.pobazar.wcquiz.ui;
+package msk.pobazar.wcquiz.legacy.ui;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -23,14 +23,14 @@ import com.google.android.gms.ads.reward.RewardedVideoAdListener;
 
 import java.util.List;
 
-import msk.pobazar.wcquiz.MainActivity;
-import msk.pobazar.wcquiz.MainFragmentListener;
+import msk.pobazar.wcquiz.legacy.MainActivity;
+import msk.pobazar.wcquiz.legacy.MainFragmentListener;
 import msk.pobazar.wcquiz.R;
-import msk.pobazar.wcquiz.item.QuestionItem;
-import msk.pobazar.wcquiz.item.QuestionItemGame;
-import msk.pobazar.wcquiz.item.QuestionRecyclerAdapter;
-import msk.pobazar.wcquiz.presenter.ResultPresenter;
-import msk.pobazar.wcquiz.view.ResultView;
+import msk.pobazar.wcquiz.legacy.item.QuestionItem;
+import msk.pobazar.wcquiz.legacy.item.QuestionItemGame;
+import msk.pobazar.wcquiz.legacy.item.QuestionRecyclerAdapter;
+import msk.pobazar.wcquiz.legacy.presenter.ResultPresenter;
+import msk.pobazar.wcquiz.legacy.view.ResultView;
 
 public class ResultFragment extends MvpAppCompatFragment implements ResultView {
     @InjectPresenter

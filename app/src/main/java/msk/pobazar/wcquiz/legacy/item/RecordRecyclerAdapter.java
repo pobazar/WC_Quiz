@@ -1,4 +1,4 @@
-package msk.pobazar.wcquiz.item;
+package msk.pobazar.wcquiz.legacy.item;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import java.util.List;
 
-import msk.pobazar.wcquiz.MainActivity;
+import msk.pobazar.wcquiz.legacy.MainActivity;
 import msk.pobazar.wcquiz.R;
 
 

@@ -1,4 +1,4 @@
-package msk.pobazar.wcquiz.presenter;
+package msk.pobazar.wcquiz.legacy.presenter;
 
 import com.arellomobile.mvp.InjectViewState;
 import com.arellomobile.mvp.MvpPresenter;
@@ -6,8 +6,8 @@ import com.arellomobile.mvp.presenter.ProvidePresenter;
 
 import java.util.List;
 
-import msk.pobazar.wcquiz.item.RecordItem;
-import msk.pobazar.wcquiz.view.RecordView;
+import msk.pobazar.wcquiz.legacy.item.RecordItem;
+import msk.pobazar.wcquiz.legacy.view.RecordView;
 
 @InjectViewState
 public class RecordPresenter extends MvpPresenter<RecordView> {

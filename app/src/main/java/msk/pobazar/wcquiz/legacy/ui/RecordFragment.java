@@ -1,4 +1,4 @@
-package msk.pobazar.wcquiz.ui;
+package msk.pobazar.wcquiz.legacy.ui;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -16,13 +16,13 @@ import com.arellomobile.mvp.presenter.InjectPresenter;
 
 import java.util.List;
 
-import msk.pobazar.wcquiz.MainActivity;
-import msk.pobazar.wcquiz.MainFragmentListener;
+import msk.pobazar.wcquiz.legacy.MainActivity;
+import msk.pobazar.wcquiz.legacy.MainFragmentListener;
 import msk.pobazar.wcquiz.R;
-import msk.pobazar.wcquiz.item.RecordItem;
-import msk.pobazar.wcquiz.item.RecordRecyclerAdapter;
-import msk.pobazar.wcquiz.presenter.RecordPresenter;
-import msk.pobazar.wcquiz.view.RecordView;
+import msk.pobazar.wcquiz.legacy.item.RecordItem;
+import msk.pobazar.wcquiz.legacy.item.RecordRecyclerAdapter;
+import msk.pobazar.wcquiz.legacy.presenter.RecordPresenter;
+import msk.pobazar.wcquiz.legacy.view.RecordView;
 
 public class RecordFragment extends MvpAppCompatFragment implements RecordView {
     @InjectPresenter
