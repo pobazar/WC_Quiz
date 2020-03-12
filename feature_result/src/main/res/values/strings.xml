@@ -2,4 +2,5 @@
     <string name="show_answers">Посмотреть ответы</string>
     <string name="replay">Играть еще раз</string>
     <string name="result">Результаты</string>
+    <string name="count_right">Вы ответили правильно на %s вопросов</string>
 </resources>

@@ -1,17 +1,25 @@
 package msk.pobazar.wcquiz.feature_result.mapper
 
 import msk.pobazar.wcquiz.core.navigation.transitionsParams.ResultParams
+import msk.pobazar.wcquiz.domain.model.GameResult
+import msk.pobazar.wcquiz.domain.repo.device.ResourceManager
+import msk.pobazar.wcquiz.feature_result.R
 import msk.pobazar.wcquiz.feature_result.viewData.ResultViewData
-import toothpick.InjectConstructor
+import msk.pobazar.wcquiz.feature_result.viewData.ResultViewItem
+import javax.inject.Inject
 
-@InjectConstructor
-class ResultMapper {
-    fun mapToResultViewData(resultParams: ResultParams.ResultItem) =
+class ResultMapper @Inject constructor(
+    private val resourceManager: ResourceManager
+) {
+    fun mapToResultViewData(gameResults: List<GameResult>) {
         ResultViewData(
-            question = resultParams.question,
-            answerRight = resultParams.answerRight,
-            image = resultParams.image,
-            isRight = resultParams.answerRight == resultParams.answer
-        )
+            title = resourceManager.getString(
+                R.string.count_right,
+                gameResults.count { it.isRight }
+            ),
+            items = ResultViewItem(
 
+            )
+        )
+    }
 }

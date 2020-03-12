@@ -4,6 +4,7 @@ import msk.pobazar.wcquiz.core.base.BasePresenter
 import msk.pobazar.wcquiz.core.navigation.transitionsParams.ResultParams
 import msk.pobazar.wcquiz.feature_result.mapper.ResultMapper
 import msk.pobazar.wcquiz.feature_result.viewData.ResultViewData
+import msk.pobazar.wcquiz.feature_result.viewData.ResultViewItem
 import javax.inject.Inject
 
 class ResultPresenter @Inject constructor(
@@ -27,7 +28,7 @@ class ResultPresenter @Inject constructor(
 
     }
 
-    private fun setResults(results: List<ResultViewData>) {
+    private fun setResults(results: List<ResultViewItem>) {
         viewState.setResults(results)
     }
 }

@@ -2,7 +2,9 @@ package msk.pobazar.wcquiz.core.extensions
 
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.EditText
 import android.widget.TextView
 import kotlin.properties.ReadWriteProperty
@@ -67,3 +69,8 @@ fun View.enable(): ReadWriteProperty<Any, Boolean> =
                 isEnabled = value
             }
         }
+
+fun ViewGroup.inflate(layoutId: Int, attachToRoot: Boolean = false): View {
+    return LayoutInflater.from(context)
+        .inflate(layoutId, this, attachToRoot)
+}
