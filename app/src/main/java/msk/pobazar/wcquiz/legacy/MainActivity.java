@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity implements MainFragmentListe
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_splash);
         progressBar = findViewById(R.id.progressBar_started);
         textView = findViewById(R.id.download_failed);
         button = findViewById(R.id.button_try);

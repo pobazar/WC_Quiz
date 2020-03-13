@@ -14,8 +14,10 @@ abstract class BaseFragment : MvpAppCompatFragment() {
 
     open val moduleProvider: (Module) -> Unit = {}
 
+    private val injector = DependenciesInjector()
+
     override fun onCreate(savedInstanceState: Bundle?) {
-        DependenciesInjector().openScope(
+        injector.openScope(
             target = this,
             scopes = listOf(context, this),
             moduleProvider = moduleProvider
@@ -31,6 +33,11 @@ abstract class BaseFragment : MvpAppCompatFragment() {
         super.onViewCreated(view, savedInstanceState)
         initUi()
         initUx()
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        injector.closeScope(this)
     }
 
     protected abstract fun initUi()
