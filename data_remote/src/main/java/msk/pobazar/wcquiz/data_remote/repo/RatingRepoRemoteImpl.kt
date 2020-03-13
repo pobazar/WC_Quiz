@@ -27,7 +27,7 @@ class RatingRepoRemoteImpl : RatingRepoRemote {
             )
         )
     }
-    
+
     override fun setNewRating(user: User, score: Score): Completable {
         return Completable.complete()
     }

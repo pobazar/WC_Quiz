@@ -1,6 +1,5 @@
 package msk.pobazar.wcquiz.feature_game.ui
 
-import android.graphics.Bitmap
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.fragment_game.*
 import moxy.presenter.InjectPresenter
@@ -48,7 +47,7 @@ class GameFragment : BaseFragment(), GameView {
         btnGameAnswer4.text = answers[3]
     }
 
-    override fun setImage(image: Bitmap) {
+    override fun setImage(image: String) {
         Glide.with(this)
             .load(image)
             .into(ivGameImageQuestion)

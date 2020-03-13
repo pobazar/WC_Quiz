@@ -1,6 +1,5 @@
 package msk.pobazar.wcquiz.feature_game.presenter
 
-import android.graphics.Bitmap
 import moxy.MvpView
 
 interface GameView : MvpView {
@@ -11,7 +10,7 @@ interface GameView : MvpView {
 
     fun setAnswers(answers: List<String>)
 
-    fun setImage(image: Bitmap)
+    fun setImage(image: String)
 
     fun setTimerValue(progress: Int)
 }
