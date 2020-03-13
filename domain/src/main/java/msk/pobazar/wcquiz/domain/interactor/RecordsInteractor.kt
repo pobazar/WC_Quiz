@@ -17,7 +17,7 @@ class RecordsInteractor @Inject constructor(
             .getAllRating()
             .observeOn(Schedulers.io())
     }
-    
+
     fun setNew(user: User, score: Score): Completable {
         return ratingRepoRemote
             .setNewRating(

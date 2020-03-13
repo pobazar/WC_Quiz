@@ -1,5 +1,8 @@
 package msk.pobazar.wcquiz.domain.repo.device
 
+import android.graphics.Bitmap
+import android.graphics.drawable.Drawable
+
 interface ResourceManager {
     fun getString(resId: Int, vararg params: Any?): String
 
@@ -16,4 +19,10 @@ interface ResourceManager {
     fun getInteger(resId: Int): Int
 
     fun getFloat(resId: Int): Float
+
+    fun getDrawableResIdByName(resName: String): Int
+
+    fun getDrawable(resId: Int): Drawable
+
+    fun getBitmap(resId: Int): Bitmap
 }

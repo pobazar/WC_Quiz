@@ -1,10 +1,15 @@
 package msk.pobazar.wcquiz.data_device.repo
 
 import android.content.Context
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
+import android.graphics.drawable.Drawable
 import android.util.TypedValue
+import androidx.core.content.ContextCompat
 import msk.pobazar.wcquiz.domain.repo.device.ResourceManager
 import javax.inject.Inject
-import androidx.core.content.ContextCompat
 
 class ResourceManagerImpl @Inject constructor(
     private val context: Context
@@ -38,5 +43,19 @@ class ResourceManagerImpl @Inject constructor(
         val typedValue = TypedValue()
         context.resources.getValue(resId, typedValue, true)
         return typedValue.float
+    }
+
+    override fun getDrawableResIdByName(resName: String): Int =
+        context.resources.getIdentifier(resName, DRAWABLE, context.packageName)
+
+    override fun getDrawable(resId: Int): Drawable {
+        return ContextCompat.getDrawable(context, resId)
+            ?: ColorDrawable(Color.TRANSPARENT)
+    }
+
+    override fun getBitmap(resId: Int): Bitmap = BitmapFactory.decodeResource(context.resources, resId)
+
+    companion object {
+        private const val DRAWABLE = "drawable"
     }
 }
