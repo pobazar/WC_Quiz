@@ -15,10 +15,10 @@ class MenuPresenter @Inject constructor(
     }
 
     fun onModeClick() {
-        router.show(NavigationScreen.Mods)
+//        router.show(NavigationScreen.Mods)
     }
 
     fun onRatingClick() {
-        router.show(NavigationScreen.Rating)
+//        router.show(NavigationScreen.Rating)
     }
 }

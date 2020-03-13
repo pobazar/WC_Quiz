@@ -6,7 +6,6 @@ import moxy.presenter.ProvidePresenter
 import msk.pobazar.wcquiz.core.base.BaseFragment
 import msk.pobazar.wcquiz.core.base.adapter.viewHolder.ViewItem
 import msk.pobazar.wcquiz.core.extensions.setOnClick
-import msk.pobazar.wcquiz.core.navigation.transitionsParams.ResultParams
 import msk.pobazar.wcquiz.feature_result.R
 import msk.pobazar.wcquiz.feature_result.presenter.ResultPresenter
 import msk.pobazar.wcquiz.feature_result.presenter.ResultView
