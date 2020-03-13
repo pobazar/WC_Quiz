@@ -1,8 +1,10 @@
 package msk.pobazar.wcquiz.core.extensions
 
 import android.app.Activity
+import android.content.res.TypedArray
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -95,4 +97,18 @@ fun View.hideKeyboard() {
 fun View.showKeyboard() {
     (context.getSystemService(Activity.INPUT_METHOD_SERVICE) as? InputMethodManager)
         ?.showSoftInput(this, InputMethodManager.SHOW_IMPLICIT)
+}
+
+fun View.onAttrs(
+    attrSet: AttributeSet?,
+    attrs: IntArray,
+    defStyleAttr: Int = 0,
+    defStyleRes: Int = 0,
+    action: TypedArray.() -> Unit
+) {
+    context.obtainStyledAttributes(attrSet, attrs, defStyleAttr, defStyleRes)
+        .run {
+            action()
+            recycle()
+        }
 }

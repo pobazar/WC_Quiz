@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="network_error">Нет соединения</string>
+    <string name="network_error_description">Не удается загрузить данные,\nтак как устройство не подключено\nк Интернету.    </string>
+    <string name="server_error">Сервер недоступен</string>
+    <string name="server_error_description">Невозможно загрузить данные,\nпопробуйте повторить позже</string>
+    <string name="retry">ПОВТОРИТЬ</string>
+</resources>
