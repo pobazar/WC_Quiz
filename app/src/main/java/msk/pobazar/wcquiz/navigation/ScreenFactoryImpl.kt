@@ -33,12 +33,6 @@ class ScreenFactoryImpl @Inject constructor(
             is NavigationScreen.Result -> fragment(screenKey) {
                 ResultFragment.newInstance()
             }
-            is NavigationScreen.Rating -> fragment(screenKey) {
-                MenuFragment.newInstance() //todo добавить экран
-            }
-            is NavigationScreen.Mods -> fragment(screenKey) {
-                MenuFragment.newInstance() //todo добавить экран
-            }
         }
     }
 

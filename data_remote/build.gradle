@@ -18,7 +18,6 @@ android {
 
 dependencies {
     implementation project(':core')
-    implementation project(':domain')
 
     api deps.kotlin
 

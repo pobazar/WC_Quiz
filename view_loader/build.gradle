@@ -18,8 +18,7 @@ android {
 
 dependencies {
     implementation project(':core')
-    implementation project(':view_loader')
-    implementation project(':view_error')
+    implementation project(':domain')
 
     kapt deps.toothpick.compiler
     kapt deps.moxyX.compiler

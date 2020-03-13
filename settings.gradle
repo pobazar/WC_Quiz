@@ -11,3 +11,6 @@ include ':data_device'
 include ':feature_menu'
 include ':feature_game'
 include ':feature_result'
+
+include ':view_loader'
+include ':view_error'

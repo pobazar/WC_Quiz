@@ -20,6 +20,8 @@
             <option value="$PROJECT_DIR$/feature_menu" />
             <option value="$PROJECT_DIR$/feature_result" />
             <option value="$PROJECT_DIR$/navigation" />
+            <option value="$PROJECT_DIR$/view_error" />
+            <option value="$PROJECT_DIR$/view_loader" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

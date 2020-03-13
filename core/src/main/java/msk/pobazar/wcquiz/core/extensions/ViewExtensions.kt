@@ -1,10 +1,12 @@
 package msk.pobazar.wcquiz.core.extensions
 
+import android.app.Activity
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.inputmethod.InputMethodManager
 import android.widget.EditText
 import android.widget.TextView
 import kotlin.properties.ReadWriteProperty
@@ -73,4 +75,24 @@ fun View.enable(): ReadWriteProperty<Any, Boolean> =
 fun ViewGroup.inflate(layoutId: Int, attachToRoot: Boolean = false): View {
     return LayoutInflater.from(context)
         .inflate(layoutId, this, attachToRoot)
+}
+
+fun View.holdFocus(focus: Boolean) {
+    if (focus) {
+        requestFocus()
+        showKeyboard()
+    } else {
+        clearFocus()
+        hideKeyboard()
+    }
+}
+
+fun View.hideKeyboard() {
+    (context.getSystemService(Activity.INPUT_METHOD_SERVICE) as? InputMethodManager)
+        ?.hideSoftInputFromWindow(windowToken, 0)
+}
+
+fun View.showKeyboard() {
+    (context.getSystemService(Activity.INPUT_METHOD_SERVICE) as? InputMethodManager)
+        ?.showSoftInput(this, InputMethodManager.SHOW_IMPLICIT)
 }
