@@ -9,16 +9,12 @@ class QuestionsInteractor @Inject constructor(
     private val questionsRepoLocal: QuestionsRepoLocal
 ) {
 
-    fun getRandom(count: Int): List<Question> {
+    fun getRandomLocal(count: Int): List<Question> {
         return questionsRepoLocal
             .getRandomQuestions(count)
     }
     
-    fun setAll(){
-    
-    }
-    
-    fun getAll(): Single<List<Question>>{
+    fun getAllRemote(): Single<List<Question>>{
     
     }
 }

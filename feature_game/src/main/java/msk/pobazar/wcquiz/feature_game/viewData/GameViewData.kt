@@ -5,5 +5,6 @@ import android.graphics.Bitmap
 data class GameViewData(
     val question: String,
     val answers: List<String>,
+    val answerRight: String,
     val image: Bitmap
 )
