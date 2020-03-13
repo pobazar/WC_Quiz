@@ -1,8 +1,6 @@
 <resources>
 <!--    to modules-->
     <string name="app_name">WC Quiz</string>
-    <string name="download_failed">Ошибка загрузки</string>
-    <string name="try_again">Повторить загрузку</string>
     <string name="set_value_app">Оценить приложение</string>
 
 <!--    core-->

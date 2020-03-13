@@ -42,6 +42,7 @@ dependencies {
     implementation project(':data_local')
     implementation project(':data_device')
 
+    implementation project(':feature_splash')
     implementation project(':feature_menu')
     implementation project(':feature_game')
     implementation project(':feature_result')

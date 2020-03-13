@@ -8,6 +8,7 @@ include ':data_remote'
 include ':data_local'
 include ':data_device'
 
+include ':feature_splash'
 include ':feature_menu'
 include ':feature_game'
 include ':feature_result'

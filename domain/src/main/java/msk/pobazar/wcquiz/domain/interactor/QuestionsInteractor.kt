@@ -1,6 +1,7 @@
 package msk.pobazar.wcquiz.domain.interactor
 
 import io.reactivex.Single
+import io.reactivex.schedulers.Schedulers
 import msk.pobazar.wcquiz.domain.model.Question
 import msk.pobazar.wcquiz.domain.repo.local.QuestionRepoLocal
 import msk.pobazar.wcquiz.domain.repo.remote.QuestionRepoRemote
@@ -16,11 +17,12 @@ class QuestionsInteractor @Inject constructor(
             .getRandomQuestions(count)
     }
 
-    fun getAllRemote(): Single<List<Question>> {
+    fun getAllRemoteAndToLocal(): Single<List<Question>> {
         return questionRepoRemote
             .getAllQuestions()
-            .doOnSuccess{
+            .doOnSuccess {
                 questionRepoLocal.setAllQuestions(it)
             }
+            .observeOn(Schedulers.io())
     }
 }
