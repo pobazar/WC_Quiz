@@ -17,31 +17,12 @@ android {
 }
 
 dependencies {
-    implementation project(':domain')
-    implementation project(':navigation')
 
     api deps.kotlin
-
-    api deps.androidx.appCompat
-    api deps.androidx.fragments
-    api deps.androidx.viewpager2
-    api(deps.androidx.design)
-    api deps.androidx.browser
-    api deps.androidx.cardView
-    api(deps.androidx.constraintLayout) {
-        force = true
-    }
 
     api deps.rx.java
     api deps.rx.android
     api deps.rx.kotlin
-
-    api deps.moxyX.android
-    api deps.moxyX.core
-    api deps.moxyX.material
-    api(deps.glide.core) {
-        exclude group: "com.android.support"
-    }
 
     api deps.timber
 

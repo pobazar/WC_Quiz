@@ -2,6 +2,7 @@ include ':app'
 
 include ':domain'
 include ':core'
+include ':navigation'
 
 include ':data_remote'
 include ':data_local'

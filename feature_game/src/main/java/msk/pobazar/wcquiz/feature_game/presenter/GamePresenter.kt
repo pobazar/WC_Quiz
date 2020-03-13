@@ -2,6 +2,8 @@ package msk.pobazar.wcquiz.feature_game.presenter
 
 import moxy.InjectViewState
 import msk.pobazar.wcquiz.core.base.BasePresenter
+import msk.pobazar.wcquiz.core.navigation.Router
+import msk.pobazar.wcquiz.core.navigation.screens.NavigationScreen
 import msk.pobazar.wcquiz.domain.interactor.QuestionsInteractor
 import msk.pobazar.wcquiz.domain.interactor.ResultInteractor
 import msk.pobazar.wcquiz.domain.model.GameResult
@@ -13,6 +15,7 @@ import javax.inject.Inject
 
 @InjectViewState
 class GamePresenter @Inject constructor(
+    private val router: Router,
     private val resultInteractor: ResultInteractor,
     private val questionsInteractor: QuestionsInteractor,
     private val gameMapper: GameMapper,
@@ -37,9 +40,10 @@ class GamePresenter @Inject constructor(
 
     fun onAnswerClick(answer: String) {
         addAnswer(answer)
-        if (++currentNumber >= countQuestions)
+        if (++currentNumber >= countQuestions) {
+            resultInteractor.setResult(results)
             showResults()
-        else
+        } else
             setGame()
     }
 
@@ -74,6 +78,6 @@ class GamePresenter @Inject constructor(
     }
 
     private fun showResults() {
-        resultInteractor.setResult(results)
+        router.replace(NavigationScreen.Result)
     }
 }
