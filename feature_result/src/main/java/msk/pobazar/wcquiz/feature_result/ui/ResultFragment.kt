@@ -41,6 +41,6 @@ class ResultFragment : BaseFragment(), ResultView {
     }
     
     companion object {
-        fun newInstance(params: ResultParams) = ResultFragment()
+        fun newInstance() = ResultFragment()
     }
 }

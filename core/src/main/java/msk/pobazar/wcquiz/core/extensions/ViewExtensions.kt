@@ -39,36 +39,36 @@ fun View.setOnClick(onClick: () -> Unit) {
 }
 
 fun TextView.text(): ReadWriteProperty<Any, String> =
-        object : ReadWriteProperty<Any, String> {
-            override fun getValue(
-                    thisRef: Any,
-                    property: KProperty<*>
-            ): String = text.toString()
+    object : ReadWriteProperty<Any, String> {
+        override fun getValue(
+            thisRef: Any,
+            property: KProperty<*>
+        ): String = text.toString()
 
-            override fun setValue(
-                    thisRef: Any,
-                    property: KProperty<*>,
-                    value: String
-            ) {
-                text = value
-            }
+        override fun setValue(
+            thisRef: Any,
+            property: KProperty<*>,
+            value: String
+        ) {
+            text = value
         }
+    }
 
 fun View.enable(): ReadWriteProperty<Any, Boolean> =
-        object : ReadWriteProperty<Any, Boolean> {
-            override fun getValue(
-                    thisRef: Any,
-                    property: KProperty<*>
-            ): Boolean = isEnabled
+    object : ReadWriteProperty<Any, Boolean> {
+        override fun getValue(
+            thisRef: Any,
+            property: KProperty<*>
+        ): Boolean = isEnabled
 
-            override fun setValue(
-                    thisRef: Any,
-                    property: KProperty<*>,
-                    value: Boolean
-            ) {
-                isEnabled = value
-            }
+        override fun setValue(
+            thisRef: Any,
+            property: KProperty<*>,
+            value: Boolean
+        ) {
+            isEnabled = value
         }
+    }
 
 fun ViewGroup.inflate(layoutId: Int, attachToRoot: Boolean = false): View {
     return LayoutInflater.from(context)

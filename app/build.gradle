@@ -36,12 +36,15 @@ android {
 dependencies {
     implementation project(':core')
     implementation project(':domain')
+    implementation project(':navigation')
+
     implementation project(':data_remote')
     implementation project(':data_local')
     implementation project(':data_device')
 
     implementation project(':feature_menu')
     implementation project(':feature_game')
+    implementation project(':feature_result')
 
     api deps.androidx.appCompat
     api deps.androidx.fragments

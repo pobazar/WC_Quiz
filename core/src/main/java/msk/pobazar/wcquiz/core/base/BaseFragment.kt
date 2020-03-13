@@ -16,9 +16,9 @@ abstract class BaseFragment : MvpAppCompatFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         DependenciesInjector().openScope(
-                target = this,
-                scopes = listOf(context, this),
-                moduleProvider = moduleProvider
+            target = this,
+            scopes = listOf(context, this),
+            moduleProvider = moduleProvider
         )
         super.onCreate(savedInstanceState)
     }
