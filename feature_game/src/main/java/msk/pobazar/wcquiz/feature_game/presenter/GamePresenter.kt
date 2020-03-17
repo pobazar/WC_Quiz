@@ -1,5 +1,9 @@
 package msk.pobazar.wcquiz.feature_game.presenter
 
+import io.reactivex.Observable
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.Disposable
+import io.reactivex.rxkotlin.subscribeBy
 import moxy.InjectViewState
 import msk.pobazar.wcquiz.core.base.BasePresenter
 import msk.pobazar.wcquiz.core.navigation.Router
@@ -11,6 +15,7 @@ import msk.pobazar.wcquiz.domain.repo.device.ResourceManager
 import msk.pobazar.wcquiz.feature_game.R
 import msk.pobazar.wcquiz.feature_game.mapper.GameMapper
 import msk.pobazar.wcquiz.feature_game.viewData.GameViewData
+import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 @InjectViewState
@@ -26,30 +31,39 @@ class GamePresenter @Inject constructor(
     private val maxTime = resourceManager.getInteger(R.integer.time_to_answer)
     private var currentNumber = 0
     private val results: MutableList<GameResult> = mutableListOf()
+
+    private var currentTime = 0
+    private var countdownDisposable: Disposable? = null
+
     private lateinit var games: List<GameViewData>
 
     override fun attachView(view: GameView?) {
         super.attachView(view)
-        loadGames()
     }
 
     override fun onFirstViewAttach() {
         super.onFirstViewAttach()
+        loadGames()
         setGame()
     }
 
     fun onAnswerClick(answer: String) {
+        stopTimer()
         addAnswer(answer)
-        if (++currentNumber >= countQuestions) {
-            resultInteractor.setResult(results)
-            showResults()
-        } else
-            setGame()
+        setNextGame()
     }
 
     private fun loadGames() {
         games = questionsInteractor.getRandomLocal(countQuestions)
             .map(gameMapper::mapToGameViewData)
+    }
+
+    private fun setNextGame() {
+        if (++currentNumber >= countQuestions) {
+            resultInteractor.setResult(results)
+            showResults()
+        } else
+            setGame()
     }
 
     private fun setGame() {
@@ -59,11 +73,38 @@ class GamePresenter @Inject constructor(
         viewState.setImage(game.image)
 
         viewState.setCountQuestion(getCountQuestion(currentNumber))
-        viewState.setTimerValue(maxTime)
+        startTimer()
     }
 
     private fun getCountQuestion(number: Int) =
         resourceManager.getString(R.string.count_question, number, countQuestions)
+
+    private fun startTimer() {
+        countdownDisposable = Observable.interval(0, TICK.toLong(), TimeUnit.MILLISECONDS)
+            .doOnSubscribe {
+                currentTime = maxTime
+                viewState.setTimerValue(maxTime)
+            }
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribeBy(
+                onNext = {
+                    currentTime -= TICK
+                    viewState.setTimerValue(currentTime)
+                    if (currentTime == 0) {
+                        addAnswer("")
+                        setNextGame()
+                        stopTimer()
+                    }
+                }
+            )
+    }
+
+    private fun stopTimer() {
+        countdownDisposable?.let {
+            if (!it.isDisposed)
+                it.dispose()
+        }
+    }
 
     private fun addAnswer(answer: String) {
         val game = games[currentNumber]
@@ -79,5 +120,9 @@ class GamePresenter @Inject constructor(
 
     private fun showResults() {
         router.replace(NavigationScreen.Result)
+    }
+
+    companion object {
+        private const val TICK = 100
     }
 }
