@@ -36,4 +36,8 @@ class SplashFragment : BaseFragment(), SplashView {
         tvSplashErrorDesc.visible(isShow)
         btnSplahRetry.visible(isShow)
     }
+
+    companion object {
+        fun newInstance() = SplashFragment()
+    }
 }

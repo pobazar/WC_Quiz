@@ -13,11 +13,11 @@ class QuestionRepoLocalImpl @Inject constructor(
     }
 
     override fun setAllQuestions(questions: List<Question>) {
-        TODO("Not yet implemented")
+       // TODO("Not yet implemented")
     }
 
     override fun removeAllQuestions() {
-        TODO("Not yet implemented")
+       // TODO("Not yet implemented")
     }
 
     private val questions = listOf(

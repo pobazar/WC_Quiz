@@ -9,6 +9,8 @@ import msk.pobazar.wcquiz.core.navigation.screens.NavigationDialog
 import msk.pobazar.wcquiz.core.navigation.screens.NavigationScreen
 import msk.pobazar.wcquiz.feature_game.ui.GameFragment
 import msk.pobazar.wcquiz.feature_menu.ui.MenuFragment
+import msk.pobazar.wcquiz.feature_menu.ui.SplashActivity
+import msk.pobazar.wcquiz.feature_menu.ui.SplashFragment
 import msk.pobazar.wcquiz.feature_result.ui.ResultFragment
 import msk.pobazar.wcquiz.navigation.screens.SupportAppDialog
 import ru.terrakok.cicerone.android.support.SupportAppScreen
@@ -22,7 +24,7 @@ class ScreenFactoryImpl @Inject constructor(
         val screenKey = screen::class.java.canonicalName
         return when (screen) {
             is NavigationScreen.Splash -> fragment(screenKey) {
-                MenuFragment.newInstance() //todo добавить экран
+                SplashFragment.newInstance()
             }
             is NavigationScreen.MainMenu -> fragment(screenKey) {
                 MenuFragment.newInstance()
