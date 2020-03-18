@@ -6,9 +6,11 @@ import moxy.presenter.InjectPresenter
 import moxy.presenter.ProvidePresenter
 import msk.pobazar.wcquiz.core.base.BaseFragment
 import msk.pobazar.wcquiz.core.extensions.setOnClick
+import msk.pobazar.wcquiz.core.extensions.visible
 import msk.pobazar.wcquiz.feature_game.R
 import msk.pobazar.wcquiz.feature_game.presenter.GamePresenter
 import msk.pobazar.wcquiz.feature_game.presenter.GameView
+import msk.pobazar.wcquiz.view_error.ErrorType
 import javax.inject.Inject
 
 class GameFragment : BaseFragment(), GameView {
@@ -30,6 +32,7 @@ class GameFragment : BaseFragment(), GameView {
         btnGameAnswer2.setOnClick { presenter.onAnswerClick(btnGameAnswer2.text.toString()) }
         btnGameAnswer3.setOnClick { presenter.onAnswerClick(btnGameAnswer3.text.toString()) }
         btnGameAnswer4.setOnClick { presenter.onAnswerClick(btnGameAnswer4.text.toString()) }
+        errorGame.onActionClick { presenter.onRetryClick() }
     }
 
     override fun setCountQuestion(count: String) {
@@ -55,6 +58,16 @@ class GameFragment : BaseFragment(), GameView {
 
     override fun setTimerValue(progress: Int) {
         pbGameTimer.progress = progress
+    }
+
+    override fun showError(type: ErrorType) {
+        errorGame.type = type
+        errorGame.visible(type != ErrorType.NONE)
+    }
+
+    override fun showProgress(isShow: Boolean) {
+        loaderGame.show(isShow)
+        loaderGame.visible(isShow)
     }
 
     companion object {

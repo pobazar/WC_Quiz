@@ -7,6 +7,13 @@ enum class ErrorType(
     val btnText: Int
 ) {
 
+    NONE(
+        imageRes = 0,
+        titleRes = 0,
+        subtitleRes = 0,
+        btnText = 0
+    ),
+
     ERROR_NETWORK_UNAVAILABLE(
         imageRes = R.drawable.android_ui_sign_error_noconneciton,
         titleRes = R.string.network_error,

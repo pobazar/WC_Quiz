@@ -13,7 +13,7 @@ class GameMapper @Inject constructor(
             question = question.question,
             answers = question.answers,
             answerRight = question.answerRight,
-            image = question.image
+            imageUrl = question.imageUrl
         )
 
 }

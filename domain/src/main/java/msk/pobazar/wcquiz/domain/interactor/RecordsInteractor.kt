@@ -15,7 +15,7 @@ class RecordsInteractor @Inject constructor(
     fun getAll(): Single<List<Rating>> {
         return ratingRepoRemote
             .getAllRating()
-            .observeOn(Schedulers.io())
+            .subscribeOn(Schedulers.io())
     }
 
     fun setNew(user: User, score: Score): Completable {
@@ -24,6 +24,6 @@ class RecordsInteractor @Inject constructor(
                 user = user,
                 score = score
             )
-            .observeOn(Schedulers.io())
+            .subscribeOn(Schedulers.io())
     }
 }

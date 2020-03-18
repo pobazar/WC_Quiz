@@ -6,7 +6,6 @@ import android.view.Gravity
 import android.widget.LinearLayout
 import kotlinx.android.synthetic.main.view_error_typed.view.*
 import msk.pobazar.wcquiz.core.extensions.inflate
-import msk.pobazar.wcquiz.core.extensions.onAttrs
 import msk.pobazar.wcquiz.core.extensions.setOnClick
 
 class ErrorView @JvmOverloads constructor(
@@ -17,22 +16,27 @@ class ErrorView @JvmOverloads constructor(
 ) : LinearLayout(context, attrs, defStyleAttr, defStyleRes) {
 
     init {
-        inflate(R.layout.view_error_typed)
+        inflate(
+            layoutId = R.layout.view_error_typed,
+            attachToRoot = true
+        )
 
         initViewParams()
     }
 
-    var type: ErrorType = ErrorType.ERROR_SERVER_UNAVAILABLE
+    var type: ErrorType = ErrorType.NONE
         set(value) {
             field = value
-            ivPicture.setImageResource(type.imageRes)
-            tvTitle.setText(type.titleRes)
-            tvSubtitle.setText(type.subtitleRes)
-            btnAction.setText(type.btnText)
+            if (value != ErrorType.NONE) {
+                ivErrorPicture.setImageResource(type.imageRes)
+                tvErrorTitle.setText(type.titleRes)
+                tvErrorSubtitle.setText(type.subtitleRes)
+                btnErrorAction.setText(type.btnText)
+            }
         }
 
     fun onActionClick(action: () -> Unit) {
-        btnAction.setOnClick(action)
+        btnErrorAction.setOnClick(action)
     }
 
     private fun initViewParams() {

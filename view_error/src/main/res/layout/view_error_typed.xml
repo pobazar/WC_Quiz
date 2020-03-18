@@ -12,31 +12,36 @@
     tools:parentTag="android.widget.LinearLayout">
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/ivPicture"
+        android:id="@+id/ivErrorPicture"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center" />
+        android:layout_gravity="center"
+        tools:src="@drawable/android_ui_sign_error_noconneciton" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvTitle"
+        android:id="@+id/tvErrorTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="30dp"
         android:gravity="center"
-        android:textSize="16sp" />
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="16sp"
+        tools:text="@string/network_error" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/tvSubtitle"
+        android:id="@+id/tvErrorSubtitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
         android:gravity="center"
-        android:textSize="14sp" />
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="14sp"
+        tools:text="@string/network_error_description" />
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnAction"
+    <Button
+        android:id="@+id/btnErrorAction"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
@@ -45,5 +50,6 @@
         android:paddingTop="10dp"
         android:paddingEnd="20dp"
         android:paddingBottom="10dp"
-        app:strokeWidth="2dp" />
+        app:strokeWidth="2dp"
+        tools:text="@string/retry" />
 </merge>

@@ -26,7 +26,7 @@ class SplashPresenter @Inject constructor(
 
     private fun loadData() {
         questionsInteractor.getAllRemoteAndToLocal()
-            .subscribeOn(AndroidSchedulers.mainThread())
+            .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe {
                 viewState.showProgress(true)
                 viewState.showError(false)

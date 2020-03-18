@@ -3,6 +3,7 @@ package msk.pobazar.wcquiz.feature_game.presenter
 import moxy.MvpView
 import moxy.viewstate.strategy.AddToEndStrategy
 import moxy.viewstate.strategy.StateStrategyType
+import msk.pobazar.wcquiz.view_error.ErrorType
 
 @StateStrategyType(AddToEndStrategy::class)
 interface GameView : MvpView {
@@ -16,4 +17,8 @@ interface GameView : MvpView {
     fun setImage(image: String)
 
     fun setTimerValue(progress: Int)
+
+    fun showError(type: ErrorType)
+
+    fun showProgress(isShow: Boolean)
 }

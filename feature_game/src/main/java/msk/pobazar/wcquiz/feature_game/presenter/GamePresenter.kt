@@ -8,23 +8,29 @@ import moxy.InjectViewState
 import msk.pobazar.wcquiz.core.base.BasePresenter
 import msk.pobazar.wcquiz.core.navigation.Router
 import msk.pobazar.wcquiz.core.navigation.screens.NavigationScreen
+import msk.pobazar.wcquiz.domain.interactor.ImageInteractor
 import msk.pobazar.wcquiz.domain.interactor.QuestionsInteractor
 import msk.pobazar.wcquiz.domain.interactor.ResultInteractor
 import msk.pobazar.wcquiz.domain.model.GameResult
+import msk.pobazar.wcquiz.domain.repo.device.NetworkManager
 import msk.pobazar.wcquiz.domain.repo.device.ResourceManager
 import msk.pobazar.wcquiz.feature_game.R
 import msk.pobazar.wcquiz.feature_game.mapper.GameMapper
 import msk.pobazar.wcquiz.feature_game.viewData.GameViewData
+import msk.pobazar.wcquiz.view_error.ErrorType
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
+
 
 @InjectViewState
 class GamePresenter @Inject constructor(
     private val router: Router,
     private val resultInteractor: ResultInteractor,
     private val questionsInteractor: QuestionsInteractor,
-    private val gameMapper: GameMapper,
-    private val resourceManager: ResourceManager
+    private val imageInteractor: ImageInteractor,
+    private val resourceManager: ResourceManager,
+    private val networkManager: NetworkManager,
+    private val gameMapper: GameMapper
 ) : BasePresenter<GameView>() {
 
     private val countQuestions = resourceManager.getInteger(R.integer.count_questions)
@@ -37,20 +43,22 @@ class GamePresenter @Inject constructor(
 
     private lateinit var games: List<GameViewData>
 
-    override fun attachView(view: GameView?) {
-        super.attachView(view)
-    }
-
     override fun onFirstViewAttach() {
         super.onFirstViewAttach()
         loadGames()
-        setGame()
+        loadImages()
     }
 
     fun onAnswerClick(answer: String) {
         stopTimer()
         addAnswer(answer)
         setNextGame()
+    }
+
+    fun onRetryClick() {
+        if (!::games.isInitialized)
+            loadGames()
+        loadImages()
     }
 
     private fun loadGames() {
@@ -70,14 +78,41 @@ class GamePresenter @Inject constructor(
         val game = games[currentNumber]
         viewState.setQuestion(game.question)
         viewState.setAnswers(game.answers.shuffled())
-        viewState.setImage(game.image)
+        viewState.setImage(game.imageUrl)
 
         viewState.setCountQuestion(getCountQuestion(currentNumber))
         startTimer()
     }
 
     private fun getCountQuestion(number: Int) =
-        resourceManager.getString(R.string.count_question, number, countQuestions)
+        resourceManager.getString(R.string.count_question, number + 1, countQuestions)
+
+    private fun loadImages() {
+        if (networkManager.isNetworkAvailable()) {
+            imageInteractor.load(
+                    urls = games.map { it.imageUrl }
+                )
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnSubscribe {
+                    viewState.showProgress(true)
+                    viewState.showError(ErrorType.NONE)
+                }
+                .doOnTerminate {
+                    viewState.showProgress(false)
+                }
+                .subscribeBy(
+                    onComplete = {
+                        setGame()
+                    },
+                    onError = {
+                        viewState.showError(ErrorType.ERROR_SERVER_UNAVAILABLE)
+                    }
+                )
+                .bind()
+        } else {
+            viewState.showError(ErrorType.ERROR_NETWORK_UNAVAILABLE)
+        }
+    }
 
     private fun startTimer() {
         countdownDisposable = Observable.interval(0, TICK.toLong(), TimeUnit.MILLISECONDS)
@@ -113,7 +148,7 @@ class GamePresenter @Inject constructor(
                 question = game.question,
                 answer = answer,
                 answerRight = game.answerRight,
-                image = game.image
+                image = game.imageUrl
             )
         )
     }

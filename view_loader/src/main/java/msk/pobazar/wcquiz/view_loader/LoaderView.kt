@@ -13,6 +13,7 @@ class LoaderView @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null
 ) : FrameLayout(context, attrs) {
+
     private val animationDuration by lazy {
         resources.getInteger(R.integer.loader_visible_animation_duration).toLong()
     }
@@ -23,7 +24,10 @@ class LoaderView @JvmOverloads constructor(
 
         isClickable = true
 
-        inflate(R.layout.view_load_holder)
+        inflate(
+            layoutId = R.layout.view_load_holder,
+            attachToRoot = true
+        )
 
         show(false)
     }
@@ -36,12 +40,15 @@ class LoaderView @JvmOverloads constructor(
                 override fun onAnimationRepeat(animation: Animator?) {
                     // not handled
                 }
+
                 override fun onAnimationCancel(animation: Animator?) {
                     // not handled
                 }
+
                 override fun onAnimationStart(animation: Animator?) {
                     if (isShow) visible(true)
                 }
+
                 override fun onAnimationEnd(animation: Animator?) {
                     if (!isShow) visible(false)
                 }

@@ -23,6 +23,6 @@ class QuestionsInteractor @Inject constructor(
             .doOnSuccess {
                 questionRepoLocal.setAllQuestions(it)
             }
-            .observeOn(Schedulers.io())
+            .subscribeOn(Schedulers.io())
     }
 }

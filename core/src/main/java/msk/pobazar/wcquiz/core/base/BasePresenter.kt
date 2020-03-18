@@ -18,7 +18,7 @@ abstract class BasePresenter<View : MvpView> : MvpPresenter<View>() {
 
     fun Disposable.unbind() = disposables.remove(this)
 
-    fun resetCompositeDisposable() {
+    private fun resetCompositeDisposable() {
         disposables.clear()
     }
 }
