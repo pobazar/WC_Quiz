@@ -41,6 +41,7 @@ dependencies {
     implementation project(':data_remote')
     implementation project(':data_local')
     implementation project(':data_device')
+    implementation project(':storage')
 
     implementation project(':feature_splash')
     implementation project(':feature_menu')

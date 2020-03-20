@@ -7,6 +7,7 @@ import msk.pobazar.wcquiz.data_remote.di.DataRemoteModule
 import msk.pobazar.wcquiz.di.AppModule
 import msk.pobazar.wcquiz.domain.di.DependenciesInjector
 import msk.pobazar.wcquiz.navigation.di.NavigationModule
+import msk.pobazar.wcquiz.storage.di.StorageModule
 import toothpick.Toothpick
 
 class App : Application() {
@@ -23,7 +24,8 @@ class App : Application() {
                     DataRemoteModule(),
                     DataLocalModule(),
                     DataDeviceModule(),
-                    NavigationModule()
+                    NavigationModule(),
+                    StorageModule()
                 )
             }
     }
