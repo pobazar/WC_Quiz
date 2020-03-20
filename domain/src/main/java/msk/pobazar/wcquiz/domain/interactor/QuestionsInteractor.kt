@@ -12,17 +12,16 @@ class QuestionsInteractor @Inject constructor(
     private val questionRepoRemote: QuestionRepoRemote
 ) {
 
-    fun getRandomLocal(count: Int): List<Question> {
-        return questionRepoLocal
+    fun getRandomLocal(count: Int): List<Question> =
+        questionRepoLocal
             .getRandomQuestions(count)
-    }
 
-    fun getAllRemoteAndToLocal(): Single<List<Question>> {
-        return questionRepoRemote
+
+    fun getAllRemoteAndToLocal(): Single<List<Question>> =
+        questionRepoRemote
             .getAllQuestions()
             .doOnSuccess {
                 questionRepoLocal.setAllQuestions(it)
             }
             .subscribeOn(Schedulers.io())
-    }
 }
