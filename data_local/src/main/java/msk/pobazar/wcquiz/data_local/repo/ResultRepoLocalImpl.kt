@@ -9,7 +9,7 @@ import msk.pobazar.wcquiz.domain.repo.local.ResultRepoLocal
 import javax.inject.Inject
 
 class ResultRepoLocalImpl @Inject constructor(
-    private val localStorage: LocalStorage,
+    private val storage: LocalStorage,
     @Results
     private val sharedPreferences: SharedPreferences
 ) : ResultRepoLocal {
@@ -17,23 +17,23 @@ class ResultRepoLocalImpl @Inject constructor(
     override var isShowAnswer: Boolean by sharedPreferences.boolean(key = { IS_SHOW_ANSWER }, defaultValue = false)
 
     override fun getResult(): List<GameResult> {
-        return localStorage.read(
+        return storage.read(
             tableName = RESULT_BOOK,
-            key = RESULT
+            key = RESULTS
         )
     }
 
     override fun setResult(results: List<GameResult>) {
-        localStorage.write(
+        storage.write(
             tableName = RESULT_BOOK,
-            key = RESULT,
+            key = RESULTS,
             data = results
         )
     }
 
     companion object {
         private const val RESULT_BOOK = "result book"
-        private const val RESULT = "result page"
+        private const val RESULTS = "result page"
 
         private const val IS_SHOW_ANSWER = "is show answer"
     }
