@@ -36,7 +36,7 @@ class App : Application() {
                 installModules(
                     AppModule(this@App),
                     DataRemoteModule(),
-                    DataLocalModule(),
+                    DataLocalModule(this@App),
                     DataDeviceModule(),
                     NavigationModule(),
                     StorageModule()

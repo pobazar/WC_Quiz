@@ -10,7 +10,10 @@ import javax.inject.Inject
 class ResultMapper @Inject constructor(
     private val resourceManager: ResourceManager
 ) {
-    fun mapToResultViewData(gameResults: List<GameResult>): ResultViewData =
+    fun mapToResultViewData(
+        gameResults: List<GameResult>,
+        isShowAnswer: Boolean
+    ) =
         ResultViewData(
             title = resourceManager.getString(
                 R.string.count_right,
@@ -27,7 +30,7 @@ class ResultMapper @Inject constructor(
                         else
                             R.color.wrong_answer
                     ),
-                    showAnswer = it.isRight
+                    showAnswer = isShowAnswer
                 )
             }
         )

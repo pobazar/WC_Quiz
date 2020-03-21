@@ -17,13 +17,8 @@ class ResultPresenter @Inject constructor(
     private lateinit var resultViewData: ResultViewData
     override fun attachView(view: ResultView?) {
         super.attachView(view)
-
-        resultViewData = resultMapper.mapToResultViewData(
-            resultInteractor.getResult()
-        )
-
-        viewState.setResults(resultViewData.items)
-        viewState.setCountRight(resultViewData.title)
+        resultInteractor.isShowAnswer = false
+        setupResult()
     }
 
     fun onAgainPlayClick() {
@@ -31,6 +26,17 @@ class ResultPresenter @Inject constructor(
     }
 
     fun onShowAnswers() {
+        resultInteractor.isShowAnswer = true
+        setupResult()
+    }
 
+    private fun setupResult() {
+        resultViewData = resultMapper.mapToResultViewData(
+            gameResults = resultInteractor.getResult(),
+            isShowAnswer = resultInteractor.isShowAnswer
+        )
+
+        viewState.setResults(resultViewData.items)
+        viewState.setCountRight(resultViewData.title)
     }
 }

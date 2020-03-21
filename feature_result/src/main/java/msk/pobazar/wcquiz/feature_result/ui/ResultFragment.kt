@@ -34,7 +34,7 @@ class ResultFragment : BaseFragment(), ResultView {
     }
 
     override fun setResults(results: List<ViewItem>) {
-        adapter.add(results)
+        adapter.replace(results)
     }
 
     override fun setCountRight(countRight: String) {

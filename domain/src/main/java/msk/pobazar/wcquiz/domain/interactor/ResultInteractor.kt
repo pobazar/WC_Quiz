@@ -7,6 +7,12 @@ import javax.inject.Inject
 class ResultInteractor @Inject constructor(
     private val resultRepoLocal: ResultRepoLocal
 ) {
+    var isShowAnswer
+        get() = resultRepoLocal.isShowAnswer
+        set(value) {
+            resultRepoLocal.isShowAnswer = value
+        }
+
     fun getResult(): List<GameResult> {
         return resultRepoLocal.getResult()
     }
@@ -14,4 +20,6 @@ class ResultInteractor @Inject constructor(
     fun setResult(results: List<GameResult>) {
         resultRepoLocal.setResult(results)
     }
+
+
 }
