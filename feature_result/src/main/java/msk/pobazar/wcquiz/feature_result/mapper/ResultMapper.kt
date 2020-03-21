@@ -19,7 +19,7 @@ class ResultMapper @Inject constructor(
             items = gameResults.map {
                 ResultViewItem(
                     question = it.question,
-                    answerRight = it.question,
+                    answerRight = it.answerRight,
                     image = it.image,
                     color = resourceManager.getColor(
                         if (it.isRight)

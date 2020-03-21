@@ -4,8 +4,6 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListUpdateCallback
 import androidx.recyclerview.widget.RecyclerView
-import msk.pobazar.wcquiz.core.base.adapter.viewHolder.BaseViewHolder
-import msk.pobazar.wcquiz.core.base.adapter.viewHolder.ViewItem
 
 open class BaseAdapter(
     vararg delegates: AdapterDelegate
@@ -18,15 +16,12 @@ open class BaseAdapter(
         override fun onChanged(position: Int, count: Int, payload: Any?) {
             // empty by default
         }
-
         override fun onMoved(fromPosition: Int, toPosition: Int) {
             // empty by default
         }
-
         override fun onRemoved(position: Int, count: Int) {
             // empty by default
         }
-
         override fun onInserted(position: Int, count: Int) {
             insertListener.invoke(position)
         }
@@ -58,11 +53,6 @@ open class BaseAdapter(
 
     override fun getItemViewType(position: Int): Int =
         delegateManager.getItemViewType(postModels[position])
-
-    override fun onViewRecycled(holder: BaseViewHolder) {
-        holder.unbind()
-        super.onViewRecycled(holder)
-    }
 
     // to work with items without de-encapsulating them externally
     fun itemsApply(block: (List<ViewItem>) -> Unit) = block(postModels)

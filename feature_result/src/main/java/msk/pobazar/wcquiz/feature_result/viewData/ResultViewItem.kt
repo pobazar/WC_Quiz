@@ -1,6 +1,6 @@
 package msk.pobazar.wcquiz.feature_result.viewData
 
-import msk.pobazar.wcquiz.core.base.adapter.viewHolder.ViewItem
+import msk.pobazar.wcquiz.core.base.adapter.ViewItem
 
 class ResultViewItem(
     val question: String,

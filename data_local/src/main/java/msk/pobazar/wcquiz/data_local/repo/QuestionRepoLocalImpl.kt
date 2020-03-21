@@ -22,9 +22,9 @@ class QuestionRepoLocalImpl @Inject constructor(
 
     private val questions = listOf(
         Question("Вопрос 1", listOf("от1", "от2", "от3", "от4"), "от1", image1),
-        Question("Вопрос 2", listOf("от1", "от2", "от3", "от4"), "от2", image2),
-        Question("Вопрос 3", listOf("от1", "от2", "от3", "от4"), "от3", image3),
-        Question("Вопрос 4", listOf("от1", "от2", "от3", "от4"), "от4", image4),
+        Question("Вопрос 2", listOf("от1", "от2", "от3", "от4"), "от1", image2),
+        Question("Вопрос 3", listOf("от1", "от2", "от3", "от4"), "от1", image3),
+        Question("Вопрос 4", listOf("от1", "от2", "от3", "от4"), "от1", image4),
         Question("Вопрос 5", listOf("от1", "от2", "от3", "от4"), "от1", image5)
     )
 

@@ -1,7 +1,6 @@
 package msk.pobazar.wcquiz.core.base.adapter
 
 import androidx.recyclerview.widget.DiffUtil
-import msk.pobazar.wcquiz.core.base.adapter.viewHolder.ViewItem
 
 class DiffCallback(
     private val old: List<ViewItem>,

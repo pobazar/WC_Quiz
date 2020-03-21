@@ -1,7 +1,6 @@
 package msk.pobazar.wcquiz.core.base.adapter
 
 import androidx.collection.SparseArrayCompat
-import msk.pobazar.wcquiz.core.base.adapter.viewHolder.ViewItem
 
 class AdapterDelegateManager {
 

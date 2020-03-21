@@ -6,8 +6,8 @@ import com.bumptech.glide.Glide
 import kotlinx.android.extensions.LayoutContainer
 import kotlinx.android.synthetic.main.item_result.view.*
 import msk.pobazar.wcquiz.core.base.adapter.AdapterDelegate
-import msk.pobazar.wcquiz.core.base.adapter.viewHolder.BaseViewHolder
-import msk.pobazar.wcquiz.core.base.adapter.viewHolder.ViewItem
+import msk.pobazar.wcquiz.core.base.adapter.BaseViewHolder
+import msk.pobazar.wcquiz.core.base.adapter.ViewItem
 import msk.pobazar.wcquiz.core.extensions.visible
 import msk.pobazar.wcquiz.feature_result.R
 import msk.pobazar.wcquiz.feature_result.viewData.ResultViewItem
