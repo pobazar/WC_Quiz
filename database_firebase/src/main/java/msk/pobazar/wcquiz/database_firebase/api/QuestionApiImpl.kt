@@ -15,7 +15,7 @@ class QuestionApiImpl @Inject constructor(
     private val reference: DatabaseReference
 ) : QuestionApi {
 
-    val questionsSubject: PublishSubject<List<QuestionResponse>> = PublishSubject.create()
+    private val questionsSubject: PublishSubject<List<QuestionResponse>> = PublishSubject.create()
 
     override fun readAllQuestions(): PublishSubject<List<QuestionResponse>> {
         val database = reference
