@@ -8,6 +8,7 @@ import msk.pobazar.wcquiz.core.navigation.Router
 import msk.pobazar.wcquiz.core.navigation.screens.NavigationScreen
 import msk.pobazar.wcquiz.domain.interactor.QuestionsInteractor
 import msk.pobazar.wcquiz.domain.repo.device.NetworkManager
+import timber.log.Timber
 import javax.inject.Inject
 
 @InjectViewState
@@ -35,13 +36,14 @@ class SplashPresenter @Inject constructor(
                     viewState.showError(false)
                 }
                 .subscribeBy(
-                    onNext = {
+                    onSuccess = {
                         viewState.showProgress(false)
                         router.setRoot(NavigationScreen.MainMenu)
                     },
                     onError = {
                         viewState.showProgress(false)
                         viewState.showError(true)
+                        Timber.e(it)
                     }
                 )
                 .bind()

@@ -5,6 +5,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.Query
 import com.google.firebase.database.ValueEventListener
+import io.reactivex.Observable
 import io.reactivex.subjects.PublishSubject
 import msk.pobazar.wcquiz.data_remote.api.QuestionApi
 import msk.pobazar.wcquiz.data_remote.models.QuestionResponse
@@ -15,13 +16,11 @@ class QuestionApiImpl @Inject constructor(
     private val reference: DatabaseReference
 ) : QuestionApi {
 
-    private val questionsSubject: PublishSubject<List<QuestionResponse>> = PublishSubject.create()
 
-    override fun readAllQuestions(): PublishSubject<List<QuestionResponse>> {
-        val database = reference
-        val ref = database.child(QUESTIONS_PATH)
+    override fun readAllQuestions(): Observable<List<QuestionResponse>> {
+        val questionsSubject: PublishSubject<List<QuestionResponse>> = PublishSubject.create()
 
-        val query: Query = ref.orderByChild(QUESTIONS_PATH)
+        val query: Query = reference.child(QUESTIONS_PATH).orderByChild(QUESTIONS_PATH)
         query.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(dataSnapshot: DataSnapshot) {
                 val list = mutableListOf<QuestionResponse>()

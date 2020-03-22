@@ -22,6 +22,7 @@ dependencies {
     implementation project(':data_remote')
 
     api deps.google.firebase.database
+    api deps.google.firebase.storage
 
     api deps.toothpick.runtime
     kapt deps.toothpick.compiler

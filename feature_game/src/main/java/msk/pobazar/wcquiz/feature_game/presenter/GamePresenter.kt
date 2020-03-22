@@ -18,6 +18,7 @@ import msk.pobazar.wcquiz.feature_game.R
 import msk.pobazar.wcquiz.feature_game.mapper.GameMapper
 import msk.pobazar.wcquiz.feature_game.viewData.GameViewData
 import msk.pobazar.wcquiz.view_error.ErrorType
+import timber.log.Timber
 import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
@@ -106,6 +107,7 @@ class GamePresenter @Inject constructor(
                     },
                     onError = {
                         viewState.showError(ErrorType.ERROR_SERVER_UNAVAILABLE)
+                        Timber.e(it)
                     }
                 )
                 .bind()

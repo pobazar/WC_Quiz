@@ -1,6 +1,7 @@
 package msk.pobazar.wcquiz.domain.interactor
 
 
+import android.net.Uri
 import io.reactivex.Completable
 import io.reactivex.Observable
 import io.reactivex.schedulers.Schedulers
@@ -15,8 +16,8 @@ class ImageInteractor @Inject constructor(
         Observable.fromIterable(
                 urls
             )
-            .flatMap { url ->
-                imageRepoRemote.loadImage(url)
+            .flatMap { uri ->
+                imageRepoRemote.loadImage(uri)
             }
             .subscribeOn(Schedulers.io())
 }

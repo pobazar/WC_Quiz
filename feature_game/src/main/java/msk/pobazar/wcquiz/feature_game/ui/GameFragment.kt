@@ -1,5 +1,6 @@
 package msk.pobazar.wcquiz.feature_game.ui
 
+import android.net.Uri
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.fragment_game.*
 import moxy.presenter.InjectPresenter

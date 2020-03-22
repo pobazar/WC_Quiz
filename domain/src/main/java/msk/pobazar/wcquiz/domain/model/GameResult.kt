@@ -1,5 +1,7 @@
 package msk.pobazar.wcquiz.domain.model
 
+import android.net.Uri
+
 data class GameResult(
     val question: String,
     val answer: String,

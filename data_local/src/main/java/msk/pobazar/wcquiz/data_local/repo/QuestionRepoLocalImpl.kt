@@ -17,11 +17,11 @@ class QuestionRepoLocalImpl @Inject constructor(
             .take(count)
     }
 
-    override fun setAllQuestions(questionRespons: List<Question>) {
+    override fun setAllQuestions(data: List<Question>) {
         storage.write(
             tableName = QUESTION_BOOK,
             key = QUESTIONS,
-            data = questionRespons
+            data = data
         )
     }
 

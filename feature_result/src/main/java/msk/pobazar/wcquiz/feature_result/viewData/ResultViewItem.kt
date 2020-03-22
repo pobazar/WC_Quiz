@@ -1,5 +1,6 @@
 package msk.pobazar.wcquiz.feature_result.viewData
 
+import android.net.Uri
 import msk.pobazar.wcquiz.core.base.adapter.ViewItem
 
 class ResultViewItem(

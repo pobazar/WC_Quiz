@@ -34,7 +34,8 @@ ext {
                     'messaging'  : '20.1.3',
                     'appindexing': '19.0.0',
                     'perfomance' : '19.0.2',
-                    'database'   : '19.2.1'
+                    'database'   : '19.2.1',
+                    'storage'    : '19.1.1'
             ],
 
             'google'          : [
@@ -83,7 +84,8 @@ ext {
                             'messaging'  : "com.google.firebase:firebase-messaging:${versions.firebase.messaging}",
                             'appindexing': "com.google.firebase:firebase-appindexing:${versions.firebase.appindexing}",
                             'perfomance' : "com.google.firebase:firebase-perf:${versions.firebase.perfomance}",
-                            'database'   : "com.google.firebase:firebase-database-ktx:${versions.firebase.database}"
+                            'database'   : "com.google.firebase:firebase-database-ktx:${versions.firebase.database}",
+                            'storage'    : "com.google.firebase:firebase-storage-ktx:${versions.firebase.storage}"
                     ],
                     'maps'     : "com.google.android.gms:play-services-maps:${versions.google.maps}",
                     'analytics': "com.google.android.gms:play-services-analytics:${versions.google.analytics}",

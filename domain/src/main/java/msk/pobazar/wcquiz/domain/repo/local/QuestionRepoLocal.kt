@@ -6,7 +6,7 @@ interface QuestionRepoLocal {
 
     fun getRandomQuestions(count: Int): List<Question>
 
-    fun setAllQuestions(questionRespons: List<Question>)
+    fun setAllQuestions(data: List<Question>)
 
     fun removeAllQuestions()
 }
