@@ -9,7 +9,7 @@ class NetworkManagerImpl @Inject constructor(
     private val context: Context
 ) : NetworkManager {
 
-    override fun isNetworkAvailable(): Boolean {
+    override fun isAvailable(): Boolean {
         val conManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as? ConnectivityManager
         val activeNetwork = conManager?.activeNetworkInfo
         return activeNetwork?.isConnected ?: false

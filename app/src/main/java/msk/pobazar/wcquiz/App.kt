@@ -5,10 +5,11 @@ import io.paperdb.Paper
 import msk.pobazar.wcquiz.data_device.di.DataDeviceModule
 import msk.pobazar.wcquiz.data_local.di.DataLocalModule
 import msk.pobazar.wcquiz.data_remote.di.DataRemoteModule
+import msk.pobazar.wcquiz.database_firebase.di.ApiModule
 import msk.pobazar.wcquiz.di.AppModule
 import msk.pobazar.wcquiz.domain.di.DependenciesInjector
 import msk.pobazar.wcquiz.navigation.di.NavigationModule
-import msk.pobazar.wcquiz.storage.di.StorageModule
+import msk.pobazar.wcquiz.storage_paper.di.StorageModule
 import timber.log.Timber
 import toothpick.Toothpick
 
@@ -39,7 +40,8 @@ class App : Application() {
                     DataLocalModule(this@App),
                     DataDeviceModule(),
                     NavigationModule(),
-                    StorageModule()
+                    StorageModule(),
+                    ApiModule()
                 )
             }
     }

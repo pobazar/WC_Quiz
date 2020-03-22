@@ -33,7 +33,7 @@ class ResultRepoLocalImpl @Inject constructor(
 
     companion object {
         private const val RESULT_BOOK = "result book"
-        private const val RESULTS = "result page"
+        private const val RESULTS = "results page"
 
         private const val IS_SHOW_ANSWER = "is show answer"
     }

@@ -7,12 +7,14 @@ import msk.pobazar.wcquiz.core.base.BasePresenter
 import msk.pobazar.wcquiz.core.navigation.Router
 import msk.pobazar.wcquiz.core.navigation.screens.NavigationScreen
 import msk.pobazar.wcquiz.domain.interactor.QuestionsInteractor
+import msk.pobazar.wcquiz.domain.repo.device.NetworkManager
 import javax.inject.Inject
 
 @InjectViewState
 class SplashPresenter @Inject constructor(
     private val router: Router,
-    private val questionsInteractor: QuestionsInteractor
+    private val questionsInteractor: QuestionsInteractor,
+    private val networkManager: NetworkManager
 ) : BasePresenter<SplashView>() {
 
     override fun attachView(view: SplashView?) {
@@ -25,22 +27,27 @@ class SplashPresenter @Inject constructor(
     }
 
     private fun loadData() {
-        questionsInteractor.getAllRemoteAndToLocal()
-            .observeOn(AndroidSchedulers.mainThread())
-            .doOnSubscribe {
-                viewState.showProgress(true)
-                viewState.showError(false)
-            }
-            .subscribeBy(
-                onSuccess = {
-                    viewState.showProgress(false)
-                    router.setRoot(NavigationScreen.MainMenu)
-                },
-                onError = {
-                    viewState.showProgress(false)
-                    viewState.showError(true)
+        if (networkManager.isAvailable())
+            questionsInteractor.getAllRemoteAndToLocal()
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnSubscribe {
+                    viewState.showProgress(true)
+                    viewState.showError(false)
                 }
-            )
-            .bind()
+                .subscribeBy(
+                    onNext = {
+                        viewState.showProgress(false)
+                        router.setRoot(NavigationScreen.MainMenu)
+                    },
+                    onError = {
+                        viewState.showProgress(false)
+                        viewState.showError(true)
+                    }
+                )
+                .bind()
+        else {
+            viewState.showProgress(false)
+            viewState.showError(true)
+        }
     }
 }

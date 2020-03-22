@@ -17,11 +17,11 @@ class QuestionRepoLocalImpl @Inject constructor(
             .take(count)
     }
 
-    override fun setAllQuestions(questions: List<Question>) {
+    override fun setAllQuestions(questionRespons: List<Question>) {
         storage.write(
             tableName = QUESTION_BOOK,
             key = QUESTIONS,
-            data = questions
+            data = questionRespons
         )
     }
 
@@ -30,7 +30,7 @@ class QuestionRepoLocalImpl @Inject constructor(
     }
 
     companion object {
-        private const val QUESTION_BOOK = "result book"
-        private const val QUESTIONS = "result page"
+        private const val QUESTION_BOOK = "question book"
+        private const val QUESTIONS = "questions page"
     }
 }

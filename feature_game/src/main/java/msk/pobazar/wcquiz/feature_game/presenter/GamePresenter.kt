@@ -88,7 +88,7 @@ class GamePresenter @Inject constructor(
         resourceManager.getString(R.string.count_question, number + 1, countQuestions)
 
     private fun loadImages() {
-        if (networkManager.isNetworkAvailable()) {
+        if (networkManager.isAvailable()) {
             imageInteractor.load(
                     urls = games.map { it.imageUrl }
                 )
