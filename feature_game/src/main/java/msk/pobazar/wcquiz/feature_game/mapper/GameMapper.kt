@@ -2,11 +2,10 @@ package msk.pobazar.wcquiz.feature_game.mapper
 
 import msk.pobazar.wcquiz.domain.model.Question
 import msk.pobazar.wcquiz.feature_game.viewData.GameViewData
-import javax.inject.Inject
+import toothpick.InjectConstructor
 
-class GameMapper @Inject constructor(
-
-) {
+@InjectConstructor
+class GameMapper {
 
     fun mapToGameViewData(question: Question): GameViewData =
         GameViewData(

@@ -7,7 +7,9 @@ include ':navigation'
 include ':data_remote'
 include ':data_local'
 include ':data_device'
-include ':storage'
+
+include ':storage_paper'
+include ':database_firebase'
 
 include ':feature_splash'
 include ':feature_menu'

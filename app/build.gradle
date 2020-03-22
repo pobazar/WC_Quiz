@@ -41,24 +41,20 @@ dependencies {
     implementation project(':data_remote')
     implementation project(':data_local')
     implementation project(':data_device')
-    implementation project(':storage')
+    implementation project(':storage_paper')
+    implementation project(':database_firebase')
 
     implementation project(':feature_splash')
     implementation project(':feature_menu')
     implementation project(':feature_game')
     implementation project(':feature_result')
 
-    api deps.androidx.appCompat
-    api deps.androidx.fragments
-    api deps.androidx.viewpager2
-    api(deps.androidx.design)
-    api deps.androidx.browser
-    api deps.androidx.cardView
-    api(deps.androidx.constraintLayout) {
-        force = true
-    }
-
     api deps.google.gsm
+    api deps.google.firebase.core
+    api deps.google.firebase.analytics
+    api deps.google.firebase.messaging
+    api deps.google.firebase.appindexing
+    api deps.google.firebase.perfomance
 
     api deps.moxyX.android
     api deps.moxyX.core

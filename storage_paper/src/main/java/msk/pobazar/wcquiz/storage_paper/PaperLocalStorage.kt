@@ -1,4 +1,4 @@
-package msk.pobazar.wcquiz.storage
+package msk.pobazar.wcquiz.storage_paper
 
 import io.paperdb.Paper
 import msk.pobazar.wcquiz.data_local.storage.LocalStorage

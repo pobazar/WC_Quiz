@@ -19,18 +19,9 @@ android {
 dependencies {
     implementation project(':core')
     implementation project(':domain')
+    implementation project(':data_remote')
 
     api deps.google.firebase.database
-
-    api deps.kotlin
-
-    api deps.okhttp.client
-    api deps.okhttp.logging
-
-//    api deps.retrofit.client
-//    api deps.retrofit.gsonConverter
-//    api deps.retrofit.gsonConverter
-//    api deps.retrofit.adapterRxJava
 
     api deps.toothpick.runtime
     kapt deps.toothpick.compiler

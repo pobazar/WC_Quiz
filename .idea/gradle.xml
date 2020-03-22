@@ -15,13 +15,14 @@
             <option value="$PROJECT_DIR$/data_device" />
             <option value="$PROJECT_DIR$/data_local" />
             <option value="$PROJECT_DIR$/data_remote" />
+            <option value="$PROJECT_DIR$/database_firebase" />
             <option value="$PROJECT_DIR$/domain" />
             <option value="$PROJECT_DIR$/feature_game" />
             <option value="$PROJECT_DIR$/feature_menu" />
             <option value="$PROJECT_DIR$/feature_result" />
             <option value="$PROJECT_DIR$/feature_splash" />
             <option value="$PROJECT_DIR$/navigation" />
-            <option value="$PROJECT_DIR$/storage" />
+            <option value="$PROJECT_DIR$/storage_paper" />
             <option value="$PROJECT_DIR$/view_error" />
             <option value="$PROJECT_DIR$/view_loader" />
           </set>

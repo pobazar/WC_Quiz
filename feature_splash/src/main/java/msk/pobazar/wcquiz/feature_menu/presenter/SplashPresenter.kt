@@ -32,7 +32,7 @@ class SplashPresenter @Inject constructor(
                 viewState.showError(false)
             }
             .subscribeBy(
-                onSuccess = {
+                onNext = {
                     viewState.showProgress(false)
                     router.setRoot(NavigationScreen.MainMenu)
                 },
