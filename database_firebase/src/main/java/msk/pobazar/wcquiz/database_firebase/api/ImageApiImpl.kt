@@ -2,8 +2,6 @@ package msk.pobazar.wcquiz.database_firebase.api
 
 import android.content.Context
 import android.graphics.drawable.Drawable
-import android.net.Uri
-import android.util.Log
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.DataSource
 import com.bumptech.glide.load.engine.GlideException
@@ -22,19 +20,28 @@ class ImageApiImpl @Inject constructor(
     private val context: Context
 ) : ImageApi {
 
-    override fun getUri(url: String): Observable<String> {
-        val imagesUriSubject: PublishSubject<String> = PublishSubject.create()
+    override fun getUri(urls: List<String>): Observable<List<String>> {
+        val imagesUriSubject: PublishSubject<List<String>> = PublishSubject.create()
+        val result = mutableListOf<String>()
 
-        reference
-            .child("$IMAGES_PATH/$url.$FORMAT")
-            .downloadUrl
-            .addOnSuccessListener { uri ->
-                imagesUriSubject.onNext(uri.toString())
-            }
-            .addOnFailureListener {
-                imagesUriSubject.onNext("")
-                Timber.e(it)
-            }
+        for (url in urls) {
+            reference
+                .child("$IMAGES_PATH/$url.$FORMAT")
+                .downloadUrl
+                .addOnSuccessListener { uri ->
+                    result.add(uri.toString())
+                    if (result.size == urls.size)
+                        imagesUriSubject.onNext(result)
+                }
+                .addOnFailureListener {
+                    result.add("")
+                    if (result.size == urls.size)
+                        imagesUriSubject.onNext(result)
+                    Timber.e(it)
+                }
+        }
+
+
         return imagesUriSubject
 
     }

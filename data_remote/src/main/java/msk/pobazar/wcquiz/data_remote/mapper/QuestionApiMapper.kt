@@ -7,17 +7,20 @@ import toothpick.InjectConstructor
 @InjectConstructor
 class QuestionApiMapper {
 
-    fun mapApiToQuestion(api: Pair<List<String>, List<QuestionResponse>>): List<Question> {
+    fun mapApiToQuestion(api: List<QuestionResponse>, urls: List<String>): List<Question> {
         val list = mutableListOf<Question>()
-        for (i in if (api.first.size > api.second.size) api.second.indices else api.first.indices) {
+        for (index in api.indices) {
             list.add(
-                mapApiToQuestion(api.first[i], api.second[i])
+                mapApiToQuestion(
+                    api = api[index],
+                    url = urls[index]
+                )
             )
         }
         return list
     }
 
-    private fun mapApiToQuestion(image: String, api: QuestionResponse) =
+    private fun mapApiToQuestion(api: QuestionResponse, url: String): Question =
         Question(
             question = api.question.orEmpty(),
             answers = listOf(
@@ -27,6 +30,6 @@ class QuestionApiMapper {
                 api.answer4.orEmpty()
             ),
             answerRight = api.answerR.orEmpty(),
-            imageUrl = image
+            imageUrl = url
         )
 }

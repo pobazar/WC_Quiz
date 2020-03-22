@@ -16,7 +16,6 @@ class QuestionApiImpl @Inject constructor(
     private val reference: DatabaseReference
 ) : QuestionApi {
 
-
     override fun readAllQuestions(): Observable<List<QuestionResponse>> {
         val questionsSubject: PublishSubject<List<QuestionResponse>> = PublishSubject.create()
 

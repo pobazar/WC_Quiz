@@ -16,9 +16,8 @@ class QuestionsInteractor @Inject constructor(
         questionRepoLocal
             .getRandomQuestions(count)
 
-
-    fun getAllRemoteAndToLocal(): Single<List<Question>> =
+    fun getAllRemoteAndToLocal(): Observable<List<Question>> =
         questionRepoRemote
             .getAllQuestions()
-            .doOnSuccess(questionRepoLocal::setAllQuestions)
+            .doOnNext(questionRepoLocal::setAllQuestions)
 }

@@ -1,7 +1,6 @@
 package msk.pobazar.wcquiz.data_remote.repo
 
-import android.util.Log
-import io.reactivex.Single
+import io.reactivex.Observable
 import msk.pobazar.wcquiz.data_remote.api.ImageApi
 import msk.pobazar.wcquiz.data_remote.api.QuestionApi
 import msk.pobazar.wcquiz.data_remote.mapper.QuestionApiMapper
@@ -16,19 +15,20 @@ class QuestionRepoRemoteImpl @Inject constructor(
     private val questionApiMapper: QuestionApiMapper
 ) : QuestionRepoRemote {
 
-    override fun getAllQuestions(): Single<List<Question>> {
+    override fun getAllQuestions(): Observable<List<Question>> {
         lateinit var questions: List<QuestionResponse>
         return questionApi.readAllQuestions()
             .doOnNext { questions = it }
-            .flatMapIterable {
-                it
+            .flatMap { questionResponse ->
+                imageApi.getUri(
+                    questionResponse.map { it.picture.orEmpty() }
+                )
             }
-            .flatMap {
-                imageApi.getUri(it.picture.orEmpty())
-            }
-            .toList()
             .map {
-                questionApiMapper.mapApiToQuestion(Pair(it, questions))
+                questionApiMapper.mapApiToQuestion(
+                    api = questions,
+                    urls = it
+                )
             }
     }
 }
