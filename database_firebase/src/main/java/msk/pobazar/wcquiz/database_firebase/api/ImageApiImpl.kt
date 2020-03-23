@@ -59,7 +59,7 @@ class ImageApiImpl @Inject constructor(
                         target: Target<Drawable>?,
                         isFirstResource: Boolean
                     ): Boolean {
-                        imagesSubject.onError(Throwable(e))
+                        imagesSubject.onComplete()
                         Timber.e(e)
                         return false
                     }
