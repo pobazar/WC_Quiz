@@ -16,7 +16,7 @@ android {
         targetSdkVersion config.compileSdkVersion
         compileSdkVersion config.compileSdkVersion
 
-        setProperty("archivesBaseName", "Stoloto_$versionName($versionCode)")
+        setProperty("archivesBaseName", "WC_quiz_$versionName($versionCode)")
     }
 
     buildTypes {

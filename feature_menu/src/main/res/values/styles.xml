@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="menu_title">
+        <item name="android:textSize">40.92sp</item>
+        <item name="android:textColor">#F9BD25</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:fontFamily">@font/crimson_text</item>
+        <item name="android:shadowColor">#4DF9BD25</item>
+        <item name="android:shadowDx">0</item>
+        <item name="android:shadowDy">15.85</item>
+        <item name="android:shadowRadius">11.69</item>
+    </style>
+
+    <style name="menu_button">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">#F9BD25</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:fontFamily">@font/eb_garamond</item>
+    </style>
+</resources>
