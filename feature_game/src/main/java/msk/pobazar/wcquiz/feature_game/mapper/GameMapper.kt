@@ -7,7 +7,7 @@ import toothpick.InjectConstructor
 @InjectConstructor
 class GameMapper {
 
-    fun mapToGameViewData(question: Question): GameViewData =
+    fun toViewData(question: Question): GameViewData =
         GameViewData(
             question = question.question,
             answers = question.answers,

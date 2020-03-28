@@ -15,13 +15,13 @@ class RatingRepoRemoteImpl @Inject constructor(
     override fun getAllRating(): Observable<List<Rating>> {
         return ratingApi.readAll()
             .map {
-                it.map(ratingApiMapper::mapApiToRating)
+                it.map(ratingApiMapper::toDomain)
             }
     }
 
     override fun setNewRating(rating: Rating, countAll: Int, winStrick: Int): Completable {
         return ratingApi.write(
-            ratingApiMapper.mapRatingToApi(
+            ratingApiMapper.toApi(
                 rating = rating,
                 countAll = countAll,
                 winStrick = winStrick

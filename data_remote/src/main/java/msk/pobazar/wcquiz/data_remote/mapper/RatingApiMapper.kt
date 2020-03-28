@@ -8,7 +8,7 @@ import toothpick.InjectConstructor
 @InjectConstructor
 class RatingApiMapper {
 
-    fun mapApiToRating(api: RatingResponse): Rating =
+    fun toDomain(api: RatingResponse): Rating =
         Rating(
             countRight = api.countRight.orZero(),
             score = api.score.orZero(),
@@ -17,7 +17,7 @@ class RatingApiMapper {
             date = api.date.orZero()
         )
 
-    fun mapRatingToApi(rating: Rating, countAll: Int, winStrick: Int): RatingResponse =
+    fun toApi(rating: Rating, countAll: Int, winStrick: Int): RatingResponse =
         RatingResponse(
             countAll = countAll,
             countRight = rating.countRight,

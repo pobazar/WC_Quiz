@@ -25,7 +25,7 @@ class QuestionRepoRemoteImpl @Inject constructor(
                 )
             }
             .map {
-                questionApiMapper.mapApiToQuestion(
+                questionApiMapper.toDomain(
                     api = questions,
                     urls = it
                 )

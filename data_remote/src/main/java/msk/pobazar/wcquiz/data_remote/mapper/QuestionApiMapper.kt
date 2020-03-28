@@ -7,11 +7,11 @@ import toothpick.InjectConstructor
 @InjectConstructor
 class QuestionApiMapper {
 
-    fun mapApiToQuestion(api: List<QuestionResponse>, urls: List<String>): List<Question> {
+    fun toDomain(api: List<QuestionResponse>, urls: List<String>): List<Question> {
         val list = mutableListOf<Question>()
         for (index in api.indices) {
             list.add(
-                mapApiToQuestion(
+                toDomain(
                     api = api[index],
                     url = urls[index]
                 )
@@ -20,7 +20,7 @@ class QuestionApiMapper {
         return list
     }
 
-    private fun mapApiToQuestion(api: QuestionResponse, url: String): Question =
+    private fun toDomain(api: QuestionResponse, url: String): Question =
         Question(
             question = api.question.orEmpty(),
             answers = listOf(

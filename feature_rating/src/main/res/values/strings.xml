@@ -1,0 +1,8 @@
+<resources>
+    <string name="user_name">Имя игрока</string>
+    <string name="date">Дата</string>
+    <string name="count_right">Кол-во правильных</string>
+    <string name="time">Время</string>
+    <string name="score">Очки</string>
+    <string name="league">Лига</string>
+</resources>

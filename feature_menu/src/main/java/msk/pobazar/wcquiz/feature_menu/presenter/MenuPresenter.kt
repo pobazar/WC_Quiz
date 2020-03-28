@@ -19,6 +19,6 @@ class MenuPresenter @Inject constructor(
     }
 
     fun onRatingClick() {
-//        router.show(NavigationScreen.Rating)
+        router.show(NavigationScreen.Rating)
     }
 }

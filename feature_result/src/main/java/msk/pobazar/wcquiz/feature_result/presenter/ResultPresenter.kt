@@ -36,7 +36,7 @@ class ResultPresenter @Inject constructor(
     }
 
     private fun setupResult() {
-        resultViewData = resultMapper.mapToResultViewData(
+        resultViewData = resultMapper.toViewData(
             gameResults = resultInteractor.getResult(),
             isShowAnswer = resultInteractor.isShowAnswer
         )

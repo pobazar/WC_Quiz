@@ -7,4 +7,5 @@ sealed class NavigationScreen : Serializable {
     object MainMenu : NavigationScreen()
     object Game : NavigationScreen()
     object Result : NavigationScreen()
+    object Rating : NavigationScreen()
 }

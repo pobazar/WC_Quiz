@@ -67,7 +67,7 @@ class GamePresenter @Inject constructor(
 
     private fun loadGames() {
         games = questionsInteractor.getRandomLocal(countQuestions)
-            .map(gameMapper::mapToGameViewData)
+            .map(gameMapper::toViewData)
     }
 
     private fun setNextGame() {
@@ -97,7 +97,7 @@ class GamePresenter @Inject constructor(
         resourceManager.getString(R.string.count_question, number + 1, countQuestions)
 
     private fun loadImages() {
-        if (networkManager.isAvailable()) {
+        if (networkManager.isAvailable())
             imageInteractor.load(
                 urls = games.map { it.imageUrl }
             )
@@ -120,9 +120,8 @@ class GamePresenter @Inject constructor(
                     }
                 )
                 .bind()
-        } else {
+        else
             viewState.showError(ErrorType.ERROR_NETWORK_UNAVAILABLE)
-        }
     }
 
     private fun startTimer() {

@@ -10,7 +10,7 @@ import javax.inject.Inject
 class ResultMapper @Inject constructor(
     private val resourceManager: ResourceManager
 ) {
-    fun mapToResultViewData(
+    fun toViewData(
         gameResults: GameResult,
         isShowAnswer: Boolean
     ) =

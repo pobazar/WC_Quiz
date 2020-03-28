@@ -19,6 +19,7 @@
             <option value="$PROJECT_DIR$/domain" />
             <option value="$PROJECT_DIR$/feature_game" />
             <option value="$PROJECT_DIR$/feature_menu" />
+            <option value="$PROJECT_DIR$/feature_rating" />
             <option value="$PROJECT_DIR$/feature_result" />
             <option value="$PROJECT_DIR$/feature_splash" />
             <option value="$PROJECT_DIR$/navigation" />
