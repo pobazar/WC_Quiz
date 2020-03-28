@@ -3,56 +3,69 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@drawable/bc_main">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnGameAnswer1"
-            android:layout_width="0dp"
-            android:layout_height="@dimen/button_height"
+            android:layout_width="@dimen/button_width"
+            android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="8dp"
             android:layout_marginBottom="8dp"
+            android:background="@drawable/states_game_button"
+            android:gravity="center"
             android:text="@string/answer"
+            android:textAppearance="@style/game_button"
             app:layout_constraintBottom_toTopOf="@+id/btnGameAnswer3"
             app:layout_constraintEnd_toStartOf="@+id/btnGameAnswer2"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnGameAnswer2"
-            android:layout_width="0dp"
-            android:layout_height="@dimen/button_height"
+            android:layout_width="@dimen/button_width"
+            android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="16dp"
             android:layout_marginBottom="8dp"
+            android:background="@drawable/states_game_button"
+            android:gravity="center"
             android:text="@string/answer"
+            android:textAppearance="@style/game_button"
             app:layout_constraintBottom_toTopOf="@+id/btnGameAnswer4"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/btnGameAnswer1" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnGameAnswer3"
-            android:layout_width="0dp"
-            android:layout_height="@dimen/button_height"
+            android:layout_width="@dimen/button_width"
+            android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginEnd="8dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="24dp"
+            android:background="@drawable/states_game_button"
+            android:gravity="center"
             android:text="@string/answer"
+            android:textAppearance="@style/game_button"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/btnGameAnswer4"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <Button
+        <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btnGameAnswer4"
-            android:layout_width="0dp"
-            android:layout_height="@dimen/button_height"
+            android:layout_width="@dimen/button_width"
+            android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
+            android:layout_marginBottom="24dp"
+            android:background="@drawable/states_game_button"
+            android:gravity="center"
             android:text="@string/answer"
+            android:textAppearance="@style/game_button"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/btnGameAnswer3" />
@@ -60,10 +73,10 @@
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/ivGameImageQuestion"
             android:layout_width="0dp"
-            android:layout_height="250dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="16dp"
-            android:layout_marginEnd="16dp"
+            android:layout_height="220dp"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="24dp"
             android:contentDescription="@string/image_quest"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -75,42 +88,42 @@
             style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="24dp"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginEnd="24dp"
             android:max="@integer/time_to_answer"
-            android:progress="0"
-            android:progressTint="@color/colorAccent"
+            android:progress="10000"
+            android:progressTint="@color/pb_start"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvGameCountQuestion" />
+            app:layout_constraintTop_toBottomOf="@+id/ivGameImageQuestion" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvGameCountQuestion"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
+            android:gravity="center"
             android:text="@string/count_question"
+            android:textAppearance="@style/game_count_question"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/ivGameImageQuestion" />
+            app:layout_constraintTop_toBottomOf="@+id/pbGameTimer" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/tvGameQuestion"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="24dp"
             android:layout_marginTop="8dp"
-            android:layout_marginEnd="16dp"
+            android:layout_marginEnd="24dp"
             android:layout_marginBottom="8dp"
             android:text="@string/question"
-            android:textSize="18sp"
+            android:textAppearance="@style/game_question"
             app:layout_constraintBottom_toTopOf="@+id/btnGameAnswer1"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/pbGameTimer"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintTop_toBottomOf="@+id/tvGameCountQuestion" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <msk.pobazar.wcquiz.view_loader.LoaderView

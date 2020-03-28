@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="game">
+        <item name="android:fontFamily">@font/crimson_text</item>
+        <item name="android:textColor">#F9BD25</item>
+    </style>
+
+    <style name="game_count_question" parent="game">
+        <item name="android:textSize">16sp</item>
+    </style>
+
+    <style name="game_button" parent="game">
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="game_question" parent="game">
+        <item name="android:textSize">20sp</item>
+    </style>
+
+</resources>

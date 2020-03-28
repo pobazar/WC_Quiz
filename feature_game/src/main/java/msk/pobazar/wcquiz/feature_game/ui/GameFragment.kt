@@ -56,8 +56,9 @@ class GameFragment : BaseFragment(), GameView {
             .into(ivGameImageQuestion)
     }
 
-    override fun setTimerValue(progress: Int) {
+    override fun setTimer(progress: Int, color: Int) {
         pbGameTimer.progress = progress
+//        pbGameTimer.progressTintList = color
     }
 
     override fun showError(type: ErrorType) {

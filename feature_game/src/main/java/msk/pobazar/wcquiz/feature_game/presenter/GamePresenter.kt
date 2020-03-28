@@ -36,9 +36,11 @@ class GamePresenter @Inject constructor(
 
     private val countQuestions = resourceManager.getInteger(R.integer.count_questions)
     private val maxTime = resourceManager.getInteger(R.integer.time_to_answer)
-    private var currentNumber = 0
     private val results: MutableList<GameResult> = mutableListOf()
+    private val pbColorStart = resourceManager.getColor(R.color.pb_start)
+    private val pbColorFinish = resourceManager.getColor(R.color.pb_finish)
 
+    private var currentNumber = 0
     private var currentTime = 0
     private var countdownDisposable: Disposable? = null
 
@@ -91,8 +93,8 @@ class GamePresenter @Inject constructor(
     private fun loadImages() {
         if (networkManager.isAvailable()) {
             imageInteractor.load(
-                    urls = games.map { it.imageUrl }
-                )
+                urls = games.map { it.imageUrl }
+            )
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnSubscribe {
                     viewState.showProgress(true)
@@ -119,15 +121,21 @@ class GamePresenter @Inject constructor(
     private fun startTimer() {
         countdownDisposable = Observable.interval(0, TICK.toLong(), TimeUnit.MILLISECONDS)
             .doOnSubscribe {
-                currentTime = maxTime
-                viewState.setTimerValue(maxTime)
+                currentTime = 0
+                viewState.setTimer(0, pbColorStart)
             }
             .observeOn(AndroidSchedulers.mainThread())
             .subscribeBy(
                 onNext = {
-                    currentTime -= TICK
-                    viewState.setTimerValue(currentTime)
-                    if (currentTime == 0) {
+                    currentTime += TICK
+                    viewState.setTimer(
+                        progress = currentTime,
+                        color = if (currentTime < PERCENT_FINISH_COLOR * maxTime)
+                            pbColorStart
+                        else
+                            pbColorFinish
+                    )
+                    if (currentTime == maxTime) {
                         addAnswer("")
                         setNextGame()
                         stopTimer()
@@ -161,5 +169,6 @@ class GamePresenter @Inject constructor(
 
     companion object {
         private const val TICK = 100
+        private const val PERCENT_FINISH_COLOR = 0.85F
     }
 }
