@@ -17,7 +17,7 @@ class QuestionRepoRemoteImpl @Inject constructor(
 
     override fun getAllQuestions(): Observable<List<Question>> {
         lateinit var questions: List<QuestionResponse>
-        return questionApi.readAllQuestions()
+        return questionApi.readAll()
             .doOnNext { questions = it }
             .flatMap { questionResponse ->
                 imageApi.getUri(

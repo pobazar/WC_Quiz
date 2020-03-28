@@ -16,7 +16,7 @@ class QuestionApiImpl @Inject constructor(
     private val reference: DatabaseReference
 ) : QuestionApi {
 
-    override fun readAllQuestions(): Observable<List<QuestionResponse>> {
+    override fun readAll(): Observable<List<QuestionResponse>> {
         val questionsSubject: PublishSubject<List<QuestionResponse>> = PublishSubject.create()
 
         val query: Query = reference.child(QUESTIONS_PATH).orderByChild(QUESTIONS_PATH)
@@ -40,7 +40,7 @@ class QuestionApiImpl @Inject constructor(
     }
 
     override fun writeAll(data: List<QuestionResponse>) {
-        reference.child(QUESTIONS_PATH).setValue(QUESTIONS_PATH)
+        reference.child(QUESTIONS_PATH).setValue(data)
     }
 
     companion object {

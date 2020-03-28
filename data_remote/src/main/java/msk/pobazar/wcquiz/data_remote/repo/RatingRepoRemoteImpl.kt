@@ -1,34 +1,32 @@
 package msk.pobazar.wcquiz.data_remote.repo
 
 import io.reactivex.Completable
-import io.reactivex.Single
+import io.reactivex.Observable
+import msk.pobazar.wcquiz.data_remote.api.RatingApi
+import msk.pobazar.wcquiz.data_remote.mapper.RatingApiMapper
 import msk.pobazar.wcquiz.domain.model.Rating
-import msk.pobazar.wcquiz.domain.model.Score
-import msk.pobazar.wcquiz.domain.model.User
 import msk.pobazar.wcquiz.domain.repo.remote.RatingRepoRemote
-import toothpick.InjectConstructor
-import java.util.Date
+import javax.inject.Inject
 
-@InjectConstructor
-class RatingRepoRemoteImpl : RatingRepoRemote {
-    override fun getAllRating(): Single<List<Rating>> {
-        return Single.just(
-            listOf(
-                Rating(
-                    User("name1", "email1", Score(100)),
-                    Score(100),
-                    Date()
-                ),
-                Rating(
-                    User("name2", "email2", Score(200)),
-                    Score(200),
-                    Date()
-                )
-            )
-        )
+class RatingRepoRemoteImpl @Inject constructor(
+    private val ratingApi: RatingApi,
+    private val ratingApiMapper: RatingApiMapper
+) : RatingRepoRemote {
+    override fun getAllRating(): Observable<List<Rating>> {
+        return ratingApi.readAll()
+            .map {
+                it.map(ratingApiMapper::mapApiToRating)
+            }
     }
 
-    override fun setNewRating(user: User, score: Score): Completable {
-        return Completable.complete()
+    override fun setNewRating(rating: Rating, countAll: Int, winStrick: Int, score: Float): Completable {
+        return ratingApi.write(
+            ratingApiMapper.mapRatingToApi(
+                rating = rating,
+                countAll = countAll,
+                winStrick = winStrick,
+                score = score
+            )
+        )
     }
 }
