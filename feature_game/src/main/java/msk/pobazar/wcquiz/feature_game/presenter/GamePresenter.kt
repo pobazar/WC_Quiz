@@ -36,13 +36,14 @@ class GamePresenter @Inject constructor(
 
     private val countQuestions = resourceManager.getInteger(R.integer.count_questions)
     private val maxTime = resourceManager.getInteger(R.integer.time_to_answer)
-    private val results: MutableList<GameResult> = mutableListOf()
+    private val results: MutableList<GameResult.Result> = mutableListOf()
     private val pbColorStart = resourceManager.getColor(R.color.pb_start)
     private val pbColorFinish = resourceManager.getColor(R.color.pb_finish)
 
     private var currentNumber = 0
     private var currentTime = 0
     private var countdownDisposable: Disposable? = null
+    private var timeStart: Long = 0
 
     private lateinit var games: List<GameViewData>
 
@@ -71,7 +72,12 @@ class GamePresenter @Inject constructor(
 
     private fun setNextGame() {
         if (++currentNumber >= countQuestions) {
-            resultInteractor.setResult(results)
+            resultInteractor.setResult(
+                GameResult(
+                    results = results,
+                    time = System.currentTimeMillis() - timeStart
+                )
+            )
             showResults()
         } else
             setGame()
@@ -105,6 +111,7 @@ class GamePresenter @Inject constructor(
                 }
                 .subscribeBy(
                     onComplete = {
+                        timeStart = System.currentTimeMillis()
                         setGame()
                     },
                     onError = {
@@ -154,7 +161,7 @@ class GamePresenter @Inject constructor(
     private fun addAnswer(answer: String) {
         val game = games[currentNumber]
         results.add(
-            GameResult(
+            GameResult.Result(
                 question = game.question,
                 answer = answer,
                 answerRight = game.answerRight,

@@ -16,18 +16,18 @@ class ResultRepoLocalImpl @Inject constructor(
 
     override var isShowAnswer: Boolean by sharedPreferences.boolean(key = { IS_SHOW_ANSWER }, defaultValue = false)
 
-    override fun getResult(): List<GameResult> {
+    override fun getResult(): GameResult {
         return storage.read(
             tableName = RESULT_BOOK,
             key = RESULTS
         )
     }
 
-    override fun setResult(results: List<GameResult>) {
+    override fun setResult(result: GameResult) {
         storage.write(
             tableName = RESULT_BOOK,
             key = RESULTS,
-            data = results
+            data = result
         )
     }
 

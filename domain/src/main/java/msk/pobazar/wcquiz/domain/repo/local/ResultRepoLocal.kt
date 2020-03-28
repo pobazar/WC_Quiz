@@ -6,7 +6,7 @@ interface ResultRepoLocal {
 
     var isShowAnswer: Boolean
 
-    fun getResult(): List<GameResult>
+    fun getResult(): GameResult
 
-    fun setResult(results: List<GameResult>)
+    fun setResult(result: GameResult)
 }

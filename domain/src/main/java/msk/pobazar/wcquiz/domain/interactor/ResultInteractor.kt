@@ -13,13 +13,11 @@ class ResultInteractor @Inject constructor(
             resultRepoLocal.isShowAnswer = value
         }
 
-    fun getResult(): List<GameResult> {
+    fun getResult(): GameResult {
         return resultRepoLocal.getResult()
     }
 
-    fun setResult(results: List<GameResult>) {
-        resultRepoLocal.setResult(results)
+    fun setResult(result: GameResult) {
+        resultRepoLocal.setResult(result)
     }
-
-
 }

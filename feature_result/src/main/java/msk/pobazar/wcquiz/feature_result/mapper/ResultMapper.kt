@@ -11,15 +11,15 @@ class ResultMapper @Inject constructor(
     private val resourceManager: ResourceManager
 ) {
     fun mapToResultViewData(
-        gameResults: List<GameResult>,
+        gameResults: GameResult,
         isShowAnswer: Boolean
     ) =
         ResultViewData(
             title = resourceManager.getString(
                 R.string.count_right,
-                gameResults.count { it.isRight }
+                gameResults.countRight
             ),
-            items = gameResults.map {
+            items = gameResults.results.map {
                 ResultViewItem(
                     question = it.question,
                     answerRight = it.answerRight,

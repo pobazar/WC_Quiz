@@ -8,6 +8,7 @@ import msk.pobazar.wcquiz.domain.interactor.ResultInteractor
 import msk.pobazar.wcquiz.feature_result.mapper.ResultMapper
 import msk.pobazar.wcquiz.feature_result.viewData.ResultViewData
 import java.util.Date
+import java.util.Random
 import javax.inject.Inject
 
 class ResultPresenter @Inject constructor(
@@ -47,11 +48,12 @@ class ResultPresenter @Inject constructor(
     private fun sendRating() {
         val result = resultInteractor.getResult()
         ratingInteractor.setNew(
-            user = "vagon",
-            countRight = 3,
-            countAll = 10,
-            time = 15000F,
-            winStrick = 2,
+            //TODO  Имя игрока
+            user = Random().nextInt(100).toString(),
+            countRight = result.countRight,
+            countAll = result.results.size,
+            time = result.time,
+            winStrick = result.winStrick,
             date = Date()
         )
 

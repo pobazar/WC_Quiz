@@ -17,7 +17,7 @@ class RatingInteractor @Inject constructor(
             .subscribeOn(Schedulers.io())
     }
 
-    fun setNew(user: String, countRight: Int, countAll: Int, time: Float, winStrick: Int, date: Date): Completable {
+    fun setNew(user: String, countRight: Int, countAll: Int, time: Long, winStrick: Int, date: Date): Completable {
         return ratingRepoRemote
             .setNewRating(
                 rating = Rating(
@@ -33,7 +33,7 @@ class RatingInteractor @Inject constructor(
             .subscribeOn(Schedulers.io())
     }
 
-    private fun calculationScore(countRight: Int, countAll: Int, time: Float, winStrick: Int): Float {
-        return ((countRight / countRight) / time) * winStrick * 10_000_000
+    private fun calculationScore(countRight: Int, countAll: Int, time: Long, winStrick: Int): Float {
+        return ((countRight.toFloat() / countAll) / time) * winStrick * 10_000_000F
     }
 }
