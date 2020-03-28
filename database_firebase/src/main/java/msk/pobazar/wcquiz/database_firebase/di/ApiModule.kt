@@ -7,8 +7,10 @@ import com.google.firebase.storage.StorageReference
 import com.google.firebase.storage.ktx.storage
 import msk.pobazar.wcquiz.data_remote.api.ImageApi
 import msk.pobazar.wcquiz.data_remote.api.QuestionApi
+import msk.pobazar.wcquiz.data_remote.api.RatingApi
 import msk.pobazar.wcquiz.database_firebase.api.ImageApiImpl
 import msk.pobazar.wcquiz.database_firebase.api.QuestionApiImpl
+import msk.pobazar.wcquiz.database_firebase.api.RatingApiImpl
 import toothpick.config.Module
 
 class ApiModule : Module() {
@@ -26,6 +28,10 @@ class ApiModule : Module() {
 
         bind(ImageApi::class.java)
             .to(ImageApiImpl::class.java)
+            .singleton()
+
+        bind(RatingApi::class.java)
+            .to(RatingApiImpl::class.java)
             .singleton()
     }
 }

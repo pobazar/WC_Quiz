@@ -13,16 +13,18 @@ class RatingApiMapper {
             countRight = api.countRight.orZero(),
             score = api.score.orZero(),
             time = api.time.orZero(),
-            user = api.user.orEmpty()
+            user = api.user.orEmpty(),
+            date = api.date.orZero()
         )
 
-    fun mapRatingToApi(rating: Rating, countAll: Int, winStrick: Int, score: Float): RatingResponse =
+    fun mapRatingToApi(rating: Rating, countAll: Int, winStrick: Int): RatingResponse =
         RatingResponse(
             countAll = countAll,
             countRight = rating.countRight,
-            score = score,
+            score = rating.score,
             time = rating.time,
             user = rating.user,
-            winStrick = winStrick
+            winStrick = winStrick,
+            date = rating.date
         )
 }

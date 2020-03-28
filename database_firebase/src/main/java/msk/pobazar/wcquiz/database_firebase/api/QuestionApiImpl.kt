@@ -39,10 +39,6 @@ class QuestionApiImpl @Inject constructor(
         return questionsSubject
     }
 
-    override fun writeAll(data: List<QuestionResponse>) {
-        reference.child(QUESTIONS_PATH).setValue(data)
-    }
-
     companion object {
         private const val QUESTIONS_PATH = "questions"
     }

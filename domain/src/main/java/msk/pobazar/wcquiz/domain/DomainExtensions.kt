@@ -10,7 +10,7 @@ fun Long?.orEmpty() = this?.toString() ?: ""
 
 fun Int?.orZero() = this ?: 0
 
-fun Int?.orValue(value: Int) = this ?: value
+fun Any?.orValue(value: Int) = this ?: value
 
 fun Double?.orZero() = this ?: 0.0
 
@@ -23,3 +23,5 @@ fun Date?.orEmpty() = this ?: Date(0)
 fun Boolean?.orFalse() = this ?: false
 
 fun Boolean?.orTrue() = this ?: true
+
+fun Date?.orZero() = this ?: Date(0)

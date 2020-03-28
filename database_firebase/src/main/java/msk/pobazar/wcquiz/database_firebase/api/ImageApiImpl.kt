@@ -41,12 +41,10 @@ class ImageApiImpl @Inject constructor(
                 }
         }
 
-
         return imagesUriSubject
-
     }
 
-    override fun loadImage(uri: String): Observable<Completable> {
+    override fun loadImage(uri: String): Completable {
         val imagesSubject: PublishSubject<Completable> = PublishSubject.create()
 
         Glide.with(context)
@@ -78,7 +76,7 @@ class ImageApiImpl @Inject constructor(
             )
             .into(100, 100)
 
-        return imagesSubject
+        return Completable.fromObservable(imagesSubject)
     }
 
     companion object {

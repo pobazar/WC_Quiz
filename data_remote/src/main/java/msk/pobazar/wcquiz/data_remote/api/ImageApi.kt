@@ -7,5 +7,5 @@ interface ImageApi {
 
     fun getUri(urls: List<String>): Observable<List<String>>
 
-    fun loadImage(uri: String): Observable<Completable>
+    fun loadImage(uri: String): Completable
 }

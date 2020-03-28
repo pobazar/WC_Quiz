@@ -8,5 +8,5 @@ interface RatingRepoRemote {
 
     fun getAllRating(): Observable<List<Rating>>
 
-    fun setNewRating(rating: Rating, countAll: Int, winStrick: Int, score: Float): Completable
+    fun setNewRating(rating: Rating, countAll: Int, winStrick: Int): Completable
 }
