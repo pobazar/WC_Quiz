@@ -1,4 +1,4 @@
-package msk.pobazar.wcquiz.domain
+package msk.pobazar.wcquiz.domain.extensions
 
 import java.util.Date
 

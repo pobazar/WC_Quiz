@@ -7,5 +7,6 @@ data class QuestionResponse(
     val answer4: String? = "",
     val answerR: String? = "",
     val picture: String? = "",
-    val question: String? = ""
+    val question: String? = "",
+    val theme: Int? = 0
 )

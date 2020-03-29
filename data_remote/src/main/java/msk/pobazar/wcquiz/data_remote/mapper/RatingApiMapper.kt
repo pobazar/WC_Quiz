@@ -1,8 +1,8 @@
 package msk.pobazar.wcquiz.data_remote.mapper
 
 import msk.pobazar.wcquiz.data_remote.models.RatingResponse
+import msk.pobazar.wcquiz.domain.extensions.orZero
 import msk.pobazar.wcquiz.domain.model.Rating
-import msk.pobazar.wcquiz.domain.orZero
 import toothpick.InjectConstructor
 
 @InjectConstructor

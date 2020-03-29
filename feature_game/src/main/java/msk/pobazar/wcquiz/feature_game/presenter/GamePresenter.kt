@@ -142,9 +142,9 @@ class GamePresenter @Inject constructor(
                             pbColorFinish
                     )
                     if (currentTime == maxTime) {
+                        stopTimer()
                         addAnswer("")
                         setNextGame()
-                        stopTimer()
                     }
                 }
             )

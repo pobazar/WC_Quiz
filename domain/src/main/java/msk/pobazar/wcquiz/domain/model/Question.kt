@@ -4,5 +4,6 @@ data class Question(
     val question: String,
     val answers: List<String>,
     val answerRight: String,
-    val imageUrl: String
+    val imageUrl: String,
+    val theme: Theme
 )

@@ -2,6 +2,7 @@ package msk.pobazar.wcquiz.data_local.repo
 
 import msk.pobazar.wcquiz.data_local.storage.LocalStorage
 import msk.pobazar.wcquiz.domain.model.Question
+import msk.pobazar.wcquiz.domain.model.Theme
 import msk.pobazar.wcquiz.domain.repo.local.QuestionRepoLocal
 import javax.inject.Inject
 
@@ -10,9 +11,19 @@ class QuestionRepoLocalImpl @Inject constructor(
 ) : QuestionRepoLocal {
     override fun getRandomQuestions(count: Int): List<Question> {
         return storage.read<List<Question>>(
-                tableName = QUESTION_BOOK,
-                key = QUESTIONS
-            )
+            tableName = QUESTION_BOOK,
+            key = QUESTIONS
+        )
+            .shuffled()
+            .take(count)
+    }
+
+    override fun getRandomQuestions(count: Int, theme: Theme): List<Question> {
+        return storage.read<List<Question>>(
+            tableName = QUESTION_BOOK,
+            key = QUESTIONS
+        )
+            .filter { it.theme == theme }
             .shuffled()
             .take(count)
     }
