@@ -15,7 +15,7 @@ class RatingMapper {
                     countRight = it.countRight.toString(),
                     score = it.score.toLong().toString(),
                     time = ((it.time / 100).toFloat() / 10).toString(),
-                    user = it.user,
+                    name = it.name,
                     date = it.date.toString()
                 )
             }

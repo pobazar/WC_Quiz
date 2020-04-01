@@ -8,5 +8,7 @@ interface RatingApi {
 
     fun readAll(): Observable<List<RatingResponse>>
 
-    fun write(data: RatingResponse): Completable
+    fun write(data: RatingResponse, id: String): Completable
+
+    fun updateUserName(data: String, id: String): Completable
 }

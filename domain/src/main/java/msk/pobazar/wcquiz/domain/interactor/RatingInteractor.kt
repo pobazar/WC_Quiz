@@ -9,6 +9,7 @@ import java.util.Date
 import javax.inject.Inject
 
 class RatingInteractor @Inject constructor(
+    private val userInteractor: UserInteractor,
     private val ratingRepoRemote: RatingRepoRemote
 ) {
     fun getAll(): Observable<List<Rating>> {
@@ -17,18 +18,19 @@ class RatingInteractor @Inject constructor(
             .subscribeOn(Schedulers.io())
     }
 
-    fun setNew(user: String, countRight: Int, countAll: Int, time: Long, winStrick: Int, date: Date): Completable {
+    fun setNew(countRight: Int, countAll: Int, time: Long, winStrick: Int, date: Date): Completable {
         return ratingRepoRemote
             .setNewRating(
                 rating = Rating(
                     countRight = countRight,
                     score = calculationScore(countRight, countAll, time, winStrick),
                     time = time,
-                    user = user,
+                    name = userInteractor.getUser().name,
                     date = date
                 ),
                 countAll = countAll,
-                winStrick = winStrick
+                winStrick = winStrick,
+                id = userInteractor.getUser().id
             )
             .subscribeOn(Schedulers.io())
     }

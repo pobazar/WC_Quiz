@@ -27,7 +27,7 @@ class RatingItemAdapter : AdapterDelegate {
             item as RatingViewItem
             with(itemView)
             {
-                tvRatingUserName.text = item.user
+                tvRatingUserName.text = item.name
                 tvRatingDate.text = item.date
                 tvRatingCountRight.text = item.countRight
                 tvRatingTime.text = item.time

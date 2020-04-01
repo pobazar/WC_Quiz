@@ -6,6 +6,6 @@ data class Rating(
     val countRight: Int,
     val score: Float,
     val time: Long,
-    val user: String,
+    val name: String,
     val date: Date
 )

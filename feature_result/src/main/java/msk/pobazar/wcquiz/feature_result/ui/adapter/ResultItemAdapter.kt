@@ -29,7 +29,7 @@ class ResultItemAdapter : AdapterDelegate {
             item as ResultViewItem
             with(itemView)
             {
-                cvResultItem.setBackgroundColor(item.color)
+//                cvResultItem.setBackgroundColor(item.color)
                 Glide.with(context)
                     .load(item.image)
                     .into(ivResultItemImageQuestion)

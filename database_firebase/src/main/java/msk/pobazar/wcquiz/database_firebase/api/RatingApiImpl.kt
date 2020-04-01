@@ -40,10 +40,10 @@ class RatingApiImpl @Inject constructor(
         return ratingsSubject
     }
 
-    override fun write(data: RatingResponse): Completable {
+    override fun write(data: RatingResponse, id: String): Completable {
         val ratingsSubject: PublishSubject<Completable> = PublishSubject.create()
 
-        reference.child(RESULT_PATH).push().setValue(data)
+        reference.child(RESULT_PATH).child(id).setValue(data)
             .addOnCompleteListener {
                 ratingsSubject.onComplete()
                 Timber.d("rating send complete")
@@ -55,7 +55,23 @@ class RatingApiImpl @Inject constructor(
         return Completable.fromObservable(ratingsSubject)
     }
 
+    override fun updateUserName(data: String, id: String): Completable {
+        val ratingsSubject: PublishSubject<Completable> = PublishSubject.create()
+
+        reference.child(RESULT_PATH).child(id).child(NAME).setValue(data)
+            .addOnCompleteListener {
+                ratingsSubject.onComplete()
+                Timber.d("update name complete")
+            }
+            .addOnCanceledListener {
+                ratingsSubject.onError(Throwable("firebase set error"))
+                Timber.d("update name error")
+            }
+        return Completable.fromObservable(ratingsSubject)
+    }
+
     companion object {
         private const val RESULT_PATH = "results"
+        private const val NAME = "name"
     }
 }

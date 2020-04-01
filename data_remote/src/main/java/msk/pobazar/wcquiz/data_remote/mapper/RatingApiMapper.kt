@@ -13,7 +13,7 @@ class RatingApiMapper {
             countRight = api.countRight.orZero(),
             score = api.score.orZero(),
             time = api.time.orZero(),
-            user = api.user.orEmpty(),
+            name = api.name.orEmpty(),
             date = api.date.orZero()
         )
 
@@ -23,7 +23,7 @@ class RatingApiMapper {
             countRight = rating.countRight,
             score = rating.score,
             time = rating.time,
-            user = rating.user,
+            name = rating.name,
             winStrick = winStrick,
             date = rating.date
         )
