@@ -38,10 +38,10 @@ class QuestionApiMapper {
 
     private fun themeFromCode(code: Int): Theme =
         when (code) {
-            0 -> Theme.LOR
-            1 -> Theme.RAID
-            2 -> Theme.PERSON
-            3 -> Theme.AREA
+            Theme.LOR.code -> Theme.LOR
+            Theme.RAID.code -> Theme.RAID
+            Theme.PERSON.code -> Theme.PERSON
+            Theme.AREA.code -> Theme.AREA
             else -> Theme.LOR
         }
 }

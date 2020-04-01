@@ -3,6 +3,7 @@ package msk.pobazar.wcquiz.feature_result.presenter
 import msk.pobazar.wcquiz.core.base.BasePresenter
 import msk.pobazar.wcquiz.core.navigation.Router
 import msk.pobazar.wcquiz.core.navigation.screens.NavigationScreen
+import msk.pobazar.wcquiz.core.navigation.transitionsParams.GameParams
 import msk.pobazar.wcquiz.domain.interactor.RatingInteractor
 import msk.pobazar.wcquiz.domain.interactor.ResultInteractor
 import msk.pobazar.wcquiz.feature_result.mapper.ResultMapper
@@ -27,7 +28,7 @@ class ResultPresenter @Inject constructor(
     }
 
     fun onAgainPlayClick() {
-        router.replace(NavigationScreen.Game)
+        router.replace(NavigationScreen.Game(GameParams()))
     }
 
     fun onShowAnswers() {

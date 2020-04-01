@@ -9,6 +9,7 @@ import msk.pobazar.wcquiz.core.navigation.screens.NavigationScreen
 import msk.pobazar.wcquiz.feature_game.ui.GameFragment
 import msk.pobazar.wcquiz.feature_menu.ui.MenuFragment
 import msk.pobazar.wcquiz.feature_menu.ui.SplashFragment
+import msk.pobazar.wcquiz.feature_mods.ui.ModsFragment
 import msk.pobazar.wcquiz.feature_rating.ui.RatingFragment
 import msk.pobazar.wcquiz.feature_result.ui.ResultFragment
 import msk.pobazar.wcquiz.navigation.screens.SupportAppDialog
@@ -29,13 +30,16 @@ class ScreenFactoryImpl @Inject constructor(
                 MenuFragment.newInstance()
             }
             is NavigationScreen.Game -> fragment(screenKey) {
-                GameFragment.newInstance()
+                GameFragment.newInstance(screen.params)
             }
             is NavigationScreen.Result -> fragment(screenKey) {
                 ResultFragment.newInstance()
             }
             is NavigationScreen.Rating -> fragment(screenKey) {
                 RatingFragment.newInstance()
+            }
+            is NavigationScreen.Mods -> fragment(screenKey) {
+                ModsFragment.newInstance()
             }
         }
     }

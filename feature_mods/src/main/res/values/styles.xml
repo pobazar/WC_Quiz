@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="mods">
+        <item name="android:fontFamily">@font/eb_garamond</item>
+        <item name="android:textColor">#F9BD25</item>
+    </style>
+
+    <style name="mods_button" parent="mods">
+        <item name="android:textSize">18sp</item>
+    </style>
+
+    <style name="mods_title" parent="mods">
+        <item name="android:textSize">22sp</item>
+    </style>
+</resources>

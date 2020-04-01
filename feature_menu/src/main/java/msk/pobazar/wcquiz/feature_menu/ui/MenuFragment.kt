@@ -24,7 +24,7 @@ class MenuFragment : BaseFragment(), MenuView {
 
     override fun initUx() {
         btnMenuQuickPlay.setOnClick { presenter.onQuickGameClick() }
-        btnMenuMods.setOnClick { presenter.onModeClick() }
+        btnMenuMods.setOnClick { presenter.onModsClick() }
         btnMenuRating.setOnClick { presenter.onRatingClick() }
     }
 

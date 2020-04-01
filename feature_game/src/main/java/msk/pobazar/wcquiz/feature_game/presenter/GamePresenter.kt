@@ -8,6 +8,7 @@ import moxy.InjectViewState
 import msk.pobazar.wcquiz.core.base.BasePresenter
 import msk.pobazar.wcquiz.core.navigation.Router
 import msk.pobazar.wcquiz.core.navigation.screens.NavigationScreen
+import msk.pobazar.wcquiz.core.navigation.transitionsParams.GameParams
 import msk.pobazar.wcquiz.domain.interactor.ImageInteractor
 import msk.pobazar.wcquiz.domain.interactor.QuestionsInteractor
 import msk.pobazar.wcquiz.domain.interactor.ResultInteractor
@@ -25,6 +26,7 @@ import javax.inject.Inject
 
 @InjectViewState
 class GamePresenter @Inject constructor(
+    private val params: GameParams,
     private val router: Router,
     private val resultInteractor: ResultInteractor,
     private val questionsInteractor: QuestionsInteractor,
@@ -66,7 +68,9 @@ class GamePresenter @Inject constructor(
     }
 
     private fun loadGames() {
-        games = questionsInteractor.getRandomLocal(countQuestions)
+        games = (params.theme?.let {
+            questionsInteractor.getRandomLocal(countQuestions, it)
+        } ?: questionsInteractor.getRandomLocal(countQuestions))
             .map(gameMapper::toViewData)
     }
 

@@ -16,6 +16,7 @@ include ':feature_menu'
 include ':feature_game'
 include ':feature_result'
 include ':feature_rating'
+include ':feature_mods'
 
 include ':view_loader'
 include ':view_error'

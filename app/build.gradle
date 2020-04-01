@@ -49,6 +49,7 @@ dependencies {
     implementation project(':feature_game')
     implementation project(':feature_result')
     implementation project(':feature_rating')
+    implementation project(':feature_mods')
 
     api deps.google.gsm
     api deps.google.firebase.core

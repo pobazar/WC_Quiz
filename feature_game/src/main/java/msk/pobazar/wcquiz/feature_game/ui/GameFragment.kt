@@ -5,12 +5,15 @@ import kotlinx.android.synthetic.main.fragment_game.*
 import moxy.presenter.InjectPresenter
 import moxy.presenter.ProvidePresenter
 import msk.pobazar.wcquiz.core.base.BaseFragment
+import msk.pobazar.wcquiz.core.delegates.FragmentArgument
 import msk.pobazar.wcquiz.core.extensions.setOnClick
 import msk.pobazar.wcquiz.core.extensions.visible
+import msk.pobazar.wcquiz.core.navigation.transitionsParams.GameParams
 import msk.pobazar.wcquiz.feature_game.R
 import msk.pobazar.wcquiz.feature_game.presenter.GamePresenter
 import msk.pobazar.wcquiz.feature_game.presenter.GameView
 import msk.pobazar.wcquiz.view_error.ErrorType
+import toothpick.config.Module
 import javax.inject.Inject
 
 class GameFragment : BaseFragment(), GameView {
@@ -21,6 +24,13 @@ class GameFragment : BaseFragment(), GameView {
     @InjectPresenter
     @get:ProvidePresenter
     lateinit var presenter: GamePresenter
+
+    private var params: GameParams by FragmentArgument()
+
+    override val moduleProvider: (Module) -> Unit
+        get() = {
+            it.bind(GameParams::class.java).toInstance(params)
+        }
 
     override fun initUi() {
         pbGameTimer.max = resources.getInteger(R.integer.time_to_answer)
@@ -71,6 +81,9 @@ class GameFragment : BaseFragment(), GameView {
     }
 
     companion object {
-        fun newInstance() = GameFragment()
+        fun newInstance(params: GameParams): GameFragment =
+            GameFragment().apply {
+                this.params = params
+            }
     }
 }
