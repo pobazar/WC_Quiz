@@ -17,55 +17,55 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <!--    <androidx.appcompat.widget.AppCompatTextView-->
-    <!--        android:id="@+id/btnMods1"-->
-    <!--        android:layout_width="@dimen/button_width"-->
-    <!--        android:layout_height="@dimen/button_height"-->
-    <!--        android:layout_marginTop="360dp"-->
-    <!--        android:background="@drawable/mods_button"-->
-    <!--        android:gravity="center"-->
-    <!--        android:text="@string/mod"-->
-    <!--        android:textAppearance="@style/mods_button"-->
-    <!--        app:layout_constraintEnd_toEndOf="parent"-->
-    <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        app:layout_constraintTop_toTopOf="parent" />-->
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/btnMods1"
+        android:layout_width="@dimen/button_width"
+        android:layout_height="@dimen/button_height"
+        android:layout_marginTop="360dp"
+        android:background="@drawable/mods_button"
+        android:gravity="center"
+        android:text="@string/mod"
+        android:textAppearance="@style/mods_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <!--    <androidx.appcompat.widget.AppCompatTextView-->
-    <!--        android:id="@+id/btnMods2"-->
-    <!--        android:layout_width="@dimen/button_width"-->
-    <!--        android:layout_height="@dimen/button_height"-->
-    <!--        android:layout_marginTop="24dp"-->
-    <!--        android:background="@drawable/mods_button"-->
-    <!--        android:gravity="center"-->
-    <!--        android:text="@string/mod"-->
-    <!--        android:textAppearance="@style/mods_button"-->
-    <!--        app:layout_constraintEnd_toEndOf="parent"-->
-    <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        app:layout_constraintTop_toBottomOf="@+id/btnMods1" />-->
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/btnMods2"
+        android:layout_width="@dimen/button_width"
+        android:layout_height="@dimen/button_height"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/mods_button"
+        android:gravity="center"
+        android:text="@string/mod"
+        android:textAppearance="@style/mods_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnMods1" />
 
-    <!--    <androidx.appcompat.widget.AppCompatTextView-->
-    <!--        android:id="@+id/btnMods3"-->
-    <!--        android:layout_width="@dimen/button_width"-->
-    <!--        android:layout_height="@dimen/button_height"-->
-    <!--        android:layout_marginTop="24dp"-->
-    <!--        android:background="@drawable/mods_button"-->
-    <!--        android:gravity="center"-->
-    <!--        android:text="@string/mod"-->
-    <!--        android:textAppearance="@style/mods_button"-->
-    <!--        app:layout_constraintEnd_toEndOf="parent"-->
-    <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        app:layout_constraintTop_toBottomOf="@+id/btnMods2" />-->
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/btnMods3"
+        android:layout_width="@dimen/button_width"
+        android:layout_height="@dimen/button_height"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/mods_button"
+        android:gravity="center"
+        android:text="@string/mod"
+        android:textAppearance="@style/mods_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnMods2" />
 
-    <!--    <androidx.appcompat.widget.AppCompatTextView-->
-    <!--        android:id="@+id/btnMods4"-->
-    <!--        android:layout_width="@dimen/button_width"-->
-    <!--        android:layout_height="@dimen/button_height"-->
-    <!--        android:layout_marginTop="24dp"-->
-    <!--        android:background="@drawable/mods_button"-->
-    <!--        android:gravity="center"-->
-    <!--        android:text="@string/mod"-->
-    <!--        android:textAppearance="@style/mods_button"-->
-    <!--        app:layout_constraintEnd_toEndOf="parent"-->
-    <!--        app:layout_constraintStart_toStartOf="parent"-->
-    <!--        app:layout_constraintTop_toBottomOf="@+id/btnMods3" />-->
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/btnMods4"
+        android:layout_width="@dimen/button_width"
+        android:layout_height="@dimen/button_height"
+        android:layout_marginTop="24dp"
+        android:background="@drawable/mods_button"
+        android:gravity="center"
+        android:text="@string/mod"
+        android:textAppearance="@style/mods_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnMods3" />
 </androidx.constraintlayout.widget.ConstraintLayout>
