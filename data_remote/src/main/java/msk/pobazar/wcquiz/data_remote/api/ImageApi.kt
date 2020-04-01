@@ -5,7 +5,7 @@ import io.reactivex.Observable
 
 interface ImageApi {
 
-    fun getUri(urls: List<String>): Observable<List<String>>
+    fun getUri(urls: List<String>): Observable<Map<String, String>>
 
     fun loadImage(uri: String): Completable
 }

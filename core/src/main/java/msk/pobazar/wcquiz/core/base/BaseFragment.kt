@@ -5,12 +5,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import moxy.MvpAppCompatFragment
+import msk.pobazar.wcquiz.core.delegates.FragmentArgument
+import msk.pobazar.wcquiz.core.navigation.transitionsParams.TransitionsParams
 import msk.pobazar.wcquiz.domain.di.DependenciesInjector
 import toothpick.config.Module
 
 abstract class BaseFragment : MvpAppCompatFragment() {
 
     protected abstract val layout: Int
+
+    open val params: TransitionsParams by FragmentArgument()
 
     open val moduleProvider: (Module) -> Unit = {}
 

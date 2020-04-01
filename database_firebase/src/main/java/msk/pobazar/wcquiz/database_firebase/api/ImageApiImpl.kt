@@ -20,22 +20,29 @@ class ImageApiImpl @Inject constructor(
     private val context: Context
 ) : ImageApi {
 
-    override fun getUri(urls: List<String>): Observable<List<String>> {
-        val imagesUriSubject: PublishSubject<List<String>> = PublishSubject.create()
-        val result = mutableListOf<String>()
+    override fun getUri(urls: List<String>): Observable<Map<String, String>> {
+        val imagesUriSubject: PublishSubject<Map<String, String>> = PublishSubject.create()
+        val result = mutableMapOf<String, String>()
+        var resultSize = urls.size
 
         for (url in urls) {
             reference
                 .child("$IMAGES_PATH/$url.$FORMAT")
                 .downloadUrl
                 .addOnSuccessListener { uri ->
-                    result.add(uri.toString())
-                    if (result.size == urls.size)
+                    if (result.containsKey(url))
+                        resultSize--
+                    else
+                        result[url] = uri.toString()
+                    if (result.size == resultSize)
                         imagesUriSubject.onNext(result)
                 }
                 .addOnFailureListener {
-                    result.add("")
-                    if (result.size == urls.size)
+                    if (result.containsKey(url))
+                        resultSize--
+                    else
+                        result[url] = ""
+                    if (result.size == resultSize)
                         imagesUriSubject.onNext(result)
                     Timber.e(it)
                 }

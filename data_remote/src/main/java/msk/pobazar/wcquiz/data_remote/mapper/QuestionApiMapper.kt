@@ -9,20 +9,23 @@ import toothpick.InjectConstructor
 @InjectConstructor
 class QuestionApiMapper {
 
-    fun toDomain(api: List<QuestionResponse>, urls: List<String>): List<Question> {
+    fun toDomain(api: List<QuestionResponse>, urls: Map<String, String>): List<Question> {
+        api.map {
+            it.picture = urls[it.picture]
+        }
+
         val list = mutableListOf<Question>()
         for (index in api.indices) {
             list.add(
                 toDomain(
-                    api = api[index],
-                    url = urls[index]
+                    api = api[index]
                 )
             )
         }
         return list
     }
 
-    private fun toDomain(api: QuestionResponse, url: String): Question =
+    private fun toDomain(api: QuestionResponse): Question =
         Question(
             question = api.question.orEmpty(),
             answers = listOf(
@@ -32,7 +35,7 @@ class QuestionApiMapper {
                 api.answer4.orEmpty()
             ),
             answerRight = api.answerR.orEmpty(),
-            imageUrl = url,
+            imageUrl = api.picture.orEmpty(),
             theme = themeFromCode(api.theme.orZero())
         )
 

@@ -20,17 +20,17 @@ class GameFragment : BaseFragment(), GameView {
 
     override val layout: Int = R.layout.fragment_game
 
-    @Inject
-    @InjectPresenter
-    @get:ProvidePresenter
-    lateinit var presenter: GamePresenter
-
-    private var params: GameParams by FragmentArgument()
-
     override val moduleProvider: (Module) -> Unit
         get() = {
             it.bind(GameParams::class.java).toInstance(params)
         }
+
+    override var params: GameParams by FragmentArgument()
+
+    @Inject
+    @InjectPresenter
+    @get:ProvidePresenter
+    lateinit var presenter: GamePresenter
 
     override fun initUi() {
         pbGameTimer.max = resources.getInteger(R.integer.time_to_answer)
