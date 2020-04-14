@@ -1,6 +1,6 @@
 ext {
     config = [
-            'versionCode': 9,
+            'versionCode': 10,
             'versionName': "2.0.0-alpha",
             'minSdkVersion': 21,
             'compileSdkVersion': 28

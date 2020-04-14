@@ -7,7 +7,6 @@ import java.util.UUID
 import javax.inject.Inject
 
 class UserInteractor @Inject constructor(
-    private val userInteractor: UserInteractor,
     private val userRepoLocal: UserRepoLocal,
     private val ratingRepoRemote: RatingRepoRemote
 ) {
@@ -30,6 +29,6 @@ class UserInteractor @Inject constructor(
 
     fun setName(name: String) {
         userRepoLocal.name = name
-        ratingRepoRemote.updateUserName(name, userInteractor.getUser().id)
+        ratingRepoRemote.updateUserName(name, getUser().id)
     }
 }
