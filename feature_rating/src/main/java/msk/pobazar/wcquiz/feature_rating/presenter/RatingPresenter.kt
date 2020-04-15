@@ -22,6 +22,12 @@ class RatingPresenter @Inject constructor(
     private val ratingMapper: RatingMapper
 ) : BasePresenter<RatingView>() {
 
+    private var isRefresh = true
+        set(value) {
+            field = value
+            viewState.showProgressSwipeRefresh(value)
+        }
+
     override fun onFirstViewAttach() {
         super.onFirstViewAttach()
         loadRating()
@@ -31,30 +37,35 @@ class RatingPresenter @Inject constructor(
         loadRating()
     }
 
+    fun onRefresh() {
+        isRefresh = true
+        loadRating()
+    }
+
     private fun loadRating() {
-        if (networkManager.isAvailable())
+        if (networkManager.isAvailable()) {
             Observables.zip(
                 ratingInteractor.getLimit(resourceManager.getInteger(R.integer.count_ratings_top)),
                 ratingInteractor.getById(userInteractor.getUser().id)
             )
                 .doOnSubscribe {
                     viewState.showError(ErrorType.NONE)
-                    viewState.showProgress(true)
+                    isRefresh = true
                 }
                 .subscribeBy(
                     onNext = {
-                        viewState.showProgress(false)
+                        isRefresh = false
                         viewState.setResults(
                             ratingMapper.toViewData(it).items
                         )
                     },
                     onError = {
-                        viewState.showProgress(false)
+                        isRefresh = false
                         viewState.showError(ErrorType.ERROR_SERVER_UNAVAILABLE)
                     }
                 )
                 .bind()
-        else
+        } else
             viewState.showError(ErrorType.ERROR_NETWORK_UNAVAILABLE)
     }
 }

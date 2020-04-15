@@ -64,8 +64,8 @@
                 android:text="@string/score" />
         </LinearLayout>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rvRating"
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/swipeRefresh"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:layout_marginStart="8dp"
@@ -74,10 +74,15 @@
             android:layout_marginBottom="16dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayoutCompat"
-            tools:listitem="@layout/item_rating" />
+            app:layout_constraintTop_toBottomOf="@+id/linearLayoutCompat">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvRating"
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                tools:listitem="@layout/item_rating" />
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/textView"

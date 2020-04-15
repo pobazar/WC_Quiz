@@ -32,6 +32,9 @@ class RatingFragment : BaseFragment(), RatingView {
 
     override fun initUx() {
         errorRating.onActionClick { presenter.onRetryClick() }
+        swipeRefresh.setOnRefreshListener {
+            presenter.onRefresh()
+        }
     }
 
     override fun setResults(results: List<ViewItem>) {
@@ -40,10 +43,11 @@ class RatingFragment : BaseFragment(), RatingView {
 
     override fun showError(type: ErrorType) {
         errorRating.type = type
+        errorRating.visible(type != ErrorType.NONE)
     }
 
-    override fun showProgress(isShow: Boolean) {
-        loaderRating.visible(isShow)
+    override fun showProgressSwipeRefresh(isShow: Boolean) {
+        swipeRefresh.isRefreshing = isShow
     }
 
     companion object {
