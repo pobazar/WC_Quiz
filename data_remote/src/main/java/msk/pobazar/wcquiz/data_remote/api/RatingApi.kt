@@ -8,6 +8,10 @@ interface RatingApi {
 
     fun readAll(): Observable<List<RatingResponse>>
 
+    fun readLimit(limit: Int): Observable<List<RatingResponse>>
+
+    fun readById(id: String): Observable<List<RatingResponse>>
+
     fun write(data: RatingResponse, id: String): Completable
 
     fun updateUserName(data: String, id: String): Completable
