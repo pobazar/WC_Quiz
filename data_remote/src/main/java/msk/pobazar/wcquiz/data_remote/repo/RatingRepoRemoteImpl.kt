@@ -30,7 +30,7 @@ class RatingRepoRemoteImpl @Inject constructor(
     override fun getById(id: String): Observable<Rating> {
         return ratingApi.readById(id)
             .map {
-                it.map(ratingApiMapper::toDomain).first()
+                ratingApiMapper.toDomain(it)
             }
     }
 

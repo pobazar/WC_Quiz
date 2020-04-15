@@ -13,7 +13,7 @@ import toothpick.InjectConstructor
 @InjectConstructor
 class FirebaseQuery {
 
-    internal inline fun <reified T> read(query: Query): PublishSubject<List<T>> {
+    internal inline fun <reified T> readList(query: Query): PublishSubject<List<T>> {
         val subject: PublishSubject<List<T>> = PublishSubject.create()
 
         query.addListenerForSingleValueEvent(object : ValueEventListener {
@@ -25,6 +25,24 @@ class FirebaseQuery {
                     Timber.d("firebase: $data")
                 }
                 subject.onNext(list)
+            }
+
+            override fun onCancelled(databaseError: DatabaseError) {
+                subject.onError(Throwable(databaseError.toException()))
+                Timber.e("onCancelled: ${databaseError.toException()}")
+            }
+        })
+        return subject
+    }
+
+    internal inline fun <reified T> read(query: Query): PublishSubject<T> {
+        val subject: PublishSubject<T> = PublishSubject.create()
+
+        query.addListenerForSingleValueEvent(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                val data = dataSnapshot.getValue(T::class.java)
+                Timber.d("firebase: $data")
+                subject.onNext(data ?: T::class.java.newInstance())
             }
 
             override fun onCancelled(databaseError: DatabaseError) {

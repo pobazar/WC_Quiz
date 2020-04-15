@@ -8,31 +8,34 @@ import toothpick.InjectConstructor
 @InjectConstructor
 class RatingMapper {
 
-    fun toViewData(ratings: Pair<List<Rating>, Rating>) =
+    fun toViewData(ratings: Pair<List<Rating>, Rating>): RatingViewData =
         RatingViewData(
-            items = ratings.first.map {
-                RatingViewItem(
-                    countRight = it.countRight.toString(),
-                    score = it.score.toLong().toString(),
-                    time = ((it.time / 100).toFloat() / 10).toString(),
-                    name = it.name,
-                    date = it.date.toString(),
-                    userRating = false
-                )
-            }.toMutableList()
+            items = ratings.first
+                .toMutableList()
+                .run {
+                    remove(ratings.second)
+                    map {
+                        toViewData(it, false)
+                    }
+                }
+                .toMutableList()
                 .apply {
                     add(
-                        with(ratings.second) {
-                            RatingViewItem(
-                                countRight = countRight.toString(),
-                                score = score.toLong().toString(),
-                                time = ((time / 100).toFloat() / 10).toString(),
-                                name = name,
-                                date = date.toString(),
-                                userRating = true
-                            )
-                        }
+                        toViewData(ratings.second, true)
                     )
                 }
+                .sortedByDescending { it.score.toFloat() }
         )
+
+    private fun toViewData(rating: Rating, isUser: Boolean) =
+        with(rating) {
+            RatingViewItem(
+                countRight = countRight.toString(),
+                score = score.toLong().toString(),
+                time = ((time / 100).toFloat() / 10).toString(),
+                name = name,
+                date = date.toString(),
+                userRating = isUser
+            )
+        }
 }

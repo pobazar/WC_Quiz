@@ -14,21 +14,21 @@ class RatingApiImpl @Inject constructor(
 ) : RatingApi {
 
     override fun readAll(): Observable<List<RatingResponse>> =
-        firebaseQuery.read(
+        firebaseQuery.readList(
             reference
                 .child(RESULT_PATH)
                 .orderByChild(SCORE)
         )
 
     override fun readLimit(limit: Int): Observable<List<RatingResponse>> =
-        firebaseQuery.read(
+        firebaseQuery.readList(
             reference
                 .child(RESULT_PATH)
                 .orderByChild(SCORE)
                 .limitToLast(limit)
         )
 
-    override fun readById(id: String): Observable<List<RatingResponse>> =
+    override fun readById(id: String): Observable<RatingResponse> =
         firebaseQuery.read(
             reference
                 .child(RESULT_PATH)

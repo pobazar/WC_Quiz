@@ -10,7 +10,7 @@ interface RatingApi {
 
     fun readLimit(limit: Int): Observable<List<RatingResponse>>
 
-    fun readById(id: String): Observable<List<RatingResponse>>
+    fun readById(id: String): Observable<RatingResponse>
 
     fun write(data: RatingResponse, id: String): Completable
 
