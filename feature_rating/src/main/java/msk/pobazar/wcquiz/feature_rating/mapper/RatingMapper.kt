@@ -8,16 +8,31 @@ import toothpick.InjectConstructor
 @InjectConstructor
 class RatingMapper {
 
-    fun toViewData(ratings: List<Rating>) =
+    fun toViewData(ratings: Pair<List<Rating>, Rating>) =
         RatingViewData(
-            items = ratings.map {
+            items = ratings.first.map {
                 RatingViewItem(
                     countRight = it.countRight.toString(),
                     score = it.score.toLong().toString(),
                     time = ((it.time / 100).toFloat() / 10).toString(),
                     name = it.name,
-                    date = it.date.toString()
+                    date = it.date.toString(),
+                    userRating = false
                 )
-            }
+            }.toMutableList()
+                .apply {
+                    add(
+                        with(ratings.second) {
+                            RatingViewItem(
+                                countRight = countRight.toString(),
+                                score = score.toLong().toString(),
+                                time = ((time / 100).toFloat() / 10).toString(),
+                                name = name,
+                                date = date.toString(),
+                                userRating = true
+                            )
+                        }
+                    )
+                }
         )
 }

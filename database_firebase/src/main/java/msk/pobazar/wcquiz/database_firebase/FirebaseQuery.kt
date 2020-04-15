@@ -21,7 +21,6 @@ class FirebaseQuery {
                 val list = mutableListOf<T>()
                 for (singleSnapshot in dataSnapshot.children) {
                     val data = singleSnapshot.getValue(T::class.java)
-//                    data?.id = singleSnapshot.key
                     data?.let { list.add(data) }
                     Timber.d("firebase: $data")
                 }

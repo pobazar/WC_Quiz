@@ -12,14 +12,29 @@ class RatingRepoRemoteImpl @Inject constructor(
     private val ratingApi: RatingApi,
     private val ratingApiMapper: RatingApiMapper
 ) : RatingRepoRemote {
-    override fun getAllRating(): Observable<List<Rating>> {
+
+    override fun getAll(): Observable<List<Rating>> {
         return ratingApi.readAll()
             .map {
                 it.map(ratingApiMapper::toDomain)
             }
     }
 
-    override fun setNewRating(rating: Rating, countAll: Int, winStrick: Int, id: String): Completable {
+    override fun getLimit(limit: Int): Observable<List<Rating>> {
+        return ratingApi.readLimit(limit)
+            .map {
+                it.map(ratingApiMapper::toDomain)
+            }
+    }
+
+    override fun getById(id: String): Observable<Rating> {
+        return ratingApi.readById(id)
+            .map {
+                it.map(ratingApiMapper::toDomain).first()
+            }
+    }
+
+    override fun setNew(rating: Rating, countAll: Int, winStrick: Int, id: String): Completable {
         return ratingApi.write(
             data = ratingApiMapper.toApi(
                 rating = rating,

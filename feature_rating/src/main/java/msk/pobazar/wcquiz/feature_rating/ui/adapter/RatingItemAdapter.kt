@@ -32,6 +32,7 @@ class RatingItemAdapter : AdapterDelegate {
                 tvRatingCountRight.text = item.countRight
                 tvRatingTime.text = item.time
                 tvRatingScore.text = item.score
+                //TODO Закрасить строку юзера
             }
         }
     }

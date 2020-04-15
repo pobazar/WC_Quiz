@@ -1,10 +1,14 @@
 package msk.pobazar.wcquiz.feature_rating.presenter
 
+import io.reactivex.rxkotlin.Observables
 import io.reactivex.rxkotlin.subscribeBy
 import moxy.InjectViewState
 import msk.pobazar.wcquiz.core.base.BasePresenter
 import msk.pobazar.wcquiz.domain.interactor.RatingInteractor
+import msk.pobazar.wcquiz.domain.interactor.UserInteractor
 import msk.pobazar.wcquiz.domain.repo.device.NetworkManager
+import msk.pobazar.wcquiz.domain.repo.device.ResourceManager
+import msk.pobazar.wcquiz.feature_rating.R
 import msk.pobazar.wcquiz.feature_rating.mapper.RatingMapper
 import msk.pobazar.wcquiz.view_error.ErrorType
 import javax.inject.Inject
@@ -12,7 +16,9 @@ import javax.inject.Inject
 @InjectViewState
 class RatingPresenter @Inject constructor(
     private val ratingInteractor: RatingInteractor,
+    private val userInteractor: UserInteractor,
     private val networkManager: NetworkManager,
+    private val resourceManager: ResourceManager,
     private val ratingMapper: RatingMapper
 ) : BasePresenter<RatingView>() {
 
@@ -27,7 +33,10 @@ class RatingPresenter @Inject constructor(
 
     private fun loadRating() {
         if (networkManager.isAvailable())
-            ratingInteractor.getAll()
+            Observables.zip(
+                ratingInteractor.getLimit(resourceManager.getInteger(R.integer.count_ratings_top)),
+                ratingInteractor.getById(userInteractor.getUser().id)
+            )
                 .doOnSubscribe {
                     viewState.showError(ErrorType.NONE)
                     viewState.showProgress(true)

@@ -12,15 +12,28 @@ class RatingInteractor @Inject constructor(
     private val userInteractor: UserInteractor,
     private val ratingRepoRemote: RatingRepoRemote
 ) {
+
     fun getAll(): Observable<List<Rating>> {
         return ratingRepoRemote
-            .getAllRating()
+            .getAll()
+            .subscribeOn(Schedulers.io())
+    }
+
+    fun getLimit(limit: Int): Observable<List<Rating>> {
+        return ratingRepoRemote
+            .getLimit(limit)
+            .subscribeOn(Schedulers.io())
+    }
+
+    fun getById(id: String): Observable<Rating> {
+        return ratingRepoRemote
+            .getById(id)
             .subscribeOn(Schedulers.io())
     }
 
     fun setNew(countRight: Int, countAll: Int, time: Long, winStrick: Int, date: Date): Completable {
         return ratingRepoRemote
-            .setNewRating(
+            .setNew(
                 rating = Rating(
                     countRight = countRight,
                     score = calculationScore(countRight, countAll, time, winStrick),

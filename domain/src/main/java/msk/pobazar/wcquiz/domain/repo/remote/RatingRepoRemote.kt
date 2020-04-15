@@ -6,9 +6,13 @@ import msk.pobazar.wcquiz.domain.model.Rating
 
 interface RatingRepoRemote {
 
-    fun getAllRating(): Observable<List<Rating>>
+    fun getAll(): Observable<List<Rating>>
 
-    fun setNewRating(rating: Rating, countAll: Int, winStrick: Int, id: String): Completable
+    fun getLimit(limit: Int): Observable<List<Rating>>
+
+    fun getById(id: String): Observable<Rating>
+
+    fun setNew(rating: Rating, countAll: Int, winStrick: Int, id: String): Completable
 
     fun updateUserName(name: String, id: String): Completable
 }
