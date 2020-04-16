@@ -35,7 +35,7 @@ class RatingApiImpl @Inject constructor(
                 .child(id)
         )
 
-    override fun write(data: RatingResponse, id: String): Completable =
+    override fun updateScore(data: RatingResponse, id: String): Completable =
         firebaseQuery.write(
             reference
                 .child(RESULT_PATH)

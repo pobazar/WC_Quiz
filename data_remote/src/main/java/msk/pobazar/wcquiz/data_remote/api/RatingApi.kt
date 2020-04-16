@@ -12,7 +12,7 @@ interface RatingApi {
 
     fun readById(id: String): Observable<RatingResponse>
 
-    fun write(data: RatingResponse, id: String): Completable
+    fun updateScore(data: RatingResponse, id: String): Completable
 
     fun updateUserName(data: String, id: String): Completable
 }

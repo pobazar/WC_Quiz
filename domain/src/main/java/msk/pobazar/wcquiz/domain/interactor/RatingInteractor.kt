@@ -31,21 +31,29 @@ class RatingInteractor @Inject constructor(
             .subscribeOn(Schedulers.io())
     }
 
-    fun setNew(countRight: Int, countAll: Int, time: Long, winStrick: Int, date: Date): Completable {
-        return ratingRepoRemote
-            .setNew(
-                rating = Rating(
-                    countRight = countRight,
-                    score = calculationScore(countRight, countAll, time, winStrick),
-                    time = time,
-                    name = userInteractor.getUser().name,
-                    date = date
-                ),
-                countAll = countAll,
-                winStrick = winStrick,
-                id = userInteractor.getUser().id
-            )
-            .subscribeOn(Schedulers.io())
+    fun update(countRight: Int, countAll: Int, time: Long, winStrick: Int, date: Date): Completable {
+        val id = userInteractor.getUser().id
+        val score = calculationScore(countRight, countAll, time, winStrick)
+        return getById(id)
+            .flatMapCompletable {
+                if (score > it.score)
+                    ratingRepoRemote
+                        .setNew(
+                            rating = Rating(
+                                countRight = countRight,
+                                score = score,
+                                time = time,
+                                name = userInteractor.getUser().name,
+                                date = date
+                            ),
+                            countAll = countAll,
+                            winStrick = winStrick,
+                            id = id
+                        )
+                        .subscribeOn(Schedulers.io())
+                else
+                    Completable.complete()
+            }
     }
 
     private fun calculationScore(countRight: Int, countAll: Int, time: Long, winStrick: Int): Float {

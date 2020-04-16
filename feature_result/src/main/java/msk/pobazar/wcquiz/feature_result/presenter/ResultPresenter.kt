@@ -46,14 +46,16 @@ class ResultPresenter @Inject constructor(
     }
 
     private fun sendRating() {
-        val result = resultInteractor.getResult()
-        ratingInteractor.setNew(
-            countRight = result.countRight,
-            countAll = result.results.size,
-            time = result.time,
-            winStrick = result.winStrick,
-            date = Date()
-        )
-
+        with(resultInteractor.getResult()) {
+            ratingInteractor.update(
+                countRight = countRight,
+                countAll = results.size,
+                time = time,
+                winStrick = winStrick,
+                date = Date()
+            )
+                .subscribe()
+                .bind()
+        }
     }
 }

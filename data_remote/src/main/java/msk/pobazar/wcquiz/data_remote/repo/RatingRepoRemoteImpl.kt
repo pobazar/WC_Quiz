@@ -35,7 +35,7 @@ class RatingRepoRemoteImpl @Inject constructor(
     }
 
     override fun setNew(rating: Rating, countAll: Int, winStrick: Int, id: String): Completable {
-        return ratingApi.write(
+        return ratingApi.updateScore(
             data = ratingApiMapper.toApi(
                 rating = rating,
                 countAll = countAll,

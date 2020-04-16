@@ -61,10 +61,11 @@ class FirebaseQuery {
                 ratingsSubject.onComplete()
                 Timber.d("firebase set error")
             }
-            .addOnCanceledListener {
+            .addOnFailureListener {
                 ratingsSubject.onError(Throwable("firebase set error"))
                 Timber.d("firebase set error")
             }
+
         return Completable.fromObservable(ratingsSubject)
     }
 }
