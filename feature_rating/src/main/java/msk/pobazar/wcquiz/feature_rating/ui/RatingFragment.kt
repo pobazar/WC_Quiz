@@ -4,8 +4,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.fragment_rating.*
 import moxy.presenter.InjectPresenter
 import moxy.presenter.ProvidePresenter
-import msk.pobazar.wcquiz.core.base.BaseFragment
 import msk.pobazar.wcquiz.core.base.adapter.ViewItem
+import msk.pobazar.wcquiz.core.base.ui.BaseFragment
 import msk.pobazar.wcquiz.core.extensions.visible
 import msk.pobazar.wcquiz.feature_rating.R
 import msk.pobazar.wcquiz.feature_rating.presenter.RatingPresenter

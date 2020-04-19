@@ -39,7 +39,7 @@ class GamePresenter @Inject constructor(
     private val countQuestions = resourceManager.getInteger(R.integer.count_questions)
     private val maxTime = resourceManager.getInteger(R.integer.time_to_answer)
     private val results: MutableList<GameResult.Result> = mutableListOf()
-    private val pbColorStart = resourceManager.getColor(R.color.pb_start)
+    private val pbColorStart = resourceManager.getColor(R.color.main_yellow)
     private val pbColorFinish = resourceManager.getColor(R.color.pb_finish)
 
     private var currentNumber = 0

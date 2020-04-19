@@ -8,4 +8,15 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="crimson_yellow">
+        <item name="android:fontFamily">@font/crimson_text</item>
+        <item name="android:textColor">@color/main_yellow</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="garamond_yellow">
+        <item name="android:fontFamily">@font/eb_garamond</item>
+        <item name="android:textColor">@color/main_yellow</item>
+        <item name="android:textStyle">normal</item>
+    </style>
 </resources>

@@ -1,16 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <style name="result">
-        <item name="android:fontFamily">@font/eb_garamond</item>
-        <item name="android:textColor">#F9BD25</item>
-    </style>
-
-    <style name="result_question" parent="result">
+    <style name="result_question" parent="garamond_yellow">
         <item name="android:textSize">18sp</item>
     </style>
 
-    <style name="result_answer" parent="result">
+    <style name="result_answer" parent="garamond_yellow">
         <item name="android:textSize">21sp</item>
     </style>
 

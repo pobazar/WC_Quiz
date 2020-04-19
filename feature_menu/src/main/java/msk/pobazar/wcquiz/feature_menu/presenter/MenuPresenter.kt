@@ -3,6 +3,7 @@ package msk.pobazar.wcquiz.feature_menu.presenter
 import moxy.InjectViewState
 import msk.pobazar.wcquiz.core.base.BasePresenter
 import msk.pobazar.wcquiz.core.navigation.Router
+import msk.pobazar.wcquiz.core.navigation.screens.NavigationDialog
 import msk.pobazar.wcquiz.core.navigation.screens.NavigationScreen
 import msk.pobazar.wcquiz.core.navigation.transitionsParams.GameParams
 import javax.inject.Inject
@@ -21,5 +22,9 @@ class MenuPresenter @Inject constructor(
 
     fun onRatingClick() {
         router.show(NavigationScreen.Rating)
+    }
+
+    fun onChangeNameClick() {
+        router.openDialog(NavigationDialog.ChangeName)
     }
 }

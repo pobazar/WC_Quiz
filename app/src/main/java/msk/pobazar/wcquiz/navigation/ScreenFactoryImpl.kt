@@ -7,6 +7,7 @@ import androidx.fragment.app.Fragment
 import msk.pobazar.wcquiz.core.navigation.screens.NavigationDialog
 import msk.pobazar.wcquiz.core.navigation.screens.NavigationScreen
 import msk.pobazar.wcquiz.feature_game.ui.GameFragment
+import msk.pobazar.wcquiz.feature_menu.dialog.ui.ChangeNameDialogFragment
 import msk.pobazar.wcquiz.feature_menu.ui.MenuFragment
 import msk.pobazar.wcquiz.feature_menu.ui.SplashFragment
 import msk.pobazar.wcquiz.feature_mods.ui.ModsFragment
@@ -45,7 +46,11 @@ class ScreenFactoryImpl @Inject constructor(
     }
 
     override fun createDialog(dialog: NavigationDialog): SupportAppDialog {
-        TODO("Not yet implemented")
+        return when (dialog) {
+            is NavigationDialog.ChangeName -> dialog {
+                ChangeNameDialogFragment.newInstance()
+            }
+        }
     }
 
     private fun fragment(

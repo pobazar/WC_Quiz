@@ -1,7 +1,7 @@
 package msk.pobazar.wcquiz.feature_menu.ui
 
 import android.os.Bundle
-import msk.pobazar.wcquiz.core.base.BaseActivity
+import msk.pobazar.wcquiz.core.base.ui.BaseActivity
 import msk.pobazar.wcquiz.core.navigation.screens.NavigationScreen
 
 class SplashActivity : BaseActivity() {

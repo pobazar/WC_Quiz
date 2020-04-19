@@ -1,5 +1,7 @@
 package msk.pobazar.wcquiz.domain.interactor
 
+import io.reactivex.Completable
+import io.reactivex.schedulers.Schedulers
 import msk.pobazar.wcquiz.domain.model.User
 import msk.pobazar.wcquiz.domain.repo.local.UserRepoLocal
 import msk.pobazar.wcquiz.domain.repo.remote.RatingRepoRemote
@@ -13,7 +15,7 @@ class UserInteractor @Inject constructor(
 
     fun getUser(): User {
         return if (userRepoLocal.id == "") {
-            val id = UUID.randomUUID().toString()
+            val id = UUID.randomUUID().toString().takeLast(17)
             userRepoLocal.name = id
             userRepoLocal.id = id
             User(
@@ -27,8 +29,9 @@ class UserInteractor @Inject constructor(
             )
     }
 
-    fun setName(name: String) {
+    fun updateName(name: String): Completable {
         userRepoLocal.name = name
-        ratingRepoRemote.updateUserName(name, getUser().id)
+        return ratingRepoRemote.updateUserName(name, getUser().id)
+            .subscribeOn(Schedulers.io())
     }
 }

@@ -1,4 +1,4 @@
-package msk.pobazar.wcquiz.core.base
+package msk.pobazar.wcquiz.core.base.ui
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

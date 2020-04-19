@@ -3,6 +3,6 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#d81b60</color>
-    <color name="pb_start">#F9BD25</color>
+    <color name="main_yellow">#F9BD25</color>
     <color name="pb_finish">#B5261D</color>
 </resources>

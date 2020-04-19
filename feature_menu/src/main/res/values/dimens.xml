@@ -2,4 +2,6 @@
 <resources>
     <dimen name="button_height">36dp</dimen>
     <dimen name="button_width">162dp</dimen>
+    <dimen name="pencil_height">18dp</dimen>
+    <dimen name="pencil_width">18dp</dimen>
 </resources>

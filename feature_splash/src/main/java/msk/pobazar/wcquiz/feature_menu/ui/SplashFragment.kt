@@ -3,7 +3,7 @@ package msk.pobazar.wcquiz.feature_menu.ui
 import kotlinx.android.synthetic.main.fragment_splash.*
 import moxy.presenter.InjectPresenter
 import moxy.presenter.ProvidePresenter
-import msk.pobazar.wcquiz.core.base.BaseFragment
+import msk.pobazar.wcquiz.core.base.ui.BaseFragment
 import msk.pobazar.wcquiz.core.extensions.setOnClick
 import msk.pobazar.wcquiz.core.extensions.visible
 import msk.pobazar.wcquiz.feature_menu.presenter.SplashPresenter

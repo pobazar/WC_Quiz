@@ -4,8 +4,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.fragment_result.*
 import moxy.presenter.InjectPresenter
 import moxy.presenter.ProvidePresenter
-import msk.pobazar.wcquiz.core.base.BaseFragment
 import msk.pobazar.wcquiz.core.base.adapter.ViewItem
+import msk.pobazar.wcquiz.core.base.ui.BaseFragment
 import msk.pobazar.wcquiz.core.extensions.setOnClick
 import msk.pobazar.wcquiz.feature_result.R
 import msk.pobazar.wcquiz.feature_result.presenter.ResultPresenter

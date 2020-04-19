@@ -4,7 +4,7 @@ import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.fragment_game.*
 import moxy.presenter.InjectPresenter
 import moxy.presenter.ProvidePresenter
-import msk.pobazar.wcquiz.core.base.BaseFragment
+import msk.pobazar.wcquiz.core.base.ui.BaseFragment
 import msk.pobazar.wcquiz.core.delegates.FragmentArgument
 import msk.pobazar.wcquiz.core.extensions.setOnClick
 import msk.pobazar.wcquiz.core.extensions.visible

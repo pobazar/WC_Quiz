@@ -3,7 +3,7 @@ package msk.pobazar.wcquiz.feature_menu.ui
 import kotlinx.android.synthetic.main.fragment_menu.*
 import moxy.presenter.InjectPresenter
 import moxy.presenter.ProvidePresenter
-import msk.pobazar.wcquiz.core.base.BaseFragment
+import msk.pobazar.wcquiz.core.base.ui.BaseFragment
 import msk.pobazar.wcquiz.core.extensions.setOnClick
 import msk.pobazar.wcquiz.feature_menu.R
 import msk.pobazar.wcquiz.feature_menu.presenter.MenuPresenter
@@ -26,6 +26,7 @@ class MenuFragment : BaseFragment(), MenuView {
         btnMenuQuickPlay.setOnClick { presenter.onQuickGameClick() }
         btnMenuMods.setOnClick { presenter.onModsClick() }
         btnMenuRating.setOnClick { presenter.onRatingClick() }
+        ivMenuChangeName.setOnClick { presenter.onChangeNameClick() }
     }
 
     companion object {

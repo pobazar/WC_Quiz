@@ -3,7 +3,7 @@ package msk.pobazar.wcquiz.feature_mods.ui
 import kotlinx.android.synthetic.main.fragment_mods.*
 import moxy.presenter.InjectPresenter
 import moxy.presenter.ProvidePresenter
-import msk.pobazar.wcquiz.core.base.BaseFragment
+import msk.pobazar.wcquiz.core.base.ui.BaseFragment
 import msk.pobazar.wcquiz.core.extensions.setOnClick
 import msk.pobazar.wcquiz.domain.model.Theme
 import msk.pobazar.wcquiz.feature_mods.R

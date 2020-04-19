@@ -1,20 +1,20 @@
-package msk.pobazar.wcquiz.core.base
+package msk.pobazar.wcquiz.core.base.ui
 
+import android.app.Dialog
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import moxy.MvpAppCompatFragment
-import msk.pobazar.wcquiz.core.delegates.FragmentArgument
-import msk.pobazar.wcquiz.core.navigation.transitionsParams.TransitionsParams
+import android.view.Window
+import moxy.MvpAppCompatDialogFragment
 import msk.pobazar.wcquiz.domain.di.DependenciesInjector
 import toothpick.config.Module
 
-abstract class BaseFragment : MvpAppCompatFragment() {
+abstract class BaseDialogFragment : MvpAppCompatDialogFragment() {
 
     protected abstract val layout: Int
-
-    open val params: TransitionsParams by FragmentArgument()
 
     open val moduleProvider: (Module) -> Unit = {}
 
@@ -39,6 +39,15 @@ abstract class BaseFragment : MvpAppCompatFragment() {
         initUx()
     }
 
+    override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
+        val dialog = super.onCreateDialog(savedInstanceState)
+        return dialog.apply {
+            window?.requestFeature(Window.FEATURE_NO_TITLE)
+            window?.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+            setCanceledOnTouchOutside(true)
+        }
+    }
+
     override fun onDestroy() {
         super.onDestroy()
         injector.closeScope(this)
@@ -47,5 +56,4 @@ abstract class BaseFragment : MvpAppCompatFragment() {
     protected abstract fun initUi()
 
     protected abstract fun initUx()
-
 }
