@@ -1,8 +1,10 @@
 <resources>
-    <string name="user_name">Имя игрока</string>
+    <string name="user_name">Никнейм</string>
     <string name="date">Дата</string>
-    <string name="count_right">Кол-во правильных</string>
-    <string name="time">Время</string>
+    <string name="count_right_percent">Верные\n ответы (%)</string>
+    <string name="time">Среднее\nвремя (с)</string>
     <string name="score">Очки</string>
-    <string name="league">Лига</string>
+    <string name="time_value">2.5</string>
+    <string name="count_right_percent_value">100</string>
+    <string name="score_value">2500</string>
 </resources>

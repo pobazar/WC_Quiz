@@ -27,11 +27,11 @@ class RatingItemAdapter : AdapterDelegate {
             item as RatingViewItem
             with(itemView)
             {
-                tvRatingUserName.text = item.name
-                tvRatingDate.text = item.date
-                tvRatingCountRight.text = item.countRight
-                tvRatingTime.text = item.time
-                tvRatingScore.text = item.score
+                tvRatingItemUserName.text = item.name
+                tvRatingItemDate.text = item.date
+                tvRatingItemCountRight.text = item.countRight
+                tvRatingItemTime.text = item.time
+                tvRatingItemScore.text = item.score
                 //TODO Закрасить строку юзера
             }
         }

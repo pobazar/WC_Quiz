@@ -1,2 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources></resources>
+<resources>
+
+    <style name="rating_text">
+        <item name="android:fontFamily">@font/eb_garamond</item>
+        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="main_text" parent="rating_text">
+        <item name="android:textColor">@color/main_text</item>
+    </style>
+
+    <style name="data_text" parent="rating_text">
+        <item name="android:textColor">@color/data_text</item>
+    </style>
+</resources>
