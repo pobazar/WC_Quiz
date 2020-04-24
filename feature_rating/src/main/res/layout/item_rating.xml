@@ -12,17 +12,16 @@
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:gravity="center_vertical"
         android:orientation="horizontal"
-        android:paddingStart="16dp"
-        android:paddingEnd="24dp">
+        android:paddingStart="16dp">
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center_vertical"
-            android:layout_weight="40"
+            android:layout_weight="86"
             android:orientation="vertical"
             android:paddingTop="16dp"
             android:paddingBottom="6dp">
@@ -31,6 +30,9 @@
                 android:id="@+id/tvRatingItemUserName"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:paddingEnd="16dp"
                 android:text="@string/user_name"
                 android:textAppearance="@style/main_text" />
 
@@ -38,7 +40,7 @@
                 android:id="@+id/tvRatingItemDate"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:layout_marginTop="1dp"
+                android:maxLines="1"
                 android:text="@string/date"
                 android:textAppearance="@style/data_text" />
         </LinearLayout>
@@ -66,8 +68,9 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="25"
-            android:gravity="center_horizontal"
+            android:gravity="start"
             android:text="@string/time_value"
             android:textAppearance="@style/main_text" />
+
     </LinearLayout>
 </LinearLayout>

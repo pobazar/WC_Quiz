@@ -1,5 +1,7 @@
 package msk.pobazar.wcquiz.feature_rating.mapper
 
+import msk.pobazar.wcquiz.core.extensions.DATE_FORMAT_DD_MM_YY_HH_MM
+import msk.pobazar.wcquiz.core.extensions.formatDateToString
 import msk.pobazar.wcquiz.domain.model.Rating
 import msk.pobazar.wcquiz.feature_rating.viewData.RatingViewData
 import msk.pobazar.wcquiz.feature_rating.viewData.RatingViewItem
@@ -24,6 +26,7 @@ class RatingMapper {
                         toViewData(ratings.second, true)
                     )
                 }
+                .filter { it.score != "0" }
                 .sortedByDescending { it.score.toFloat() }
         )
 
@@ -34,7 +37,7 @@ class RatingMapper {
                 score = score.toLong().toString(),
                 time = ((time / 100).toFloat() / 10).toString(),
                 name = name,
-                date = date.toString(),
+                date = date.formatDateToString(DATE_FORMAT_DD_MM_YY_HH_MM),
                 userRating = isUser
             )
         }
