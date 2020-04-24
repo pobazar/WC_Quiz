@@ -5,6 +5,7 @@ import msk.pobazar.wcquiz.core.extensions.formatDateToString
 import msk.pobazar.wcquiz.domain.model.Rating
 import msk.pobazar.wcquiz.feature_rating.viewData.RatingViewData
 import msk.pobazar.wcquiz.feature_rating.viewData.RatingViewItem
+import msk.pobazar.wcquiz.feature_rating.viewData.RatingViewTitle
 import toothpick.InjectConstructor
 
 @InjectConstructor
@@ -12,6 +13,7 @@ class RatingMapper {
 
     fun toViewData(ratings: Pair<List<Rating>, Rating>): RatingViewData =
         RatingViewData(
+            title = RatingViewTitle(),
             items = ratings.first
                 .toMutableList()
                 .run {

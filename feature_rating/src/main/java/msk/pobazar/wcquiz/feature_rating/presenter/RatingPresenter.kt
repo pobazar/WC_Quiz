@@ -4,6 +4,7 @@ import io.reactivex.rxkotlin.Observables
 import io.reactivex.rxkotlin.subscribeBy
 import moxy.InjectViewState
 import msk.pobazar.wcquiz.core.base.BasePresenter
+import msk.pobazar.wcquiz.core.base.adapter.ViewItem
 import msk.pobazar.wcquiz.domain.interactor.RatingInteractor
 import msk.pobazar.wcquiz.domain.interactor.UserInteractor
 import msk.pobazar.wcquiz.domain.repo.device.NetworkManager
@@ -55,8 +56,13 @@ class RatingPresenter @Inject constructor(
                 .subscribeBy(
                     onNext = {
                         isRefresh = false
+                        val results: MutableList<ViewItem> = mutableListOf()
                         viewState.setResults(
-                            ratingMapper.toViewData(it).items
+                            with(ratingMapper.toViewData(it)) {
+                                results.add(title)
+                                results.addAll(items)
+                                results
+                            }
                         )
                     },
                     onError = {

@@ -1,5 +1,5 @@
 <resources>
-    <string name="user_name">Никнейм</string>
+    <string name="nickname">Никнейм</string>
     <string name="date">Дата</string>
     <string name="count_right_percent">Верные\n ответы (%)</string>
     <string name="time">Среднее\nвремя (с)</string>

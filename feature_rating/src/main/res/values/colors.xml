@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="divider">#CCDFDFDF</color>
-    <color name="main_text">#E7D5A7</color>
-    <color name="data_text">#A89B7B</color>
+    <color name="main_item_text">#E7D5A7</color>
+    <color name="data_item_text">#A89B7B</color>
+    <color name="title_text">#A89B7B</color>
 </resources>

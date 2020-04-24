@@ -40,7 +40,7 @@ class RatingInteractor @Inject constructor(
                     ratingRepoRemote
                         .setNew(
                             rating = Rating(
-                                countRight = countRight / countAll,
+                                countRight = countRight,
                                 score = score,
                                 time = time,
                                 name = userInteractor.getUser().name,
