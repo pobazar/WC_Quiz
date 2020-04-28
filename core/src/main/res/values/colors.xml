@@ -5,4 +5,6 @@
     <color name="colorAccent">#d81b60</color>
     <color name="main_yellow">#F9BD25</color>
     <color name="pb_finish">#B5261D</color>
+    <color name="toolbar_text">#e7d5a7</color>
+    <color name="toolbar_bg">#292725</color>
 </resources>

@@ -5,6 +5,7 @@ import io.reactivex.rxkotlin.subscribeBy
 import moxy.InjectViewState
 import msk.pobazar.wcquiz.core.base.BasePresenter
 import msk.pobazar.wcquiz.core.base.adapter.ViewItem
+import msk.pobazar.wcquiz.core.navigation.Router
 import msk.pobazar.wcquiz.domain.interactor.RatingInteractor
 import msk.pobazar.wcquiz.domain.interactor.UserInteractor
 import msk.pobazar.wcquiz.domain.repo.device.NetworkManager
@@ -16,6 +17,7 @@ import javax.inject.Inject
 
 @InjectViewState
 class RatingPresenter @Inject constructor(
+    private val router: Router,
     private val ratingInteractor: RatingInteractor,
     private val userInteractor: UserInteractor,
     private val networkManager: NetworkManager,
@@ -41,6 +43,10 @@ class RatingPresenter @Inject constructor(
     fun onRefresh() {
         isRefresh = true
         loadRating()
+    }
+
+    fun onClickBack() {
+        router.exit()
     }
 
     private fun loadRating() {

@@ -3,14 +3,21 @@
 
     <style name="game_count_question" parent="crimson_yellow">
         <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/count_question</item>
     </style>
 
     <style name="game_button" parent="crimson_yellow">
         <item name="android:textSize">18sp</item>
     </style>
 
+    <style name="game_button_checked" parent="crimson_yellow">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/answer_checked</item>
+    </style>
+
     <style name="game_question" parent="crimson_yellow">
         <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/question</item>
     </style>
 
 </resources>

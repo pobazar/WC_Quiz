@@ -35,6 +35,9 @@ class RatingFragment : BaseFragment(), RatingView {
         swipeRefresh.setOnRefreshListener {
             presenter.onRefresh()
         }
+        toolbar.setNavigationOnClickListener {
+            presenter.onClickBack()
+        }
     }
 
     override fun setResults(results: List<ViewItem>) {
