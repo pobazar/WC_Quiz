@@ -14,4 +14,6 @@ interface RatingView : MvpView {
     fun showError(type: ErrorType)
 
     fun showProgressSwipeRefresh(isShow: Boolean)
+
+    fun showToolbarTitle(isShow: Boolean)
 }

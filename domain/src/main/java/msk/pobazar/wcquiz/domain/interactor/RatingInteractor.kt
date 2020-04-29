@@ -10,6 +10,7 @@ import javax.inject.Inject
 
 class RatingInteractor @Inject constructor(
     private val userInteractor: UserInteractor,
+    private val scoreInteractor: ScoreInteractor,
     private val ratingRepoRemote: RatingRepoRemote
 ) {
 
@@ -33,7 +34,7 @@ class RatingInteractor @Inject constructor(
 
     fun update(countRight: Int, countAll: Int, time: Long, winStrick: Int, date: Date): Completable {
         val id = userInteractor.getUser().id
-        val score = calculationScore(countRight, countAll, time, winStrick)
+        val score = scoreInteractor.calculate(countRight, countAll, time, winStrick)
         return getById(id)
             .flatMapCompletable {
                 if (score > it.score)
@@ -41,12 +42,12 @@ class RatingInteractor @Inject constructor(
                         .setNew(
                             rating = Rating(
                                 countRight = countRight,
+                                countAll = countAll,
                                 score = score,
                                 time = time,
                                 name = userInteractor.getUser().name,
                                 date = date
                             ),
-                            countAll = countAll,
                             winStrick = winStrick,
                             id = id
                         )
@@ -54,9 +55,5 @@ class RatingInteractor @Inject constructor(
                 else
                     Completable.complete()
             }
-    }
-
-    private fun calculationScore(countRight: Int, countAll: Int, time: Long, winStrick: Int): Float {
-        return ((countRight.toFloat() / countAll) / time) * winStrick * 10_000_000F
     }
 }

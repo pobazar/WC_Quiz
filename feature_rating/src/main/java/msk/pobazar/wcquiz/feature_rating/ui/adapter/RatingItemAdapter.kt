@@ -27,12 +27,14 @@ class RatingItemAdapter : AdapterDelegate {
             item as RatingViewItem
             with(itemView)
             {
-                tvRatingItemUserName.text = item.name
-                tvRatingItemDate.text = item.date
-                tvRatingItemCountRight.text = item.countRight
-                tvRatingItemTime.text = item.time
-                tvRatingItemScore.text = item.score
-                //TODO Закрасить строку юзера
+                with(item) {
+                    tvRatingItemUserName.text = name
+                    tvRatingItemDate.text = date
+                    tvRatingItemRightPercent.text = rightPercent
+                    tvRatingItemTime.text = time
+                    tvRatingItemScore.text = score
+                    //TODO Закрасить строку юзера
+                }
             }
         }
     }

@@ -37,8 +37,8 @@ class ResultFragment : BaseFragment(), ResultView {
         adapter.replace(results)
     }
 
-    override fun setCountRight(countRight: String) {
-        tvResultCountRight.text = countRight
+    override fun setCountRight(score: String) {
+        tvResultCountRight.text = score
     }
 
     companion object {

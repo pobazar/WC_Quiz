@@ -10,5 +10,5 @@ interface ResultView : MvpView {
 
     fun setResults(results: List<ViewItem>)
 
-    fun setCountRight(countRight: String)
+    fun setCountRight(score: String)
 }

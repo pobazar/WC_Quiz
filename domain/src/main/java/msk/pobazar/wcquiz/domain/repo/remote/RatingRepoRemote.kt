@@ -12,7 +12,7 @@ interface RatingRepoRemote {
 
     fun getById(id: String): Observable<Rating>
 
-    fun setNew(rating: Rating, countAll: Int, winStrick: Int, id: String): Completable
+    fun setNew(rating: Rating, winStrick: Int, id: String): Completable
 
     fun updateUserName(name: String, id: String): Completable
 }

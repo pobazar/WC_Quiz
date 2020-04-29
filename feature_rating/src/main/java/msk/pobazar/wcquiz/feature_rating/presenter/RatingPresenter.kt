@@ -25,6 +25,8 @@ class RatingPresenter @Inject constructor(
     private val ratingMapper: RatingMapper
 ) : BasePresenter<RatingView>() {
 
+    private var isShowTitleToolbar: Boolean = false
+
     private var isRefresh = true
         set(value) {
             field = value
@@ -47,6 +49,25 @@ class RatingPresenter @Inject constructor(
 
     fun onClickBack() {
         router.exit()
+    }
+
+    fun onScrolled(offset: Int, firstChild: Int) {
+        //TODO допилить
+        if (isShowTitleToolbar) {
+            if (firstChild > 0) {
+                if (isShowTitleToolbar) {
+                    viewState.showToolbarTitle(false)
+                    isShowTitleToolbar = false
+                }
+            }
+        } else {
+            if (offset > 0) {
+                if (!isShowTitleToolbar) {
+                    viewState.showToolbarTitle(true)
+                    isShowTitleToolbar = true
+                }
+            }
+        }
     }
 
     private fun loadRating() {

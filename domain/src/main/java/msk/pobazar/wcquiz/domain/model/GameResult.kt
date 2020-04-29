@@ -11,6 +11,9 @@ data class GameResult(
     val countRight: Int
         get() = results.count { it.isRight }
 
+    val countAll: Int
+        get() = results.size
+
     class Result(
         val question: String,
         val answerRight: String,

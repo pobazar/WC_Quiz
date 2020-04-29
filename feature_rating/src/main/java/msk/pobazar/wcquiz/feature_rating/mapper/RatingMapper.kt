@@ -2,6 +2,7 @@ package msk.pobazar.wcquiz.feature_rating.mapper
 
 import msk.pobazar.wcquiz.core.extensions.DATE_FORMAT_DD_MM_YY_HH_MM
 import msk.pobazar.wcquiz.core.extensions.formatDateToString
+import msk.pobazar.wcquiz.core.extensions.toPercent
 import msk.pobazar.wcquiz.domain.model.Rating
 import msk.pobazar.wcquiz.feature_rating.viewData.RatingViewData
 import msk.pobazar.wcquiz.feature_rating.viewData.RatingViewItem
@@ -35,7 +36,7 @@ class RatingMapper {
     private fun toViewData(rating: Rating, isUser: Boolean) =
         with(rating) {
             RatingViewItem(
-                countRight = countRight.toString(),
+                rightPercent = (countRight.toFloat() / countAll.toFloat()).toPercent(),
                 score = score.toLong().toString(),
                 time = ((time / 100).toFloat() / 10).toString(),
                 name = name,

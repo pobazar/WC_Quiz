@@ -38,6 +38,13 @@ class RatingFragment : BaseFragment(), RatingView {
         toolbar.setNavigationOnClickListener {
             presenter.onClickBack()
         }
+        //TODO()
+        rvRating.setOnScrollChangeListener { _, _, _, _, _ ->
+            presenter.onScrolled(
+                offset = rvRating.computeVerticalScrollOffset(),
+                firstChild = (rvRating.layoutManager as LinearLayoutManager).findFirstVisibleItemPosition()
+            )
+        }
     }
 
     override fun setResults(results: List<ViewItem>) {
@@ -51,6 +58,10 @@ class RatingFragment : BaseFragment(), RatingView {
 
     override fun showProgressSwipeRefresh(isShow: Boolean) {
         swipeRefresh.isRefreshing = isShow
+    }
+
+    override fun showToolbarTitle(isShow: Boolean) {
+        toolbarRatingTitle.visible(isShow)
     }
 
     companion object {
