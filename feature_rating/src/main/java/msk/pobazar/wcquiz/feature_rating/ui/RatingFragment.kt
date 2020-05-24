@@ -1,5 +1,7 @@
 package msk.pobazar.wcquiz.feature_rating.ui
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.fragment_rating.*
 import moxy.presenter.InjectPresenter
@@ -30,6 +32,7 @@ class RatingFragment : BaseFragment(), RatingView {
         rvRating.layoutManager = LinearLayoutManager(context)
     }
 
+    @RequiresApi(Build.VERSION_CODES.M)
     override fun initUx() {
         errorRating.onActionClick { presenter.onRetryClick() }
         swipeRefresh.setOnRefreshListener {
@@ -38,11 +41,9 @@ class RatingFragment : BaseFragment(), RatingView {
         toolbar.setNavigationOnClickListener {
             presenter.onClickBack()
         }
-        //TODO()
         rvRating.setOnScrollChangeListener { _, _, _, _, _ ->
             presenter.onScrolled(
-                offset = rvRating.computeVerticalScrollOffset(),
-                firstChild = (rvRating.layoutManager as LinearLayoutManager).findFirstVisibleItemPosition()
+                offset = rvRating.computeVerticalScrollOffset()
             )
         }
     }

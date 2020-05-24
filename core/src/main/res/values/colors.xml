@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#d81b60</color>
     <color name="main_yellow">#F9BD25</color>
     <color name="pb_finish">#B5261D</color>
     <color name="toolbar_text">#e7d5a7</color>
     <color name="toolbar_bg">#292725</color>
     <color name="divider">#CCDFDFDF</color>
+    <color name="answer">#e1c171</color>
+    <color name="answer_checked">#dfaa25</color>
 </resources>

@@ -6,49 +6,24 @@
     android:layout_height="match_parent"
     tools:context="msk.pobazar.wcquiz.feature_menu.ui.SplashActivity">
 
-    <ProgressBar
-        android:id="@+id/pbSplash"
-        style="?android:attr/progressBarStyle"
-        android:layout_width="150dp"
-        android:layout_height="150dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
+    <msk.pobazar.wcquiz.view_loader.LoaderView
+        android:id="@+id/loaderSplash"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/tvSplashErrorDesc"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="@string/download_failed"
-        android:textSize="24sp"
+    <msk.pobazar.wcquiz.view_error.ErrorView
+        android:id="@+id/errorSplash"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.41000003" />
-
-    <Button
-        android:id="@+id/btnSplahRetry"
-        android:layout_width="119dp"
-        android:layout_height="68dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:text="@string/try_again"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvSplashErrorDesc"
-        app:layout_constraintVertical_bias="0.23000002" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <FrameLayout
         android:id="@+id/container"

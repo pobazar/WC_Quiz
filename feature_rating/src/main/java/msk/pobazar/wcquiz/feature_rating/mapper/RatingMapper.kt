@@ -41,7 +41,7 @@ class RatingMapper {
                 time = ((time / 100).toFloat() / 10).toString(),
                 name = name,
                 date = date.formatDateToString(DATE_FORMAT_DD_MM_YY_HH_MM),
-                userRating = isUser
+                isUserRating = isUser
             )
         }
 }

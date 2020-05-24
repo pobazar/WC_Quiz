@@ -4,11 +4,11 @@ import kotlinx.android.synthetic.main.fragment_splash.*
 import moxy.presenter.InjectPresenter
 import moxy.presenter.ProvidePresenter
 import msk.pobazar.wcquiz.core.base.ui.BaseFragment
-import msk.pobazar.wcquiz.core.extensions.setOnClick
 import msk.pobazar.wcquiz.core.extensions.visible
 import msk.pobazar.wcquiz.feature_menu.presenter.SplashPresenter
 import msk.pobazar.wcquiz.feature_menu.presenter.SplashView
 import msk.pobazar.wcquiz.feature_splash.R
+import msk.pobazar.wcquiz.view_error.ErrorType
 import javax.inject.Inject
 
 class SplashFragment : BaseFragment(), SplashView {
@@ -25,16 +25,16 @@ class SplashFragment : BaseFragment(), SplashView {
     }
 
     override fun initUx() {
-        btnSplahRetry.setOnClick { presenter.onRetryClick() }
+        errorSplash.onActionClick { presenter.onRetryClick() }
+    }
+
+    override fun showError(type: ErrorType) {
+        errorSplash.type = type
+        errorSplash.visible(type != ErrorType.NONE)
     }
 
     override fun showProgress(isShow: Boolean) {
-        pbSplash.visible(isShow)
-    }
-
-    override fun showError(isShow: Boolean) {
-        tvSplashErrorDesc.visible(isShow)
-        btnSplahRetry.visible(isShow)
+        loaderSplash.visible(isShow)
     }
 
     companion object {

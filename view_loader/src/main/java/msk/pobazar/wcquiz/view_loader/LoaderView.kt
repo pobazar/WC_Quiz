@@ -10,10 +10,7 @@ class LoaderView @JvmOverloads constructor(
     attrs: AttributeSet? = null
 ) : FrameLayout(context, attrs) {
 
-
-
     init {
-
         inflate(
             layoutId = R.layout.view_load_holder,
             attachToRoot = true
@@ -22,9 +19,8 @@ class LoaderView @JvmOverloads constructor(
     }
 
     private fun initViewParams() {
-
         isFocusable = true
         isClickable = true
-        setBackgroundResource(android.R.color.white)
+        setBackgroundResource(R.drawable.bg_main)
     }
 }

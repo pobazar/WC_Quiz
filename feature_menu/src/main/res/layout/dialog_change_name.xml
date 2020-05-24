@@ -47,6 +47,8 @@
         android:layout_marginEnd="24dp"
         android:layout_marginBottom="94dp"
         android:autofillHints="@string/user_name"
+        android:textColorHighlight="@color/main_yellow"
+        android:shadowColor="@color/main_yellow"
         android:ems="10"
         android:inputType="textPersonName"
         android:text="@string/user_name"

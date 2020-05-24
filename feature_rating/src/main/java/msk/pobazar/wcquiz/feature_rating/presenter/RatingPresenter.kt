@@ -51,24 +51,8 @@ class RatingPresenter @Inject constructor(
         router.exit()
     }
 
-    fun onScrolled(offset: Int, firstChild: Int) {
-        //TODO допилить
+    fun onScrolled(offset: Int) {
         viewState.showToolbarTitle(offset > 0)
-//        if (isShowTitleToolbar) {
-//            if (offset <= 0) {
-//                if (isShowTitleToolbar) {
-//                    viewState.showToolbarTitle(false)
-//                    isShowTitleToolbar = false
-//                }
-//            }
-//        } else {
-//            if (offset > 0) {
-//                if (!isShowTitleToolbar) {
-//                    viewState.showToolbarTitle(true)
-//                    isShowTitleToolbar = true
-//                }
-//            }
-//        }
     }
 
     private fun loadRating() {

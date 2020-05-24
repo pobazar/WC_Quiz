@@ -1,5 +1,6 @@
 package msk.pobazar.wcquiz.feature_game.ui
 
+import android.graphics.PorterDuff
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.fragment_game.*
 import moxy.presenter.InjectPresenter
@@ -15,6 +16,7 @@ import msk.pobazar.wcquiz.feature_game.presenter.GameView
 import msk.pobazar.wcquiz.view_error.ErrorType
 import toothpick.config.Module
 import javax.inject.Inject
+
 
 class GameFragment : BaseFragment(), GameView {
 
@@ -68,7 +70,9 @@ class GameFragment : BaseFragment(), GameView {
 
     override fun setTimer(progress: Int, color: Int) {
         pbGameTimer.progress = progress
-//        pbGameTimer.progressTintList = color
+        pbGameTimer.progressDrawable = pbGameTimer.progressDrawable.mutate().apply {
+            setColorFilter(color, PorterDuff.Mode.SRC_IN)
+        }
     }
 
     override fun showError(type: ErrorType) {

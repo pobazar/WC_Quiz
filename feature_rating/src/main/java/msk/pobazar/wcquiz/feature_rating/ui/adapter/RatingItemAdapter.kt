@@ -1,5 +1,6 @@
 package msk.pobazar.wcquiz.feature_rating.ui.adapter
 
+import android.graphics.Color
 import android.view.View
 import android.view.ViewGroup
 import kotlinx.android.extensions.LayoutContainer
@@ -33,7 +34,8 @@ class RatingItemAdapter : AdapterDelegate {
                     tvRatingItemRightPercent.text = rightPercent
                     tvRatingItemTime.text = time
                     tvRatingItemScore.text = score
-                    //TODO Закрасить строку юзера
+                    if (isUserRating)
+                        tvRatingItemUserName.setTextColor(Color.parseColor("#F9BD25"))
                 }
             }
         }

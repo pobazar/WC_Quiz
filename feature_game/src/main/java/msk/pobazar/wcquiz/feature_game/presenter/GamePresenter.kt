@@ -179,6 +179,6 @@ class GamePresenter @Inject constructor(
 
     companion object {
         private const val TICK = 100
-        private const val PERCENT_FINISH_COLOR = 0.85F
+        private const val PERCENT_FINISH_COLOR = 0.75F
     }
 }

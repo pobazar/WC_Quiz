@@ -25,18 +25,20 @@
         android:layout_gravity="center"
         android:layout_marginTop="30dp"
         android:gravity="center"
-        android:textSize="16sp"
         android:textAppearance="@style/crimson_yellow"
+        android:textColor="@color/answer"
+        android:textSize="16sp"
         tools:text="@string/network_error" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tvErrorSubtitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="@style/crimson_yellow"
         android:layout_gravity="center"
         android:layout_marginTop="10dp"
         android:gravity="center"
+        android:textAppearance="@style/crimson_yellow"
+        android:textColor="@color/answer"
         android:textSize="14sp"
         tools:text="@string/network_error_description" />
 
@@ -45,13 +47,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
+        android:background="@drawable/main_button"
         android:gravity="center"
         android:paddingStart="20dp"
         android:paddingTop="10dp"
         android:paddingEnd="20dp"
         android:paddingBottom="10dp"
-        android:background="@drawable/main_button"
         android:textAppearance="@style/crimson_yellow"
+        android:textColor="@drawable/game_button_text_color"
         android:textSize="14sp"
         app:strokeWidth="2dp"
         tools:text="@string/retry" />

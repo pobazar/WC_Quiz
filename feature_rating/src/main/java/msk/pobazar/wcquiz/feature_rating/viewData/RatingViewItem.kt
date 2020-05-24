@@ -8,5 +8,5 @@ class RatingViewItem(
     val time: String,
     val name: String,
     val date: String,
-    val userRating: Boolean
+    val isUserRating: Boolean
 ) : ViewItem

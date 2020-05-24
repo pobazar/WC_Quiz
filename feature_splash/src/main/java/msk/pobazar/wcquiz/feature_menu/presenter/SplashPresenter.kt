@@ -8,6 +8,7 @@ import msk.pobazar.wcquiz.core.navigation.Router
 import msk.pobazar.wcquiz.core.navigation.screens.NavigationScreen
 import msk.pobazar.wcquiz.domain.interactor.QuestionsInteractor
 import msk.pobazar.wcquiz.domain.repo.device.NetworkManager
+import msk.pobazar.wcquiz.view_error.ErrorType
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -33,7 +34,7 @@ class SplashPresenter @Inject constructor(
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnSubscribe {
                     viewState.showProgress(true)
-                    viewState.showError(false)
+                    viewState.showError(ErrorType.NONE)
                 }
                 .subscribeBy(
                     onNext = {
@@ -42,14 +43,14 @@ class SplashPresenter @Inject constructor(
                     },
                     onError = {
                         viewState.showProgress(false)
-                        viewState.showError(true)
+                        viewState.showError(ErrorType.ERROR_NETWORK_UNAVAILABLE)
                         Timber.e(it)
                     }
                 )
                 .bind()
         else {
             viewState.showProgress(false)
-            viewState.showError(true)
+            viewState.showError(ErrorType.ERROR_NETWORK_UNAVAILABLE)
         }
     }
 }

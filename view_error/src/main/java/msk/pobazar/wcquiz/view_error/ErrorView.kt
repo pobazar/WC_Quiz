@@ -20,7 +20,6 @@ class ErrorView @JvmOverloads constructor(
             layoutId = R.layout.view_error_typed,
             attachToRoot = true
         )
-
         initViewParams()
     }
 
@@ -44,6 +43,6 @@ class ErrorView @JvmOverloads constructor(
         gravity = Gravity.CENTER
         isFocusable = true
         isClickable = true
-        setBackgroundResource(android.R.color.white)
+        setBackgroundResource(R.drawable.bg_main)
     }
 }
