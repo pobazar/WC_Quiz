@@ -6,6 +6,6 @@
     </style>
 
     <style name="mods_title" parent="garamond_yellow">
-        <item name="android:textSize">22sp</item>
+        <item name="android:textSize">26sp</item>
     </style>
 </resources>

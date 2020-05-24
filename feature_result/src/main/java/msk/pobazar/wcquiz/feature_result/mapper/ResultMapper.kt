@@ -26,11 +26,11 @@ class ResultMapper @Inject constructor(
                     question = it.question,
                     answerRight = it.answerRight,
                     image = it.image,
-                    color = resourceManager.getColor(
+                    background = resourceManager.getDrawable(
                         if (it.isRight)
-                            R.color.right_answer
+                            R.drawable.result_win_border
                         else
-                            R.color.wrong_answer
+                            R.drawable.result_lose_border
                     ),
                     showAnswer = isShowAnswer
                 )

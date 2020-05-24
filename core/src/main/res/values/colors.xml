@@ -7,4 +7,5 @@
     <color name="pb_finish">#B5261D</color>
     <color name="toolbar_text">#e7d5a7</color>
     <color name="toolbar_bg">#292725</color>
+    <color name="divider">#CCDFDFDF</color>
 </resources>

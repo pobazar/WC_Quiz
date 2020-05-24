@@ -38,28 +38,29 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1.51"
-                android:orientation="vertical">
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:orientation="vertical"
+                android:layout_weight="1.51">
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvResultItemQuestion"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginStart="12dp"
-                    android:layout_marginTop="14dp"
-                    android:layout_weight="1"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginEnd="12dp"
                     android:text="@string/question"
                     android:textAppearance="@style/result_question" />
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/tvResultItemAnswer"
                     android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
+                    android:layout_height="wrap_content"
                     android:layout_marginStart="12dp"
-                    android:layout_marginTop="30dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="4dp"
                     android:layout_marginBottom="15dp"
-                    android:layout_weight="1"
                     android:text="@string/answer"
                     android:textAppearance="@style/result_answer"
                     android:visibility="visible" />
@@ -67,8 +68,9 @@
         </LinearLayout>
 
         <View
+            android:id="@+id/vResultBorder"
             android:layout_width="match_parent"
-            android:background="@drawable/result_win_border"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:background="@drawable/result_win_border" />
     </FrameLayout>
 </LinearLayout>

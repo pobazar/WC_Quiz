@@ -2,11 +2,21 @@
 <resources>
 
     <style name="result_question" parent="garamond_yellow">
-        <item name="android:textSize">18sp</item>
+        <item name="android:textSize">16sp</item>
     </style>
 
     <style name="result_answer" parent="garamond_yellow">
-        <item name="android:textSize">21sp</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">italic</item>
+    </style>
+
+    <style name="result_title" parent="crimson_yellow">
+        <item name="android:textSize">20sp</item>
+    </style>
+
+    <style name="result_button" parent="garamond_yellow">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">normal</item>
     </style>
 
 </resources>

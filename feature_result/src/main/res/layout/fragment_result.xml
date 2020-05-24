@@ -14,8 +14,8 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="8dp"
         android:gravity="center_horizontal"
+        android:textAppearance="@style/result_title"
         android:text="@string/result"
-        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -37,23 +37,27 @@
     <Button
         android:id="@+id/btnResultShowAnswer"
         android:layout_width="0dp"
-        android:layout_height="70dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="16dp"
         android:text="@string/show_answers"
+        android:background="@drawable/main_button"
         app:layout_constraintBottom_toBottomOf="parent"
+        android:textAppearance="@style/result_button"
         app:layout_constraintEnd_toStartOf="@+id/btnResultPlayAgain"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/btnResultPlayAgain"
         android:layout_width="0dp"
-        android:layout_height="70dp"
+        android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="16dp"
         android:text="@string/replay"
+        android:background="@drawable/main_button"
+        android:textAppearance="@style/result_button"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/btnResultShowAnswer" />
