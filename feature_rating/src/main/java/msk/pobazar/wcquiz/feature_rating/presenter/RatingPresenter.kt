@@ -6,6 +6,7 @@ import moxy.InjectViewState
 import msk.pobazar.wcquiz.core.base.BasePresenter
 import msk.pobazar.wcquiz.core.base.adapter.ViewItem
 import msk.pobazar.wcquiz.core.navigation.Router
+import msk.pobazar.wcquiz.core.navigation.screens.NavigationDialog
 import msk.pobazar.wcquiz.domain.interactor.RatingInteractor
 import msk.pobazar.wcquiz.domain.interactor.UserInteractor
 import msk.pobazar.wcquiz.domain.repo.device.NetworkManager
@@ -53,6 +54,10 @@ class RatingPresenter @Inject constructor(
 
     fun onScrolled(offset: Int) {
         viewState.showToolbarTitle(offset > 0)
+    }
+
+    fun onChangeNameClick() {
+        router.openDialog(NavigationDialog.ChangeName)
     }
 
     private fun loadRating() {

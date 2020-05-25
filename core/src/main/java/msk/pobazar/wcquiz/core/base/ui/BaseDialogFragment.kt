@@ -1,6 +1,7 @@
 package msk.pobazar.wcquiz.core.base.ui
 
 import android.app.Dialog
+import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
@@ -8,7 +9,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.Window
+import androidx.appcompat.app.AppCompatActivity
 import moxy.MvpAppCompatDialogFragment
+import msk.pobazar.wcquiz.core.dialogs.CommonDialogListener
 import msk.pobazar.wcquiz.domain.di.DependenciesInjector
 import toothpick.config.Module
 
@@ -19,6 +22,8 @@ abstract class BaseDialogFragment : MvpAppCompatDialogFragment() {
     open val moduleProvider: (Module) -> Unit = {}
 
     private val injector = DependenciesInjector()
+
+    protected var listener: CommonDialogListener? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         injector.openScope(
@@ -51,6 +56,16 @@ abstract class BaseDialogFragment : MvpAppCompatDialogFragment() {
     override fun onDestroy() {
         super.onDestroy()
         injector.closeScope(this)
+    }
+
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        if (context is AppCompatActivity) {
+            listener = context.supportFragmentManager.fragments
+                .lastOrNull { fragment ->
+                    fragment is CommonDialogListener
+                } as? CommonDialogListener
+        }
     }
 
     protected abstract fun initUi()

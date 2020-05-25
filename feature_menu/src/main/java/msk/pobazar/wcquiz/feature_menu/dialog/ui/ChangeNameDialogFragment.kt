@@ -26,7 +26,7 @@ class ChangeNameDialogFragment : BaseDialogFragment(), ChangeNameDialogView {
     lateinit var presenter: ChangeNameDialogPresenter
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(layout, container, false);
+        return inflater.inflate(layout, container, false)
     }
 
     override fun initUi() {
@@ -35,8 +35,14 @@ class ChangeNameDialogFragment : BaseDialogFragment(), ChangeNameDialogView {
 
     override fun initUx() {
         etChangeNameInputName.afterTextChanged { presenter.onNameChanged(it) }
-        tvChangeNameOk.setOnClick { presenter.onPositiveClick() }
-        tvChangeNameCancel.setOnClick { dismiss() }
+        tvChangeNameOk.setOnClick {
+            presenter.onPositiveClick()
+            listener?.onClickPositiveCommonDialog(TAG)
+        }
+        tvChangeNameCancel.setOnClick {
+            listener?.onClickNegativeCommonDialog(TAG)
+            dismiss()
+        }
     }
 
     override fun setName(name: String) {
@@ -48,10 +54,12 @@ class ChangeNameDialogFragment : BaseDialogFragment(), ChangeNameDialogView {
     }
 
     override fun closeDialog() {
+        listener?.onCancelCommonDialog(TAG)
         dismiss()
     }
 
     companion object {
+        private const val TAG = "CHANGE_NAME_DIALOG"
         fun newInstance() = ChangeNameDialogFragment()
     }
 }

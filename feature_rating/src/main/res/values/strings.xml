@@ -1,4 +1,5 @@
 <resources>
+    <string name="rating_change_name">Изменить Имя</string>
     <string name="rating">Рейтинг</string>
     <string name="nickname">Никнейм</string>
     <string name="date">Дата</string>
