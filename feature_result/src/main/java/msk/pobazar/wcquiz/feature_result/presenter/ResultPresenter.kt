@@ -35,6 +35,10 @@ class ResultPresenter @Inject constructor(
         setupResult()
     }
 
+    fun onClickBack() {
+        router.exit()
+    }
+
     private fun setupResult() {
         resultViewData = resultMapper.toViewData(
             gameResults = resultInteractor.getResult(),

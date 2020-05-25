@@ -24,16 +24,24 @@
             app:titleTextAppearance="@style/toolbar_title">
 
             <RelativeLayout
-                android:layout_width="24dp"
+                android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_alignParentEnd="true"
                 android:layout_marginEnd="4dp">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="24sp"
+                    android:textAppearance="@style/main_item_text"
+                    android:text="@string/rating" />
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/ivRatingChangeName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
                     android:src="@drawable/ic_pencil_outline_rating" />
             </RelativeLayout>
         </androidx.appcompat.widget.Toolbar>

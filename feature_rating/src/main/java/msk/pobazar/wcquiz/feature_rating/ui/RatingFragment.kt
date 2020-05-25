@@ -38,19 +38,13 @@ class RatingFragment : BaseFragment(), RatingView, CommonDialogListener {
     @RequiresApi(Build.VERSION_CODES.M)
     override fun initUx() {
         errorRating.onActionClick { presenter.onRetryClick() }
-        swipeRefresh.setOnRefreshListener {
-            presenter.onRefresh()
-        }
-        toolbar.setNavigationOnClickListener {
-            presenter.onClickBack()
-        }
+        swipeRefresh.setOnRefreshListener { presenter.onRefresh() }
+        toolbar.setNavigationOnClickListener { presenter.onClickBack() }
+        ivRatingChangeName.setOnClick { presenter.onChangeNameClick() }
         rvRating.setOnScrollChangeListener { _, _, _, _, _ ->
             presenter.onScrolled(
                 offset = rvRating.computeVerticalScrollOffset()
             )
-        }
-        ivRatingChangeName.setOnClick {
-            presenter.onChangeNameClick()
         }
     }
 

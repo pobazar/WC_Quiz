@@ -31,6 +31,7 @@ class ResultFragment : BaseFragment(), ResultView {
     override fun initUx() {
         btnResultPlayAgain.setOnClick { presenter.onAgainPlayClick() }
         btnResultShowAnswer.setOnClick { presenter.onShowAnswers() }
+        toolbar.setNavigationOnClickListener { presenter.onClickBack() }
     }
 
     override fun setResults(results: List<ViewItem>) {

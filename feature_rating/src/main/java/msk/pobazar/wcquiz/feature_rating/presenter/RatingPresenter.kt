@@ -53,7 +53,7 @@ class RatingPresenter @Inject constructor(
     }
 
     fun onScrolled(offset: Int) {
-        viewState.showToolbarTitle(offset > 0)
+        viewState.showToolbarTitle(offset > 10)
     }
 
     fun onChangeNameClick() {
