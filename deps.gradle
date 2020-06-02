@@ -3,7 +3,7 @@ ext {
     versions = [
             'gradle'          : '3.6.1',
             'kotlin'          : '1.3.70',
-            'androidx'        : '1.1.0-beta01', // при 1.1.0 - краш на 6.0.1 андроиде когда вызывается выпадающий список с вебвьюхи
+            'androidx'        : '1.1.0-beta01',
             'cardView'        : '1.0.0',
             'materialDesign'  : '1.0.0',
             'constraintLayout': '1.1.3',
@@ -160,6 +160,9 @@ ext {
             ],
             'timber'          : "com.jakewharton.timber:timber:${versions.timber}",
             'keyboardListener': 'net.yslibrary.keyboardvisibilityevent:keyboardvisibilityevent:2.2.1',
-            'carouselView'    : 'com.synnapps:carouselview:0.1.5'
+            'carouselView'    : 'com.synnapps:carouselview:0.1.5',
+            'ads'             : 'com.google.android.gms:play-services-ads:19.1.0',
+            'mobmetricalib'   : 'com.yandex.android:mobmetricalib:3.13.1',
+            'installreferrer' : 'com.android.installreferrer:installreferrer:1.1.2'
     ]
 }

@@ -23,6 +23,8 @@ dependencies {
     implementation project(':view_loader')
     implementation project(':view_error')
 
+    implementation project(':adMob')
+
     kapt deps.toothpick.compiler
     kapt deps.moxyX.compiler
 }

@@ -19,8 +19,9 @@ android {
 dependencies {
     implementation project(':core')
     implementation project(':domain')
-    implementation project(':adMob')
 
+    api deps.ads
+
+    api deps.toothpick.runtime
     kapt deps.toothpick.compiler
-    kapt deps.moxyX.compiler
 }

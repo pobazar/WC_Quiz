@@ -1,7 +1,9 @@
 package msk.pobazar.wcquiz
 
 import android.app.Application
+import com.google.android.gms.ads.MobileAds
 import io.paperdb.Paper
+import msk.pobazar.wcquiz.adMob.di.AdMobModule
 import msk.pobazar.wcquiz.data_device.di.DataDeviceModule
 import msk.pobazar.wcquiz.data_local.di.DataLocalModule
 import msk.pobazar.wcquiz.data_remote.di.DataRemoteModule
@@ -16,6 +18,7 @@ import toothpick.Toothpick
 class App : Application() {
     override fun onCreate() {
         super.onCreate()
+        initAdMob()
         initLogger()
         initPaper()
         initDI()
@@ -31,6 +34,10 @@ class App : Application() {
         Paper.init(this)
     }
 
+    private fun initAdMob() {
+        MobileAds.initialize(this@App)
+    }
+
     private fun initDI() {
         Toothpick.openScope(DependenciesInjector.APPLICATION_SCOPE)
             .apply {
@@ -41,6 +48,7 @@ class App : Application() {
                     DataDeviceModule(),
                     NavigationModule(),
                     StorageModule(),
+                    AdMobModule(this@App),
                     ApiModule()
                 )
             }

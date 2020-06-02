@@ -10,6 +10,7 @@ include ':data_device'
 
 include ':storage_paper'
 include ':database_firebase'
+include ':adMob'
 
 include ':feature_splash'
 include ':feature_menu'

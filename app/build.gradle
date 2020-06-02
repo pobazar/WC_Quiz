@@ -20,7 +20,7 @@ android {
     }
 
     buildTypes {
-        debug{}
+        debug {}
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
@@ -41,8 +41,10 @@ dependencies {
     implementation project(':data_remote')
     implementation project(':data_local')
     implementation project(':data_device')
+
     implementation project(':storage_paper')
     implementation project(':database_firebase')
+    implementation project(':adMob')
 
     implementation project(':feature_splash')
     implementation project(':feature_menu')
@@ -76,6 +78,8 @@ dependencies {
     api deps.rx.kotlin
 
     api deps.timber
+    api deps.mobmetricalib
+    api deps.installreferrer
 
     api deps.toothpick.runtime
     kapt deps.toothpick.compiler

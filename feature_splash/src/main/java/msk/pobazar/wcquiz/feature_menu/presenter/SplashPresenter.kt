@@ -3,6 +3,8 @@ package msk.pobazar.wcquiz.feature_menu.presenter
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.rxkotlin.subscribeBy
 import moxy.InjectViewState
+import msk.pobazar.wcquiz.adMob.PageAds
+import msk.pobazar.wcquiz.adMob.RewardAds
 import msk.pobazar.wcquiz.core.base.BasePresenter
 import msk.pobazar.wcquiz.core.navigation.Router
 import msk.pobazar.wcquiz.core.navigation.screens.NavigationScreen
@@ -16,7 +18,9 @@ import javax.inject.Inject
 class SplashPresenter @Inject constructor(
     private val router: Router,
     private val questionsInteractor: QuestionsInteractor,
-    private val networkManager: NetworkManager
+    private val networkManager: NetworkManager,
+    private val pageAds: PageAds,
+    private val rewardAds: RewardAds
 ) : BasePresenter<SplashView>() {
 
     override fun attachView(view: SplashView?) {
@@ -29,7 +33,8 @@ class SplashPresenter @Inject constructor(
     }
 
     private fun loadData() {
-        if (networkManager.isAvailable())
+        if (networkManager.isAvailable()) {
+            loadAds()
             questionsInteractor.getAllRemoteAndToLocal()
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnSubscribe {
@@ -48,9 +53,14 @@ class SplashPresenter @Inject constructor(
                     }
                 )
                 .bind()
-        else {
+        } else {
             viewState.showProgress(false)
             viewState.showError(ErrorType.ERROR_NETWORK_UNAVAILABLE)
         }
+    }
+
+    private fun loadAds() {
+        pageAds.create()
+        rewardAds.loadAds()
     }
 }

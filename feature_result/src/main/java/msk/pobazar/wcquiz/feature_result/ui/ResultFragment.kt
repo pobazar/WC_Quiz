@@ -30,7 +30,7 @@ class ResultFragment : BaseFragment(), ResultView {
 
     override fun initUx() {
         btnResultPlayAgain.setOnClick { presenter.onAgainPlayClick() }
-        btnResultShowAnswer.setOnClick { presenter.onShowAnswers() }
+        btnResultShowAnswer.setOnClick { presenter.onShowAnswers(requireActivity()) }
         toolbar.setNavigationOnClickListener { presenter.onClickBack() }
     }
 
@@ -40,6 +40,12 @@ class ResultFragment : BaseFragment(), ResultView {
 
     override fun setCountRight(score: String) {
         tvResultCountRight.text = score
+    }
+
+    override fun setEnableShowAnswer(isEnabled: Boolean) {
+        btnResultShowAnswer.isEnabled = isEnabled
+        btnResultShowAnswer.isClickable = isEnabled
+        btnResultShowAnswer.alpha = if (isEnabled) 1F else 0.5F
     }
 
     companion object {

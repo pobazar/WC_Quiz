@@ -11,4 +11,6 @@ interface ResultView : MvpView {
     fun setResults(results: List<ViewItem>)
 
     fun setCountRight(score: String)
+
+    fun setEnableShowAnswer(isEnabled: Boolean)
 }

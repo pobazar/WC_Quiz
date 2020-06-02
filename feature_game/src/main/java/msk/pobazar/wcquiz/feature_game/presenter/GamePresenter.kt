@@ -162,15 +162,17 @@ class GamePresenter @Inject constructor(
     }
 
     private fun addAnswer(answer: String) {
-        val game = games[currentNumber]
-        results.add(
-            GameResult.Result(
-                question = game.question,
-                answer = answer,
-                answerRight = game.answerRight,
-                image = game.imageUrl
+        if (currentNumber < countQuestions) {
+            val game = games[currentNumber]
+            results.add(
+                GameResult.Result(
+                    question = game.question,
+                    answer = answer,
+                    answerRight = game.answerRight,
+                    image = game.imageUrl
+                )
             )
-        )
+        }
     }
 
     private fun showResults() {
