@@ -6,8 +6,20 @@ apply plugin: 'kotlin-kapt'
 apply from: "$rootDir/config.gradle"
 apply from: "$rootDir/deps.gradle"
 
+def releasePropertiesFile = rootProject.file("release_keystore.properties")
+def releaseProperties = new Properties()
+releaseProperties.load(new FileInputStream(releasePropertiesFile))
 
 android {
+    signingConfigs {
+        release {
+            storeFile file(releaseProperties['storeFile'])
+            storePassword releaseProperties['storePassword']
+            keyAlias releaseProperties['keyAlias']
+            keyPassword releaseProperties['keyPassword']
+        }
+    }
+
     defaultConfig {
         applicationId "msk.pobazar.wcquiz"
         versionCode config.versionCode
@@ -24,6 +36,7 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
     }
 
@@ -65,21 +78,21 @@ dependencies {
     api deps.moxyX.material
     kapt deps.moxyX.compiler
 
-//    api(deps.glide.core) {
-//        exclude group: "com.android.support"
-//    }
+    api(deps.glide.core) {
+        exclude group: "com.android.support"
+    }
 
     api deps.kotlin
 
-//    api deps.google.gson
-//
-//    api deps.rx.java
-//    api deps.rx.android
-//    api deps.rx.kotlin
-//
-//    api deps.timber
-//    api deps.appMetrica.mobmetricalib
-//    api deps.appMetrica.installreferrer
+    api deps.google.gson
+
+    api deps.rx.java
+    api deps.rx.android
+    api deps.rx.kotlin
+
+    api deps.timber
+    api deps.appMetrica.mobmetricalib
+    api deps.appMetrica.installreferrer
 
     api deps.toothpick.runtime
     kapt deps.toothpick.compiler

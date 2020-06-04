@@ -182,7 +182,7 @@ class GamePresenter @Inject constructor(
     private fun showResults() {
         analyticsInteractor.reportEvent(AnalyticsKeys.FINISH_GAME)
         with(resultInteractor.getResult()) {
-            analyticsInteractor.reportEvent(AnalyticsKeys.RESULT, "{\"countRight\":\"$countRight\", \"countRight\":\"$countAll\"}")
+            analyticsInteractor.reportEvent(AnalyticsKeys.RESULT, "{\"countRight\":\"$countRight\", \"countAll\":\"$countAll\"}")
         }
         router.replace(NavigationScreen.Result)
     }

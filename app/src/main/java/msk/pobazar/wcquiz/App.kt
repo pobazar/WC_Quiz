@@ -2,6 +2,7 @@ package msk.pobazar.wcquiz
 
 import android.app.Application
 import com.google.android.gms.ads.MobileAds
+import com.google.firebase.FirebaseApp
 import com.yandex.metrica.YandexMetrica
 import com.yandex.metrica.YandexMetricaConfig
 import io.paperdb.Paper
@@ -23,6 +24,7 @@ class App : Application() {
     override fun onCreate() {
         super.onCreate()
         initAppMetrica()
+        initFirebase()
         initAdMob()
         initLogger()
         initPaper()
@@ -39,6 +41,10 @@ class App : Application() {
         Paper.init(this)
     }
 
+    private fun initFirebase() {
+        FirebaseApp.initializeApp(app)
+    }
+
     private fun initAdMob() {
         MobileAds.initialize(app)
     }
@@ -46,12 +52,12 @@ class App : Application() {
     private fun initAppMetrica() {
         if (!BuildConfig.DEBUG) {
             YandexMetrica.activate(
-                applicationContext,
+                app,
                 YandexMetricaConfig
                     .newConfigBuilder(METRICA_KEY)
                     .build()
             )
-            YandexMetrica.enableActivityAutoTracking(this)
+            YandexMetrica.enableActivityAutoTracking(app)
         }
     }
 

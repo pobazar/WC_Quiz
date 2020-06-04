@@ -3,33 +3,36 @@ package msk.pobazar.wcquiz.adMob
 import com.google.android.gms.ads.AdListener
 import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.InterstitialAd
+import msk.pobazar.wcquiz.core.analytics.AnalyticsKeys
+import msk.pobazar.wcquiz.domain.interactor.AnalyticsInteractor
 import javax.inject.Inject
 
 class PageAds @Inject constructor(
-    private val interstitialAd: InterstitialAd
+    private val interstitialAd: InterstitialAd,
+    private val analyticsInteractor: AnalyticsInteractor
 ) {
     fun create() {
 
         loadAds()
         interstitialAd.adListener = object : AdListener() {
             override fun onAdLoaded() {
-                // Code to be executed when an ad finishes loading.
+                analyticsInteractor.reportEvent(AnalyticsKeys.BANNER_ADS, "{\"banner_ads\":\"load\"}")
             }
 
             override fun onAdFailedToLoad(errorCode: Int) {
-                // Code to be executed when an ad request fails.
+                analyticsInteractor.reportEvent(AnalyticsKeys.BANNER_ADS, "{\"banner_ads\":\"$errorCode\"}")
             }
 
             override fun onAdOpened() {
-                // Code to be executed when the ad is displayed.
+                analyticsInteractor.reportEvent(AnalyticsKeys.BANNER_ADS, "{\"banner_ads\":\"open\"}")
             }
 
             override fun onAdClicked() {
-                // Code to be executed when the user clicks on an ad.
+                analyticsInteractor.reportEvent(AnalyticsKeys.BANNER_ADS, "{\"banner_ads\":\"click\"}")
             }
 
             override fun onAdClosed() {
-                // Code to be executed when the interstitial ad is closed.
+                analyticsInteractor.reportEvent(AnalyticsKeys.BANNER_ADS, "{\"banner_ads\":\"close\"}")
                 loadAds()
             }
         }
