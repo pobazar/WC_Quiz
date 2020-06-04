@@ -65,21 +65,21 @@ dependencies {
     api deps.moxyX.material
     kapt deps.moxyX.compiler
 
-    api(deps.glide.core) {
-        exclude group: "com.android.support"
-    }
+//    api(deps.glide.core) {
+//        exclude group: "com.android.support"
+//    }
 
     api deps.kotlin
 
-    api deps.google.gson
-
-    api deps.rx.java
-    api deps.rx.android
-    api deps.rx.kotlin
-
-    api deps.timber
-    api deps.mobmetricalib
-    api deps.installreferrer
+//    api deps.google.gson
+//
+//    api deps.rx.java
+//    api deps.rx.android
+//    api deps.rx.kotlin
+//
+//    api deps.timber
+//    api deps.appMetrica.mobmetricalib
+//    api deps.appMetrica.installreferrer
 
     api deps.toothpick.runtime
     kapt deps.toothpick.compiler

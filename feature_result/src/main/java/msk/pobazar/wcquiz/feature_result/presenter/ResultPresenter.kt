@@ -5,10 +5,12 @@ import com.google.android.gms.ads.rewarded.RewardItem
 import com.google.android.gms.ads.rewarded.RewardedAdCallback
 import msk.pobazar.wcquiz.adMob.PageAds
 import msk.pobazar.wcquiz.adMob.RewardAds
+import msk.pobazar.wcquiz.core.analytics.AnalyticsKeys
 import msk.pobazar.wcquiz.core.base.BasePresenter
 import msk.pobazar.wcquiz.core.navigation.Router
 import msk.pobazar.wcquiz.core.navigation.screens.NavigationScreen
 import msk.pobazar.wcquiz.core.navigation.transitionsParams.GameParams
+import msk.pobazar.wcquiz.domain.interactor.AnalyticsInteractor
 import msk.pobazar.wcquiz.domain.interactor.RatingInteractor
 import msk.pobazar.wcquiz.domain.interactor.ResultInteractor
 import msk.pobazar.wcquiz.feature_result.mapper.ResultMapper
@@ -20,6 +22,7 @@ class ResultPresenter @Inject constructor(
     private val router: Router,
     private val resultInteractor: ResultInteractor,
     private val ratingInteractor: RatingInteractor,
+    private val analyticsInteractor: AnalyticsInteractor,
     private val resultMapper: ResultMapper,
     private val rewardAds: RewardAds,
     private val pageAds: PageAds
@@ -36,31 +39,33 @@ class ResultPresenter @Inject constructor(
     }
 
     fun onAgainPlayClick() {
+        analyticsInteractor.reportEvent(AnalyticsKeys.REPLAY)
         rewardAds.loadAds()
         router.replace(NavigationScreen.Game(GameParams()))
     }
 
     fun onShowAnswers(activity: Activity) {
+        analyticsInteractor.reportEvent(AnalyticsKeys.SHOW_ANSWER)
         if (!resultInteractor.isShowAnswer)
             rewardAds.show(
                 activity = activity,
                 adCallback = object : RewardedAdCallback() {
                     override fun onRewardedAdOpened() {
-                        // Ad opened.
+                        analyticsInteractor.reportEvent(AnalyticsKeys.REWARD_ADS, "{\"reward_ads\":\"open\"}")
                     }
 
                     override fun onRewardedAdClosed() {
-                        // Ad closed.
+                        analyticsInteractor.reportEvent(AnalyticsKeys.START_GAME, "{\"reward_ads\":\"close\"}")
                     }
 
                     override fun onUserEarnedReward(reward: RewardItem) {
-                        // User earned reward.
+                        analyticsInteractor.reportEvent(AnalyticsKeys.START_GAME, "{\"reward_ads\":\"earn\"}")
                         resultInteractor.isShowAnswer = true
                         setupResult()
                     }
 
                     override fun onRewardedAdFailedToShow(errorCode: Int) {
-                        // Ad failed to display.
+                        analyticsInteractor.reportEvent(AnalyticsKeys.START_GAME, "{\"reward_ads\":\"$errorCode\"}")
                     }
                 }
             )

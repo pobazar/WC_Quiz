@@ -6,19 +6,22 @@ import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.rewarded.RewardedAd
 import com.google.android.gms.ads.rewarded.RewardedAdCallback
 import com.google.android.gms.ads.rewarded.RewardedAdLoadCallback
+import msk.pobazar.wcquiz.core.analytics.AnalyticsKeys
+import msk.pobazar.wcquiz.domain.interactor.AnalyticsInteractor
 import javax.inject.Inject
 
 class RewardAds @Inject constructor(
-    private val rewardedAd: RewardedAd
+    private val rewardedAd: RewardedAd,
+    private val analyticsInteractor: AnalyticsInteractor
 ) {
 
     private val adLoadCallback = object : RewardedAdLoadCallback() {
         override fun onRewardedAdLoaded() {
-            // Ad successfully loaded.
+            analyticsInteractor.reportEvent(AnalyticsKeys.REWARD_ADS, "{\"reward_ads\":\"load\"}")
         }
 
         override fun onRewardedAdFailedToLoad(errorCode: Int) {
-            // Ad failed to load.
+            analyticsInteractor.reportEvent(AnalyticsKeys.REWARD_ADS, "{\"reward_ads\":\"$errorCode\"}")
         }
     }
 

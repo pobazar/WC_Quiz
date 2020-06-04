@@ -5,9 +5,11 @@ import io.reactivex.rxkotlin.subscribeBy
 import moxy.InjectViewState
 import msk.pobazar.wcquiz.adMob.PageAds
 import msk.pobazar.wcquiz.adMob.RewardAds
+import msk.pobazar.wcquiz.core.analytics.AnalyticsKeys
 import msk.pobazar.wcquiz.core.base.BasePresenter
 import msk.pobazar.wcquiz.core.navigation.Router
 import msk.pobazar.wcquiz.core.navigation.screens.NavigationScreen
+import msk.pobazar.wcquiz.domain.interactor.AnalyticsInteractor
 import msk.pobazar.wcquiz.domain.interactor.QuestionsInteractor
 import msk.pobazar.wcquiz.domain.repo.device.NetworkManager
 import msk.pobazar.wcquiz.view_error.ErrorType
@@ -18,6 +20,7 @@ import javax.inject.Inject
 class SplashPresenter @Inject constructor(
     private val router: Router,
     private val questionsInteractor: QuestionsInteractor,
+    private val analyticsInteractor: AnalyticsInteractor,
     private val networkManager: NetworkManager,
     private val pageAds: PageAds,
     private val rewardAds: RewardAds
@@ -25,6 +28,7 @@ class SplashPresenter @Inject constructor(
 
     override fun attachView(view: SplashView?) {
         super.attachView(view)
+        analyticsInteractor.reportEvent(AnalyticsKeys.OPEN_APP)
         loadData()
     }
 

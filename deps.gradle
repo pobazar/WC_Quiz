@@ -158,11 +158,14 @@ ext {
                     'debug'  : "com.readystatesoftware.chuck:library:1.1.0",
                     'release': "com.readystatesoftware.chuck:library-no-op:1.1.0"
             ],
+            'appMetrica'      : [
+                    'mobmetricalib'  : 'com.yandex.android:mobmetricalib:3.13.1',
+                    'installreferrer': 'com.android.installreferrer:installreferrer:1.1.2'
+            ],
             'timber'          : "com.jakewharton.timber:timber:${versions.timber}",
             'keyboardListener': 'net.yslibrary.keyboardvisibilityevent:keyboardvisibilityevent:2.2.1',
             'carouselView'    : 'com.synnapps:carouselview:0.1.5',
-            'ads'             : 'com.google.android.gms:play-services-ads:19.1.0',
-            'mobmetricalib'   : 'com.yandex.android:mobmetricalib:3.13.1',
-            'installreferrer' : 'com.android.installreferrer:installreferrer:1.1.2'
+            'ads'             : 'com.google.android.gms:play-services-ads:19.1.0'
+
     ]
 }

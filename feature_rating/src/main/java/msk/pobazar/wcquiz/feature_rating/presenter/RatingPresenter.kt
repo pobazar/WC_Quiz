@@ -3,10 +3,12 @@ package msk.pobazar.wcquiz.feature_rating.presenter
 import io.reactivex.rxkotlin.Observables
 import io.reactivex.rxkotlin.subscribeBy
 import moxy.InjectViewState
+import msk.pobazar.wcquiz.core.analytics.AnalyticsKeys
 import msk.pobazar.wcquiz.core.base.BasePresenter
 import msk.pobazar.wcquiz.core.base.adapter.ViewItem
 import msk.pobazar.wcquiz.core.navigation.Router
 import msk.pobazar.wcquiz.core.navigation.screens.NavigationDialog
+import msk.pobazar.wcquiz.domain.interactor.AnalyticsInteractor
 import msk.pobazar.wcquiz.domain.interactor.RatingInteractor
 import msk.pobazar.wcquiz.domain.interactor.UserInteractor
 import msk.pobazar.wcquiz.domain.repo.device.NetworkManager
@@ -21,6 +23,7 @@ class RatingPresenter @Inject constructor(
     private val router: Router,
     private val ratingInteractor: RatingInteractor,
     private val userInteractor: UserInteractor,
+    private val analyticsInteractor: AnalyticsInteractor,
     private val networkManager: NetworkManager,
     private val resourceManager: ResourceManager,
     private val ratingMapper: RatingMapper
@@ -37,6 +40,7 @@ class RatingPresenter @Inject constructor(
     override fun onFirstViewAttach() {
         super.onFirstViewAttach()
         loadRating()
+        analyticsInteractor.reportEvent(AnalyticsKeys.RATING)
     }
 
     fun onRetryClick() {

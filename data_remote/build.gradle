@@ -27,10 +27,8 @@ dependencies {
     api deps.okhttp.client
     api deps.okhttp.logging
 
-//    api deps.retrofit.client
-//    api deps.retrofit.gsonConverter
-//    api deps.retrofit.gsonConverter
-//    api deps.retrofit.adapterRxJava
+    api deps.appMetrica.mobmetricalib
+    api deps.appMetrica.installreferrer
 
     api deps.toothpick.runtime
     kapt deps.toothpick.compiler

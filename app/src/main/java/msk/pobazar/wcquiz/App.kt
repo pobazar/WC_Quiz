@@ -2,6 +2,8 @@ package msk.pobazar.wcquiz
 
 import android.app.Application
 import com.google.android.gms.ads.MobileAds
+import com.yandex.metrica.YandexMetrica
+import com.yandex.metrica.YandexMetricaConfig
 import io.paperdb.Paper
 import msk.pobazar.wcquiz.adMob.di.AdMobModule
 import msk.pobazar.wcquiz.data_device.di.DataDeviceModule
@@ -16,8 +18,11 @@ import timber.log.Timber
 import toothpick.Toothpick
 
 class App : Application() {
+
+    private val app = this@App
     override fun onCreate() {
         super.onCreate()
+        initAppMetrica()
         initAdMob()
         initLogger()
         initPaper()
@@ -35,22 +40,38 @@ class App : Application() {
     }
 
     private fun initAdMob() {
-        MobileAds.initialize(this@App)
+        MobileAds.initialize(app)
+    }
+
+    private fun initAppMetrica() {
+        if (!BuildConfig.DEBUG) {
+            YandexMetrica.activate(
+                applicationContext,
+                YandexMetricaConfig
+                    .newConfigBuilder(METRICA_KEY)
+                    .build()
+            )
+            YandexMetrica.enableActivityAutoTracking(this)
+        }
     }
 
     private fun initDI() {
         Toothpick.openScope(DependenciesInjector.APPLICATION_SCOPE)
             .apply {
                 installModules(
-                    AppModule(this@App),
+                    AppModule(app),
                     DataRemoteModule(),
-                    DataLocalModule(this@App),
+                    DataLocalModule(app),
                     DataDeviceModule(),
                     NavigationModule(),
                     StorageModule(),
-                    AdMobModule(this@App),
+                    AdMobModule(app),
                     ApiModule()
                 )
             }
+    }
+
+    companion object {
+        private const val METRICA_KEY = "408213b0-7b87-497b-8771-56aa650a3f65"
     }
 }

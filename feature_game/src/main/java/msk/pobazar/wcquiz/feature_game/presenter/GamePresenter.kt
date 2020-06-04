@@ -5,10 +5,12 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.rxkotlin.subscribeBy
 import moxy.InjectViewState
+import msk.pobazar.wcquiz.core.analytics.AnalyticsKeys
 import msk.pobazar.wcquiz.core.base.BasePresenter
 import msk.pobazar.wcquiz.core.navigation.Router
 import msk.pobazar.wcquiz.core.navigation.screens.NavigationScreen
 import msk.pobazar.wcquiz.core.navigation.transitionsParams.GameParams
+import msk.pobazar.wcquiz.domain.interactor.AnalyticsInteractor
 import msk.pobazar.wcquiz.domain.interactor.ImageInteractor
 import msk.pobazar.wcquiz.domain.interactor.QuestionsInteractor
 import msk.pobazar.wcquiz.domain.interactor.ResultInteractor
@@ -32,6 +34,7 @@ class GamePresenter @Inject constructor(
     private val questionsInteractor: QuestionsInteractor,
     private val imageInteractor: ImageInteractor,
     private val resourceManager: ResourceManager,
+    private val analyticsInteractor: AnalyticsInteractor,
     private val networkManager: NetworkManager,
     private val gameMapper: GameMapper
 ) : BasePresenter<GameView>() {
@@ -51,6 +54,7 @@ class GamePresenter @Inject constructor(
 
     override fun onFirstViewAttach() {
         super.onFirstViewAttach()
+        analyticsInteractor.reportEvent(AnalyticsKeys.START_GAME)
         loadGames()
         loadImages()
     }
@@ -176,6 +180,10 @@ class GamePresenter @Inject constructor(
     }
 
     private fun showResults() {
+        analyticsInteractor.reportEvent(AnalyticsKeys.FINISH_GAME)
+        with(resultInteractor.getResult()) {
+            analyticsInteractor.reportEvent(AnalyticsKeys.RESULT, "{\"countRight\":\"$countRight\", \"countRight\":\"$countAll\"}")
+        }
         router.replace(NavigationScreen.Result)
     }
 
